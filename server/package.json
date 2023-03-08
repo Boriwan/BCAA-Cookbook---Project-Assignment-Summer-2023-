@@ -1,0 +1,14 @@
+{
+  "name": "cookbook",
+  "version": "1.0.0",
+  "description": "uuCookbook for pasta",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "author": "Group 9",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
