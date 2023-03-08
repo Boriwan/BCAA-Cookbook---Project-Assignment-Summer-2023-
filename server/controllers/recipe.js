@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 router.get("/getRecipe", function (req, res) {
-  res.send("GET route on rofl.");
+  res.send("GET Recipe");
 });
 
 router.put("/putRecipe", (req, res) => {
@@ -10,7 +10,7 @@ router.put("/putRecipe", (req, res) => {
 });
 
 router.post("/postRecipe", function (req, res) {
-  res.send("Post recipe");
+  res.send("POST recipe");
 });
 
 //export this router to use in our index.js
