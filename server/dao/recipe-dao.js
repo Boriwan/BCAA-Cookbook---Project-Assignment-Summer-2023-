@@ -24,6 +24,14 @@ class RecipeDao {
     return object;
   }
 
+  edit(object) {
+    return object
+  }
+
+//   delete(object) {
+    
+//   }
+
   list() {
     return this._listAll();
   }
