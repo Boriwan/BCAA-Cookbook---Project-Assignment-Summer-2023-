@@ -2,11 +2,14 @@ var express = require("express");
 var router = express.Router();
 const CreateAbl = require("../abl/recipe-abl/create-abl");
 const GetAllAbl = require("../abl/recipe-abl/getAll-abl");
+const GetAbl = require("../abl/recipe-abl/get-abl");
 
 router.get("/getRecipes", function (req, res) {
   GetAllAbl(req, res);
 });
-
+router.get("/getRecipe/:id", function (req, res) {
+  GetAbl(req.params.id, res);
+});
 router.post("/postRecipe", function (req, res) {
   CreateAbl(req, res);
 });
