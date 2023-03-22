@@ -5,6 +5,7 @@ const GetAllAbl = require("../abl/recipe-abl/getAll-abl");
 const GetAbl = require("../abl/recipe-abl/get-abl");
 const DeleteAbl = require("../abl/recipe-abl/delete-abl");
 const UpdateAbl = require("../abl/recipe-abl/update-abl");
+
 router.get("/getRecipes", function (req, res) {
   GetAllAbl(req, res);
 });
@@ -16,15 +17,8 @@ router.post("/createRecipe", function (req, res) {
   CreateAbl(req, res);
 });
 
-router.put("/putRecipe", (req, res) => {
-  res.send("Got a PUT request at /putRecipe");
-});
-
-// router.delete("/deleteRecipe", (req, res) => {
-
-// }
 //Update by ID Method
-router.patch("/updateRecipe/:id", (req, res) => {
+router.put("/updateRecipe/:id", (req, res) => {
   UpdateAbl(req, res);
 });
 

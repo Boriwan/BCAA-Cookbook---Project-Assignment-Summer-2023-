@@ -34,10 +34,16 @@ class RecipeDao {
     );
     fs.writeFileSync(this._getStoragePath(), JSON.stringify(recipeList));
   }
-  update(object) {
+  
+  update(id, newData) {
     let recipeList = this._listAll().filter(
-      (recipe) => recipe.id !== object.id
+      (recipe) => recipe.id !== newData.id
     );
+    const index = recipeList.findIndex((recipe) => recipe.id === id);
+    if (index !== -1) {
+      recipeList[index] = { ...recipeList[index], ...newData };
+      fs.writeFileSync(this._getStoragePath(), JSON.stringify(recipeList));
+    }
   }
 
   list() {
