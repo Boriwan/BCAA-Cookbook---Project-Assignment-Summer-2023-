@@ -17,6 +17,13 @@ router.post("/createRecipe", function (req, res) {
   CreateAbl(req, res);
 });
 
+router.put("/putRecipe", (req, res) => {
+  res.send("Got a PUT request at /putRecipe");
+});
+
+// router.delete("/deleteRecipe", (req, res) => {
+
+// }
 //Update by ID Method
 router.put("/updateRecipe/:id", (req, res) => {
   UpdateAbl(req, res);

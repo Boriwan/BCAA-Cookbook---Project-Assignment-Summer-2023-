@@ -34,8 +34,7 @@ class RecipeDao {
     );
     fs.writeFileSync(this._getStoragePath(), JSON.stringify(recipeList));
   }
-  
-  update(id, newData) {
+  update(object) {
     let recipeList = this._listAll().filter(
       (recipe) => recipe.id !== newData.id
     );
