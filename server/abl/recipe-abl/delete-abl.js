@@ -14,6 +14,6 @@ function DeleteAbl(req, res) {
     res.status(400).json({ error: "Recipe does not exist" });
   }
 
-  res.json(`Recipe with id ${req.params.name} has been deleted`);
+  res.json(`Recipe with id ${req.params.id} has been deleted`);
 }
 module.exports = DeleteAbl;
