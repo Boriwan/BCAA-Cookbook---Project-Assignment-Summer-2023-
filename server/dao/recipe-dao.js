@@ -28,17 +28,9 @@ class RecipeDao {
     return object;
   }
 
-  delete(object) {
-    let recipeList = this._listAll().filter(
-      (recipe) => recipe.id !== object.id
-    );
-    fs.writeFileSync(this._getStoragePath(), JSON.stringify(recipeList));
-  }
-  update(object) {
-    let recipeList = this._listAll().filter(
-      (recipe) => recipe.id !== object.id
-    );
-  }
+//   delete(object) {
+    
+//   }
 
   list() {
     return this._listAll();
