@@ -1,4 +1,4 @@
-const RecipeController = require('./controllers/recipe')
+const RecipeController = require("./controllers/recipe");
 
 var express = require("express");
 var app = express();
@@ -15,6 +15,6 @@ app.get("/recipes", function (req, res) {
   res.send("Recipes");
 });
 
-app.use("/recipe",  RecipeController) 
+app.use("/recipe", RecipeController);
 
 app.listen(port);

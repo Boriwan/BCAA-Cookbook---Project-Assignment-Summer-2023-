@@ -3,14 +3,15 @@ var router = express.Router();
 const CreateAbl = require("../abl/recipe-abl/create-abl");
 const GetAllAbl = require("../abl/recipe-abl/getAll-abl");
 const GetAbl = require("../abl/recipe-abl/get-abl");
-
+const DeleteAbl = require("../abl/recipe-abl/delete-abl");
+const UpdateAbl = require("../abl/recipe-abl/update-abl");
 router.get("/getRecipes", function (req, res) {
   GetAllAbl(req, res);
 });
 router.get("/getRecipe/:id", function (req, res) {
-  GetAbl(req.params.id, res);
+  GetAbl(req, res);
 });
-router.post("/postRecipe", function (req, res) {
+router.post("/createtRecipe", function (req, res) {
   CreateAbl(req, res);
 });
 
@@ -21,6 +22,15 @@ router.put("/putRecipe", (req, res) => {
 // router.delete("/deleteRecipe", (req, res) => {
 
 // }
+//Update by ID Method
+router.patch("/updateRecipe/:id", (req, res) => {
+  UpdateAbl(req, res);
+});
+
+//Delete by ID Method
+router.delete("/deleteRecipe/:id", (req, res) => {
+  DeleteAbl(req, res);
+});
 
 //export this router to use in our index.js
 module.exports = router;

@@ -1,19 +1,19 @@
 const RecipeDao = require("../../dao/recipe-dao");
 const path = require("path");
-
 let dao = new RecipeDao(
   path.join(__dirname, "..", "..", "storage", "recipes.json")
 );
 
-// console.log(recipeList);
-
-function GetAbl(req, res) {
+function DeleteAbl(req, res) {
   const recipe = dao.get(req.params.id);
+
+  const updatedObject = { ...recipe, ...req.params };
   if (recipe) {
-    res.json(recipe);
+    dao.delete(recipe);
   } else {
     res.status(400).json({ error: "Recipe does not exist" });
   }
-}
 
-module.exports = GetAbl;
+  res.json(`Recipe with id ${req.params.name} has been deleted`);
+}
+module.exports = DeleteAbl;

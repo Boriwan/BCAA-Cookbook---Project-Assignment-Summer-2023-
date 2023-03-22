@@ -25,15 +25,26 @@ class RecipeDao {
   }
 
   edit(object) {
-    return object
+    return object;
   }
 
-//   delete(object) {
-    
-//   }
+  delete(object) {
+    let recipeList = this._listAll().filter(
+      (recipe) => recipe.id !== object.id
+    );
+    fs.writeFileSync(this._getStoragePath(), JSON.stringify(recipeList));
+  }
+  update(object) {
+    let recipeList = this._listAll().filter(
+      (recipe) => recipe.id !== object.id
+    );
+  }
 
   list() {
     return this._listAll();
+  }
+  get(id) {
+    return this._listAll().find((recipe) => recipe.id === id);
   }
 
   _listAll() {
