@@ -11,7 +11,8 @@ router.get("/getRecipes", function (req, res) {
 router.get("/getRecipe/:id", function (req, res) {
   GetAbl(req, res);
 });
-router.post("/createtRecipe", function (req, res) {
+
+router.post("/createRecipe", function (req, res) {
   CreateAbl(req, res);
 });
 

@@ -25,7 +25,6 @@ function CreateAbl(req, res) {
     desc: body.desc,
     finalAmount: body.finalAmount,
     prepLength: body.prepLength,
-    categories: body.categories,
     ingredients: body.ingredients,
   };
 
