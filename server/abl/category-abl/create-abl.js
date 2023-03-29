@@ -19,8 +19,7 @@ function CreateAbl(req, res) {
 
   let category = {
     name: body.name,
-    desc: body.desc,
-    recipes: []
+    desc: body.desc
   };
 
   try {

@@ -14,5 +14,7 @@ function UpdateAbl(req, res) {
   } else {
     res.status(400).json({ error: "Recipe does not exist" });
   }
+    res.json(updatedObject);
+
 }
 module.exports = UpdateAbl;
