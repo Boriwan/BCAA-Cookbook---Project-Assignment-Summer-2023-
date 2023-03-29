@@ -26,6 +26,8 @@ function CreateAbl(req, res) {
     finalAmount: body.finalAmount,
     prepLength: body.prepLength,
     ingredients: body.ingredients,
+    category: body.category,
+    ingredients: body.ingredients
   };
 
   try {

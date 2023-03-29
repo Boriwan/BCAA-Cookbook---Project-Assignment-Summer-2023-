@@ -17,6 +17,7 @@ function CreateAbl(req, res) {
   let ingredient = {
     name: body.name,
     finalAmount: body.finalAmount,
+    recipes: [] 
   };
 
   try {
