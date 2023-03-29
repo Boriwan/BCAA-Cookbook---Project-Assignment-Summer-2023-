@@ -13,7 +13,7 @@ function UploadImgAbl(req, res) {
 
   // const names = newData.map((data) => {
   //   return data.name;
-  // })
+  // });
   dao.update(id, newData);
   console.log(newData);
   const { image } = req.files;
