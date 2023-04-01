@@ -1,0 +1,115 @@
+
+
+[
+  {
+    "name": "Špagety Alfredo",
+    "desc": "Máte rádi vůni česneku a k tomu jste i milovníci pasty? V kombinaci s jemnou smetanou a výrazným sýrem, to jsou špagety Alfredo.",
+    "method": ["Špagety uvaříme podle návodu v osolené vodě. Na pánvi rozehřejeme kousek másla a na něm pak krátce orestujeme nadrobno nakrájený česnek.", "K orestovanému česneku přilijeme smetanu a v mírném varu necháme asi 3-4 minuty spolu povařit.", "Do smetany přidáme sýr a necháme jej pozvolna rozpustit. Omáčku odstavíme, dochutíme solí a petrželkou.", "Uvařené špagety scedíme (trochu vody uchováme) a přidáme do pánve k omáčce.", "Vše spolu promícháme a nakonec posypeme čerstvě mletým pepřem. Dle potřeby můžeme dolít trochu vody ze špaget."],
+    "finalAmount": 2,
+    "prepLength": 50,
+    "ingredients": [
+      {
+        "name": "špagety",
+        "amount": 400
+      },
+      {
+        "name": "máslo",
+        "amount": 2
+      },
+      {
+        "name": "česnek",
+        "amount": 2
+      },
+      {
+        "name": "smetana ke šlehání",
+        "amount": 250
+      },
+      {
+        "name": "parmazán, nebo čedar",
+        "amount": 100
+      },
+      {
+        "name": "nakrájená petrželka",
+        "amount": ""
+      },
+      {
+        "name": "čerstvě mletý pepř",
+        "amount": ""
+      },
+      {
+        "name": "sůl",
+        "amount": ""
+      }
+    ],
+    "img": ["img/recipe1.jpg"],
+    "id": "4e54a3a0ad456965",
+    "categories": "spagety"
+  },
+
+    {
+      "name": "Hovězí guláš",
+      "desc": "falnvan f da jddlka ads kl k aldjf lakdj fkla f k kag jl.",
+      "method": ["blabblabla testoviny carbonara dal a dal a dal", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl"],
+      "finalAmount": 3,
+      "prepLength": 2,
+      "ingredients": ["špagety", "pecorino", "pancheta", "vejce", "pecorino"],
+      "img": ["img/recipe2.jpg"],
+      "id": "79203306065af45a",
+      "categories": "spagety"
+    },
+    {
+      "name": "rofl",
+      "desc": "falnvan f da jddlka ads kl k aldjf lakdj fkla f k kag jl.",
+      "method": ["blabblabla testoviny carbonara dal a dal a dal", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl"],
+      "finalAmount": 3,
+      "prepLength": 2,
+      "ingredients": ["špagety", "pecorino", "pancheta", "vejce", "pecorino"],
+      "img": ["img/recipe3.webp"],
+      "id": "33a83de9bd8eb832",
+      "categories": "spagety"
+    },
+    {
+      "name": "Špagety",
+      "desc": "falnvan f da jddlka ads kl k aldjf lakdj fkla f k kag jl.",
+      "method": ["blabblabla testoviny carbonara dal a dal a dal", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl"],
+      "finalAmount": 3,
+      "prepLength": 10,
+      "ingredients": ["špagety", "kečup"],
+      "img": ["img/recipe4.webp"],
+      "id": "19dffa12bd837be6",
+      "categories": "spagety"
+    },
+    {
+      "name": "Špagety kečup",
+      "desc": "falnvan f da jddlka ads kl k aldjf lakdj fkla f k kag jl.",
+      "method": ["blabblabla testoviny carbonara dal a dal a dal", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl"],
+      "finalAmount": 3,
+      "prepLength": 10,
+      "ingredients": ["špagety", "kečup"],
+      "img": ["img/recipe1.jpg"],
+      "id": "59746eb0fb2b79ae",
+      "categories": "spagety"
+    },
+    {
+      "name": "kokos",
+      "desc": "falnvan f da jddlka ads kl k aldjf lakdj fkla f k kag jl.",
+      "method": ["blabblabla testoviny carbonara dal a dal a dal", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl"],
+      "finalAmount": 2,
+      "prepLength": 2,
+      "ingredients": ["špagety", "pecorino", "pancheta", "vejce", "pecorino"],
+      "img": ["img/recipe1.jpg"],
+      "id": "4e54a3a0ad256965",
+      "categories": "pasta"
+    },
+    {
+        "name": "pasta",
+        "desc": "falnvan f da jddlka ads kl k aldjf lakdj fkla f k kag jl.",
+        "method": ["blabblabla testoviny carbonara dal a dal a dal", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl", "naknflkaa aj lk dal  dal a d  al dkwnlk kwnkl"],
+        "finalAmount": 2,
+        "prepLength": 60,
+        "ingredients": ["špagety", "pecorino", "pancheta", "vejce", "pecorino"],
+        "img": ["img/recipe3.webp"],
+        "id": "4e54a3a0ad256969",
+        "categories": "pasta"
+      }
+  ]

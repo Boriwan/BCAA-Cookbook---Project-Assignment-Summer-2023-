@@ -1,0 +1,673 @@
+[
+    {
+        "name": "Spaghetti Carbonara",
+        "desc": "Klasické těstoviny s krémovou omáčkou z bílků, slaniny a sýra",
+        "id": "79203306065af45a",
+        "method": [
+        "Uvařte spaghetti ve vroucí osolené vodě do al dente",
+        "Mezitím si opečte slaninu na křupavou, poté ji seshoďte z pánve a na drobné kousky rozdrtte",
+        "V misce rozmíchejte bílky, strouhaný parmazán a černý pepř",
+        "Sceděte uvařené spaghetti a trochu vody si nechte stranou",
+        "Do pánve s kousky slaniny přidejte uvařené spaghetti a promíchejte",
+        "Odstraňte pánvi z ohně a přidejte směs s bílky, za stálého míchání nechte omáčku zhoustnout",
+        "Pokud je omáčka příliš hustá, přidejte trochu vařící vody z těstovin",
+        "Podávejte posypané parmazánem a černým pepřem"
+        ],
+        "ingredients": [
+        {
+        "name": "spaghetti",
+        "amount": "300",
+        "measurement": "gramů"
+        },
+        {
+        "name": "slanina",
+        "amount": "200",
+        "measurement": "gramů"
+        },
+        {
+        "name": "vejce",
+        "amount": "3",
+        "measurement": ""
+        },
+        {
+        "name": "parmazán",
+        "amount": "100",
+        "measurement": "gramů"
+        },
+        {
+        "name": "černý pepř",
+        "amount": "dle chuti",
+        "measurement": ""
+        },
+        {
+        "name": "sůl",
+        "amount": "dle chuti",
+        "measurement": ""
+        }
+        ],
+        "img": ["carbonara.jpg"],
+        "prepLength": "30",
+        "finalAmount": "4",
+        "categories": "spagety"
+        },
+        {
+        "name": "Fettuccine Alfredo",
+        "desc": "Bohaté a krémové těstoviny s máslem a parmazánem",
+        "method": [
+        "Uvařte fettuccine ve vroucí osolené vodě do al dente",
+        "Mezitím si v pánvi rozpusťte máslo a vmíchejte smetanu",
+        "Přidejte strouhaný parmazán a za stálého míchání vařte, dokud se sýr nerozpustí a omáčka nezhoustne",
+        "Sceděte uvařené těstoviny a přidejte je do pánve s omáčkou",
+        "Promíchejte, aby se těstoviny dostaly rovnoměrně obalené omáčkou",
+        "Podle potřeby dochuťte solí a pepřem",
+        "Podávejte horké, ozdobené nasekanou petrželkou"
+        ],
+        "ingredients": [
+        {
+        "name": "fettuccine",
+        "amount": "400",
+        "measurement": "gramů"
+        },
+        {
+        "name": "máslo",
+        "amount": "100",
+        "measurement": "gramů"
+        },
+        {
+        "name": "smetana na vaření",
+        "amount": "200",
+        "measurement": "mililitrů"
+        },
+        {
+        "name": "parmazán",
+        "amount": "150",
+        "measurement": "gramů"
+        },
+        {
+        "name": "petrželka",
+        "amount": "na ozdobení",
+        "measurement": ""
+        },
+        {
+        "name": "sůl",
+        "amount": "dle chuti",
+        "measurement": ""
+        },
+        {
+        "name": "černý pepř",
+        "amount": "dle chuti",
+        "measurement": ""
+        }
+        ],
+        "img": ["fettuccine-alfredo.jpg"],
+        "prepLength": "25",
+        "finalAmount": "4",
+        "categories": "spagety"
+        },
+        {
+        "name": "Spaghetti Carbonara",
+        "desc": "Klasický italský recept s vajíčky, slaninou a sýrem.",
+        "id": "79203303265af45a",
+        "method": [
+        "Uvařte špagety podle návodu na obalu.",
+        "Vymačkejte česnek do pánve a přidejte slaninu, osmahněte na středním ohni, dokud nezačne hnědnout.",
+        "V malé misce smíchejte vejce, sýr a smetanu.",
+        "Špagety odkapají, přidejte je do pánve s osmaženou slaninou, promíchejte.",
+        "Vypněte ohřev a přidejte směs s vejci a sýrem, promíchejte, dokud se těstoviny neobalí omáčkou.",
+        "Podle chuti osolte a opepřete.",
+        "Podávejte horké, posypané strouhaným parmazánem a nasekanou petrželkou."
+        ],
+        "ingredients": [
+        {
+        "name": "špagety",
+        "amount": "400",
+        "measurement": "gramů"
+        },
+        {
+        "name": "slanina",
+        "amount": "200",
+        "measurement": "gramů"
+        },
+        {
+        "name": "česnek",
+        "amount": "2",
+        "measurement": "stroužky"
+        },
+        {
+        "name": "vejce",
+        "amount": "4",
+        "measurement": "kusy"
+        },
+        {
+        "name": "parmezán",
+        "amount": "100",
+        "measurement": "gramů"
+        },
+        {
+        "name": "smetana na vaření",
+        "amount": "150",
+        "measurement": "mililitrů"
+        },
+        {
+        "name": "petrželka",
+        "amount": "na ozdobení",
+        "measurement": ""
+        },
+        {
+        "name": "sůl",
+        "amount": "dle chuti",
+        "measurement": ""
+        },
+        {
+        "name": "černý pepř",
+        "amount": "dle chuti",
+        "measurement": ""
+        }
+        ],
+        "img": ["carbonara2.jpg"],
+        "prepLength": "25",
+        "finalAmount": "4",
+        "categories": "spagety"
+        },
+       {
+        "name": "Linguine alle Vongole",
+        "desc": "Italský recept se škeblovými mušlemi a bílým vínem.",
+        "id": "7920330606k2f45a",
+        "method": [
+        "Uvařte linguine podle návodu na obalu.",
+        "Vymačkejte česnek do pánve, přidejte olivový olej a rozehřejte na středním ohni.",
+        "Přidejte škeblové mušle a vařte 5-7 minut, dokud se neotevřou.",
+        "Přidejte bílé víno a vařte 3-4 minuty.",
+        "Přidejte špagety a promíchejte.",
+        "Podávejte horké, posypané nasekanou petrželkou a šťávou z citronu."
+        ],
+        "ingredients": [
+        {
+        "name": "linguine",
+        "amount": "400",
+        "measurement": "gramů"
+        },
+        {
+        "name": "škeblové mušle",
+        "amount": "500",
+        "measurement": "gramů"
+        },
+        {
+        "name": "česnek",
+        "amount": "3",
+        "measurement": "stroužky"
+        },
+        {
+        "name": "olivový olej",
+        "amount": "100",
+        "measurement": "mililitrů"
+        },
+        {
+        "name": "bílé víno",
+        "amount": "150",
+        "measurement": "mililitrů"
+        },
+        {
+        "name": "petrželka",
+        "amount": "na ozdobení",
+        "measurement": ""
+        },
+        {
+        "name": "citron",
+        "amount": "1",
+        "measurement": "kus"
+        }
+        ],
+        "img": ["linguine.webp"],
+        "prepLength": "30",
+        "finalAmount": "4",
+        "categories": "spagety"
+        },
+        {
+        "name": "Farfalle al Salmone",
+        "desc": "Italský recept s lososem a smetanovou omáčkou.",
+        "id": "79203306065af3aa",
+        "method": [
+        "Uvařte farfalle podle návodu na obalu.",
+        "Vymačkejte česnek do pánve, přidejte máslo a rozehřejte na středním ohni.",
+        "Přidejte na kostičky nakrájený losos a osmahněte 3-4 minuty.",
+        "Přidejte smetanu na vaření a vařte 3-4 minuty.",
+        "Přidejte farfalle a promíchejte.",
+        "Podávejte horké, posypané nasekanou petrželkou."
+        ],
+        "ingredients": [
+        {
+        "name": "farfalle",
+        "amount": "400",
+        "measurement": "gramů"
+        },
+        {
+        "name": "losos",
+        "amount": "300",
+        "measurement": "gramů"
+        },
+        {
+        "name": "česnek",
+        "amount": "2",
+        "measurement": "stroužky"
+        },
+        {
+        "name": "máslo",
+        "amount": "50",
+        "measurement": "gramů"
+        },
+        {
+        "name": "smetana na vaření",
+        "amount": "200",
+        "measurement": "mililitrů"
+        },
+        {
+        "name": "petrželka",
+        "amount": "na ozdobení",
+        "measurement": ""
+        }
+        ],
+        "img": ["farfalle.jpg"],
+        "prepLength": "30",
+        "finalAmount": "4",
+        "categories": "pasta"
+        },
+        {
+        "name": "Cannelloni al Forno",
+        "desc": "Italský recept s plněnými těstovinami a rajčatovou omáčkou.",
+        "id": "7922s306065af45a",
+        "method": [
+        "Uvařte cannelloni podle návodu na obalu.",
+        "Vymačkejte česnek do pánve, přidejte olivový olej a rozehřejte na středním ohni.",
+        "Přidejte na kostičky nakrájenou cibuli a osmahněte 5-7 minut.",
+        "Přidejte na kostičky nakrájenou mrkev a stroužek česneku a vařte 3-4 minuty.",
+        "Přidejte na kostičky nakrájenou hovězí kýtu a osmahněte 5-7 minut.",
+        "Přidejte rajčatovou omáčku a vařte 10-15 minut.",
+        "Plňte cannelloni směsí z mletého hovězího masa.",
+        "Přidejte plněné cannelloni do zapékací mísy a posypte strouhaným parmazánem.",
+        "Pečte v předehřáté troubě při teplotě 180°C po dobu 25-30 minut.",
+        "Podávejte horké, posypané nasekanou petrželkou."
+        ],
+        "ingredients": [
+        {
+        "name": "cannelloni",
+        "amount": "500",
+        "measurement": "gramů"
+        },
+        {
+        "name": "olivový olej",
+        "amount": "50",
+        "measurement": "mililitrů"
+        },
+        {
+        "name": "cibule",
+        "amount": "1",
+        "measurement": "kus"
+        },
+        {
+        "name": "mrkev",
+        "amount": "1",
+        "measurement": "kus"
+        },
+        {
+        "name": "hovězí kýta",
+        "amount": "500",
+        "measurement": "gramů"
+        },
+        {
+        "name": "česnek",
+        "amount": "1",
+        "measurement": "stroužek"
+        },
+        {
+        "name": "rajčatová omáčka",
+        "amount": "500",
+        "measurement": "mililitrů"
+        },
+        {
+        "name": "mleté hovězí maso",
+        "amount": "500",
+        "measurement": "gramů"
+        },
+        {
+        "name": "parmazán",
+        "amount": "100",
+        "measurement": "gramů"
+        },
+        {
+        "name": "petrželka",
+        "amount": "na ozdobení",
+        "measurement": ""
+        }
+        ],
+        "img": ["cannelloni.jpg"],
+        "prepLength": "60",
+        "finalAmount": "6",
+        "categories": "pasta"
+        },
+        {
+        "name": "Penne all'Arrabbiata",
+        "desc": "Klasické italské jídlo s ostrou rajčatovou omáčkou.",
+        "id": "79203306065qp45a",
+        "method": [
+        "Uvařte penne podle návodu na obalu.",
+        "Vymačkejte česnek do pánve, přidejte olivový olej a rozehřejte na středním ohni.",
+        "Přidejte na kostičky nakrájenou červenou cibuli a osmahněte 5-7 minut.",
+        "Přidejte rajčatovou omáčku a vařte 10-15 minut.",
+        "Přidejte chilli papričky a vařte 5 minut.",
+        "Přidejte uvařené penne do pánve a promíchejte s omáčkou.",
+        "Podávejte horké, posypané nasekanou petrželkou."
+        ],
+        "ingredients": [
+        {
+        "name": "penne",
+        "amount": "500",
+        "measurement": "gramů"
+        },
+        {
+        "name": "olivový olej",
+        "amount": "50",
+        "measurement": "mililitrů"
+        },
+        {
+        "name": "červená cibule",
+        "amount": "1",
+        "measurement": "kus"
+        },
+        {
+        "name": "česnek",
+        "amount": "2",
+        "measurement": "stroužky"
+        },
+        {
+        "name": "rajčatová omáčka",
+        "amount": "500",
+        "measurement": "mililitrů"
+        },
+        {
+        "name": "čerstvé chilli papričky",
+        "amount": "2",
+        "measurement": "kusy"
+        },
+        {
+        "name": "petrželka",
+        "amount": "na ozdobení",
+        "measurement": ""
+        }
+        ],
+        "img": "penne.jpg",
+        "prepLength": "30",
+        "finalAmount": "4",
+        "categories": "pasta"
+        },
+        {
+        "name": "Ravioli s ricottou a špenátem",
+        "desc": "Italské těstoviny plněné ricottou a špenátem s máslovou omáčkou.",
+        "id": "792033069s1af4a5",
+        "method": [
+        "Uvařte ravioli podle návodu na obalu.",
+        "Vymačkejte česnek do pánve, přidejte máslo a rozehřejte na středním ohni.",
+        "Přidejte nadrobno nakrájenou cibuli a osmahněte 5-7 minut.",
+        "Přidejte na jemno nasekaný špenát a osmahněte 3-4 minuty.",
+        "Přidejte ricottu a promíchejte.",
+        "Přidejte uvařené ravioli do pánve a promíchejte s omáčkou.",
+        "Podávejte horké, posypané nastrouhaným parmazánem."
+        ],
+        "ingredients": [
+        {
+        "name": "ravioli s ricottou a špenátem",
+        "amount": "500",
+        "measurement": "gramů"
+        },
+        {
+        "name": "máslo",
+        "amount": "50",
+        "measurement": "gramů"
+        },
+        {
+        "name": "cibule",
+        "amount": "1",
+        "measurement": "kus"
+        },
+        {
+        "name": "česnek",
+        "amount": "2",
+        "measurement": "stroužky"
+        },
+        {
+        "name": "čerstvý špenát",
+        "amount": "200",
+        "measurement": "gramů"
+        },
+        {
+        "name": "ricotta",
+        "amount": "250",
+        "measurement": "gramů"
+        },
+        {
+        "name": "parmazán",
+        "amount": "50",
+        "measurement": "gramů"
+        }
+        ],
+        "img": ["ravioli.webp"],
+        "prepLength": "30",
+        "finalAmount": "4",
+        "categories": "pasta"
+        },
+        {
+        "name": "Spaghetti alla Carbonara",
+        "desc": "Klasické italské jídlo s vajíčkem, slaninou a sýrem Pecorino Romano.",
+        "id": "792013069s1af4a5",
+        "method": [
+        "Uvařte spaghetti podle návodu na obalu.",
+        "Vymačkejte česnek do pánve, přidejte slaninu a rozehřejte na středním ohni.",
+        "Osmahněte slaninu dozlatova a přidejte vajíčka smíchaná s máslem.",
+        "Promíchejte a nechte vajíčka ztuhnout.",
+        "Přidejte uvařené spaghetti do pánve a promíchejte.",
+        "Podávejte horké, posypané nastrouhaným sýrem Pecorino Romano."
+        ],
+        "ingredients": [
+        {
+        "name": "spaghetti",
+        "amount": "500",
+        "measurement": "gramů"
+        },
+        {
+        "name": "slanina",
+        "amount": "200",
+        "measurement": "gramů"
+        },
+        {
+        "name": "vajíčka",
+        "amount": "4",
+        "measurement": "kusy"
+        },
+        {
+        "name": "máslo",
+        "amount": "50",
+        "measurement": "gramů"
+        },
+        {
+        "name": "česnek",
+        "amount": "2",
+        "measurement": "stroužky"
+        },
+        {
+        "name": "sýr Pecorino Romano",
+        "amount": "100",
+        "measurement": "gramů"
+        }
+        ],
+        "img": ["alla-carbonara.jpg"],
+        "prepLength": "30",
+        "finalAmount": "4",
+        "categories": "spagety"
+        },
+        {"name": "Linguine al pesto",
+        "desc": "Jednoduché italské jídlo s linguine, bazalkovým pestem a parmazánem.",
+        "id": "492033069s1af4a5",
+        "method": [
+            "Uvařte linguine podle návodu na obalu.",
+            "Do mixéru dejte bazalkové lístky, olivový olej, česnek, parmazán, piniové oříšky, sůl a pepř a rozmixujte dohladka.",
+            "Směs promíchejte s uvařenými linguine a podávejte horké."
+        ],
+        "ingredients": [
+            {
+                "name": "linguine",
+                "amount": "500",
+                "measurement": "gramů"
+            },
+            {
+                "name": "bazalkové lístky",
+                "amount": "60",
+                "measurement": "gramů"
+            },
+            {
+                "name": "olivový olej",
+                "amount": "120",
+                "measurement": "mililitrů"
+            },
+            {
+                "name": "česnek",
+                "amount": "2",
+                "measurement": "stroužky"
+            },
+            {
+                "name": "parmazán",
+                "amount": "50",
+                "measurement": "gramů"
+            },
+            {
+                "name": "piniové oříšky",
+                "amount": "30",
+                "measurement": "gramů"
+            },
+            {
+                "name": "sůl",
+                "amount": "1",
+                "measurement": "lžička"
+            },
+            {
+                "name": "pepř",
+                "amount": "1",
+                "measurement": "lžička"
+            }
+        ],
+        "img": "linguineal-pesto.jpg",
+        "prepLength": "20",
+        "finalAmount": "4",
+        "categories": "spagety"
+    },
+        {
+            "name": "Farfalle s kuřecím masem a rajčaty",
+            "desc": "Jednoduché a rychlé jídlo s farfalle, kuřecím masem, rajčaty a bazalkou.",
+            "id": "792033069s1af4a9",
+            "method": [
+            "Uvařte farfalle podle návodu na obalu.",
+            "Nakrájejte kuřecí prsa na kousky a osmažte je na pánvi dozlatova.",
+            "Přidejte nakrájená rajčata a bazalku a osmažte je spolu s kuřecím masem.",
+            "Přidejte uvařené farfalle do pánve a promíchejte.",
+            "Podávejte horké, posypané nastrouhaným parmazánem."
+            ],
+            "ingredients": [
+            {
+            "name": "farfalle",
+            "amount": "500",
+            "measurement": "gramů"
+            },
+            {
+            "name": "kuřecí prsa",
+            "amount": "500",
+            "measurement": "gramů"
+            },
+            {
+            "name": "rajčata",
+            "amount": "500",
+            "measurement": "gramů"
+            },
+            {
+            "name": "bazalka",
+            "amount": "30",
+            "measurement": "gramů"
+                },
+                {
+                    "name": "parmazán",
+                    "amount": "50",
+                    "measurement": "gramů"
+                }
+            ],
+            "img": ["farfalle-s-kurecim.jpg"],
+            "prepLength": "30",
+            "finalAmount": "4",
+            "categories": "pasta"
+            },
+        
+            {
+            "name": "Špagety s tuňákem a olivami",
+            "desc": "Jídlo s italskými kořením, špagetami, tuňákem a olivami.",
+            "id": "792033069s1af4q0",
+            "method": [
+            "Uvařte špagety podle návodu na obalu.",
+            "Na pánvi zahřejte olivový olej, přidejte cibuli a česnek a smažte, dokud nejsou měkké.",
+            "Přidejte rajčata, olivy, tuňáka, sůl, pepř a italské koření a vařte asi 5 minut.",
+            "Směs promíchejte s uvařenými špagetami a podávejte horké."
+            ],
+            "ingredients": [
+            {
+            "name": "špagety",
+            "amount": "500",
+            "measurement": "gramů"
+            },
+            {
+            "name": "olivový olej",
+            "amount": "60",
+            "measurement": "mililitrů"
+            },
+            {
+            "name": "cibule",
+            "amount": "1",
+            "measurement": "ks"
+            },
+            {
+            "name": "česnek",
+            "amount": "2",
+            "measurement": "stroužky"
+            },
+            {
+            "name": "rajčata",
+            "amount": "400",
+            "measurement": "gramů"
+            },
+            {
+            "name": "olivy",
+            "amount": "50",
+            "measurement": "gramů"
+            },
+            {
+            "name": "tuňák",
+            "amount": "150",
+            "measurement": "gramů"
+            },
+            {
+            "name": "sůl",
+            "amount": "1/2",
+            "measurement": "lžičky"
+            },
+            {
+            "name": "pepř",
+            "amount": "1/2",
+            "measurement": "lžičky"
+            },
+            {
+            "name": "italské koření",
+            "amount": "2",
+            "measurement": "lžičky"
+            }
+            ],
+            "img": ["testoviny_s_tunakem2.jpg"],
+            "prepLength": "25",
+            "finalAmount": "4",
+            "categories": "spagety"
+        }
+]

@@ -1,6 +1,5 @@
-.App {
-  text-align: center;
-}
-
-
-
+@media (max-width:576px) {
+    .display-block{
+        flex-direction: column;
+     }
+ }
