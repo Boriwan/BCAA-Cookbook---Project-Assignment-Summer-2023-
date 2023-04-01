@@ -1,5 +1,4 @@
 import NavbarComponent from "./components/Navbar/NavbarComponent";
-// change
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
@@ -8,6 +7,7 @@ import Home from "./pages/Home/Home";
 import Data from "./data/data.json";
 import NewRecipe from "./pages/NewRecipe/NewRecipe";
 import Footer from "./components/Footer/Footer";
+import "./custom.scss";
 function App() {
   const recipeList = Data.map((data) => data);
   return (

@@ -12,14 +12,14 @@ const RecipeCard = (props) => {
   return (
     <section className="m-2" key={props.title}>
       <div className="title-box">
-        <h2>{props.title}</h2>
+        <h2 className="text-secondary">{props.title}</h2>
         <p>{props.description}</p>
       </div>
       <div className="d-flex flex-shrink-0" style={{ overflowX: "auto" }}>
         {sortedByCategory.map((recipe) => {
           return (
             <div
-              className="card m-2"
+              className="card m-2 "
               style={{ minWidth: "14rem", maxWidth: "14rem" }}
               key={recipe.id}
             >
@@ -29,14 +29,17 @@ const RecipeCard = (props) => {
                 style={{ height: "12rem", objectFit: "cover" }}
                 alt="..."
               />
-              <div className="card-body">
+              <div className="card-body d-flex flex-column justify-content-between">
                 <h5 className="card-title">{recipe.name}</h5>
                 <p className="card-text">{recipe.desc}</p>
                 <div className="d-flex justify-content-between">
                   <div>
                     <BsClock /> {recipe.prepLength} minut
                   </div>
-                  <Link className="btn btn-primary" to={`/recept/${recipe.id}`}>
+                  <Link
+                    className="btn btn-secondary text-white"
+                    to={`/recept/${recipe.id}`}
+                  >
                     Otevřít
                   </Link>
                 </div>

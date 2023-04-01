@@ -42,8 +42,12 @@ const Recipe = ({ data }) => {
           <li className="list-group-item">Počet porcí: {count}</li>
         </ul>
         <div>
-          <Button onClick={handleDecrement}>Odebrat porci</Button>
-          <Button onClick={handleIncrement}>Přidat porci</Button>
+          <Button onClick={handleDecrement} className="btn-primary m-2">
+            Odebrat porci
+          </Button>
+          <Button onClick={handleIncrement} className="btn-secondary m-2">
+            Přidat porci
+          </Button>
         </div>
       </div>
       <div className="d-flex justify-content-between display-block mt-5">
