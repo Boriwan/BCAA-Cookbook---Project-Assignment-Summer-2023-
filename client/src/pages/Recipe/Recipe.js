@@ -20,10 +20,7 @@ const Recipe = ({ data }) => {
     setCount(count - 1);
   };
   return (
-    <div
-      className="recipe-container mt-5 mx-auto p-2"
-      style={{ maxWidth: "1200px" }}
-    >
+    <div className="recipe-container mt-5 max-width p-2">
       <img
         src={`../img/${data.img}`}
         alt=""

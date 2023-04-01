@@ -4,7 +4,7 @@ import Form from "./Form";
 const NewRecipe = () => {
   return (
     <main>
-      <h1>Přidat recept</h1>
+      <h1 className="max-width">Přidat recept</h1>
       <Form />
     </main>
   );

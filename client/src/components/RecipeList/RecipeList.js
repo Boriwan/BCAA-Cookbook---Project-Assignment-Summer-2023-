@@ -3,7 +3,7 @@ import RecipeCard from "../RecipeCard/RecipeCard";
 
 const RecipeList = () => {
   return (
-    <section>
+    <section className="max-width">
       <RecipeCard
         category="spagety"
         title="Špagety"
@@ -13,6 +13,11 @@ const RecipeList = () => {
         category="pasta"
         title="Těstoviny"
         description="Toto jsou ty nejlepší recepty, co obsahují těstoviny"
+      />
+      <RecipeCard
+        category="lasagne"
+        title="Lasagne"
+        description="Toto jsou ty nejlepší recepty, co jsou lasagne"
       />
     </section>
   );
