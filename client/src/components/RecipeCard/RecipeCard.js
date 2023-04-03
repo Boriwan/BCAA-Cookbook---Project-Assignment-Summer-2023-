@@ -1,10 +1,9 @@
 import { React } from "react";
 import { BsClock } from "react-icons/bs";
-import Data from "../../data/data.json";
 import { Link } from "react-router-dom";
 
 const RecipeCard = (props) => {
-  const recipeList = Data.map((data) => data);
+  const recipeList = props.data.map((data) => data);
   const sortedByCategory = recipeList.filter((item) => {
     return item.categories === props.category;
   });
@@ -21,7 +20,7 @@ const RecipeCard = (props) => {
             <div
               className="card m-2 "
               style={{ minWidth: "14rem", maxWidth: "14rem" }}
-              key={recipe.id}
+              key={recipe.desc}
             >
               <img
                 src={`img/${recipe.img}`}

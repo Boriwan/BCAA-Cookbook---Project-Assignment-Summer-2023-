@@ -10,7 +10,7 @@ const Footer = () => {
       <p className="col-md-4 mb-0 text-muted">© 2022 Pasta Cookbook</p>
 
       <Link
-        href="/"
+        to="/"
         className="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
       >
         <img src="img/logo.svg" style={{ width: "100px" }} alt="" />

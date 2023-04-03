@@ -4,18 +4,38 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Recipe from "./pages/Recipe/Recipe";
 import Home from "./pages/Home/Home";
-import Data from "./data/data.json";
 import NewRecipe from "./pages/NewRecipe/NewRecipe";
 import Footer from "./components/Footer/Footer";
 import "./custom.scss";
+import { useEffect, useState } from "react";
+
 function App() {
-  const recipeList = Data.map((data) => data);
+  const [recipes, setRecipes] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
+
+  useEffect(() => {
+    fetch("/recipes")
+      .then((response) => response.json())
+      .then((recipes) => setRecipes(recipes))
+      .catch((error) => console.error(error));
+  }, []);
+  useEffect(() => {
+    fetch("/ingredients")
+      .then((response) => response.json())
+      .then((ingredients) => setIngredients(ingredients))
+      .catch((error) => console.error(error));
+  }, []);
+  const ingredientList = ingredients.map((ingredient) => ingredient);
+  const recipeList = recipes.map((data) => data);
   return (
     <div className="App">
       <NavbarComponent />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/pridat-recept" element={<NewRecipe />} />
+        <Route path="/" element={<Home recipeList={recipeList} />} />
+        <Route
+          path="/pridat-recept"
+          element={<NewRecipe ingredients={ingredientList} />}
+        />
 
         {recipeList.map((item) => (
           <Route

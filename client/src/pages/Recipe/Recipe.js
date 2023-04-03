@@ -1,26 +1,38 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-// přidání člověka 125%
 const Recipe = ({ data }) => {
   const [count, setCount] = useState(parseInt(data.finalAmount));
   const [ing, setIng] = useState(data.ingredients);
 
   const handleIncrement = () => {
     setCount(count + 1);
-    ing.forEach((ing) => {
-      console.log(
-        (parseInt(ing.amount) / parseInt(data.finalAmount)) *
-          (parseInt(data.finalAmount) + 1)
-      );
+    const updatedIngredients = ing.map((ingredient) => {
+      const currentAmount = parseInt(ingredient.amount);
+      if (Number.isNaN(currentAmount)) {
+        return ingredient;
+      }
+      const newAmount = Math.ceil((currentAmount / count) * (count + 1));
+      return { ...ingredient, amount: newAmount.toString() };
     });
+    setIng(updatedIngredients);
   };
 
   const handleDecrement = () => {
     setCount(count - 1);
+    const updatedIngredients = ing.map((ingredient) => {
+      const currentAmount = parseInt(ingredient.amount);
+      if (Number.isNaN(currentAmount)) {
+        return ingredient;
+      }
+      const newAmount = Math.ceil((currentAmount / count) * (count - 1));
+      return { ...ingredient, amount: newAmount.toString() };
+    });
+    setIng(updatedIngredients);
   };
+  data.ingredients = ing;
   return (
-    <div className="recipe-container mt-5 max-width p-2">
+    <div className="recipe-container mt-5 max-width p-2" key={data.id}>
       <img
         src={`../img/${data.img}`}
         alt=""
@@ -60,7 +72,7 @@ const Recipe = ({ data }) => {
                     <span style={{ fontSize: "18px" }}>{desc}</span>
                   </label>
                   <input
-                    className="form-check-input me-1 ms-auto"
+                    className="form-check-input me-1 ms-auto "
                     type="checkbox"
                     value=""
                     id={desc}
@@ -86,7 +98,7 @@ const Recipe = ({ data }) => {
                     </span>
                   </label>
                   <input
-                    className="form-check-input me-1"
+                    className="form-check-input me-1 ms-1"
                     type="checkbox"
                     value=""
                     id={data.name}

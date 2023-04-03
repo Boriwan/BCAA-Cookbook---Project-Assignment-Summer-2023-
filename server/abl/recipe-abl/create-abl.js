@@ -1,4 +1,3 @@
-// implement abl
 const RecipeDao = require("../../dao/recipe-dao");
 const path = require("path");
 
@@ -8,6 +7,8 @@ let dao = new RecipeDao(
 
 function CreateAbl(req, res) {
   let body = req.body;
+
+  // image.mv("storage/img/" + image.name);
   if (
     !body.name ||
     !body.desc ||
@@ -23,9 +24,11 @@ function CreateAbl(req, res) {
   let recipe = {
     name: body.name,
     desc: body.desc,
+    method: body.method,
     finalAmount: body.finalAmount,
     prepLength: body.prepLength,
-    ingredients: body.ingredients
+    ingredients: body.ingredients,
+    img: body.img,
   };
 
   try {

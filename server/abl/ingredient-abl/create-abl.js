@@ -16,7 +16,7 @@ function CreateAbl(req, res) {
 
   let ingredient = {
     name: body.name,
-    finalAmount: body.finalAmount
+    mesurement: body.mesurement,
   };
 
   try {

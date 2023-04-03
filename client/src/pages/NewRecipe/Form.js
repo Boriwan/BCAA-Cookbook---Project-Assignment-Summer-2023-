@@ -1,8 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Form, Button } from "react-bootstrap";
-import ingredientsData from "../../data/suroviny.json";
 
-const AddRecipeForm = () => {
+const AddRecipeForm = ({ ingredientsData }) => {
   const titleRef = useRef();
   const descriptionRef = useRef();
   const [method, setMethod] = useState([""]);
@@ -11,18 +10,29 @@ const AddRecipeForm = () => {
   ]);
   const [filteredIngredients, setFilteredIngredients] = useState([]);
 
+  let recipe = {};
   const handleSubmit = (event) => {
     event.preventDefault();
-    const recipe = {
+    recipe = {
       name: titleRef.current.value,
       desc: descriptionRef.current.value,
       method,
       ingredients,
-      img: event.target.recipeImage.files[0],
+      img: event.target.recipeImage.files[0].name,
       prepLength: event.target.recipePrepTime.value,
       finalAmount: event.target.portionCount.value,
     };
-    console.log(recipe);
+
+    fetch("/recipe/createRecipe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(recipe),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
   };
 
   const handleMethodChange = (event, index) => {
@@ -143,7 +153,7 @@ const AddRecipeForm = () => {
                   }
                 >
                   {filteredIngredients.map((ingredient) => (
-                    <option>{ingredient.name}</option>
+                    <option key={ingredient.name}>{ingredient.name}</option>
                   ))}
                 </select>
               )}
