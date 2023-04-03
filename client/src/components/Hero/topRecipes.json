@@ -1,0 +1,184 @@
+[{
+	"name": "Spaghetti Carbonara",
+	"desc": "Klasické těstoviny s krémovou omáčkou z bílků, slaniny a sýra",
+	"id": "79203306065af45a",
+	"method": [
+		"Uvařte spaghetti ve vroucí osolené vodě do al dente",
+		"Mezitím si opečte slaninu na křupavou, poté ji seshoďte z pánve a na drobné kousky rozdrtte",
+		"V misce rozmíchejte bílky, strouhaný parmazán a černý pepř",
+		"Sceděte uvařené spaghetti a trochu vody si nechte stranou",
+		"Do pánve s kousky slaniny přidejte uvařené spaghetti a promíchejte",
+		"Odstraňte pánvi z ohně a přidejte směs s bílky, za stálého míchání nechte omáčku zhoustnout",
+		"Pokud je omáčka příliš hustá, přidejte trochu vařící vody z těstovin",
+		"Podávejte posypané parmazánem a černým pepřem"
+	],
+	"ingredients": [
+		{
+			"name": "spaghetti",
+			"amount": "300",
+			"measurement": "gramů"
+		},
+		{
+			"name": "slanina",
+			"amount": "200",
+			"measurement": "gramů"
+		},
+		{
+			"name": "vejce",
+			"amount": "3",
+			"measurement": ""
+		},
+		{
+			"name": "parmazán",
+			"amount": "100",
+			"measurement": "gramů"
+		},
+		{
+			"name": "černý pepř",
+			"amount": "dle chuti",
+			"measurement": ""
+		},
+		{
+			"name": "sůl",
+			"amount": "dle chuti",
+			"measurement": ""
+		}
+	],
+	"img": [
+		"carbonara.jpg"
+	],
+	"prepLength": "30",
+	"finalAmount": "4",
+	"categories": "spagety"
+},
+{
+	"name": "Cannelloni al Forno",
+	"desc": "Italský recept s plněnými těstovinami a rajčatovou omáčkou.",
+	"id": "7922s306065af45a",
+	"method": [
+		"Uvařte cannelloni podle návodu na obalu.",
+		"Vymačkejte česnek do pánve, přidejte olivový olej a rozehřejte na středním ohni.",
+		"Přidejte na kostičky nakrájenou cibuli a osmahněte 5-7 minut.",
+		"Přidejte na kostičky nakrájenou mrkev a stroužek česneku a vařte 3-4 minuty.",
+		"Přidejte na kostičky nakrájenou hovězí kýtu a osmahněte 5-7 minut.",
+		"Přidejte rajčatovou omáčku a vařte 10-15 minut.",
+		"Plňte cannelloni směsí z mletého hovězího masa.",
+		"Přidejte plněné cannelloni do zapékací mísy a posypte strouhaným parmazánem.",
+		"Pečte v předehřáté troubě při teplotě 180°C po dobu 25-30 minut.",
+		"Podávejte horké, posypané nasekanou petrželkou."
+	],
+	"ingredients": [
+		{
+			"name": "cannelloni",
+			"amount": "500",
+			"measurement": "gramů"
+		},
+		{
+			"name": "olivový olej",
+			"amount": "50",
+			"measurement": "mililitrů"
+		},
+		{
+			"name": "cibule",
+			"amount": "1",
+			"measurement": "kus"
+		},
+		{
+			"name": "mrkev",
+			"amount": "1",
+			"measurement": "kus"
+		},
+		{
+			"name": "hovězí kýta",
+			"amount": "500",
+			"measurement": "gramů"
+		},
+		{
+			"name": "česnek",
+			"amount": "1",
+			"measurement": "stroužek"
+		},
+		{
+			"name": "rajčatová omáčka",
+			"amount": "500",
+			"measurement": "mililitrů"
+		},
+		{
+			"name": "mleté hovězí maso",
+			"amount": "500",
+			"measurement": "gramů"
+		},
+		{
+			"name": "parmazán",
+			"amount": "100",
+			"measurement": "gramů"
+		},
+		{
+			"name": "petrželka",
+			"amount": "na ozdobení",
+			"measurement": ""
+		}
+	],
+	"img": [
+		"cannelloni.jpg"
+	],
+	"prepLength": "60",
+	"finalAmount": "6",
+	"categories": "pasta"
+},
+{
+	"name": "Lasagne bolognese",
+	"desc": "Klasické lasagne s mletým hovězím a rajčatovou omáčkou",
+	"id": "79203306065af45b",
+	"method": [
+		"Na pánvi zpěnite na olivovém oleji mleté hovězí maso, přidejte nakrájenou cibuli, stroužek česneku a drcený kmín",
+		"Po chvíli přidejte rajčatovou omáčku, zeleninový vývar, sůl a pepř, nechte vařit asi 20 minut",
+		"V hrnci uvařte lasagne podle návodu na obalu, sceděte a nechte chvíli vychladnout",
+		"Do zapékací mísy vložte vrstvu lasagne, poté nanesete vrstvu bolognese, poté pokladate další vrstvou lasagne a takto postupujete, dokud nemáte všechny suroviny spotřebované",
+		"Poslední vrstvu zakončete nanesením bolognesové směsi a na ni posypte strouhaným sýrem",
+		"Lasagne pečte v troubě předehřáté na 180 °C asi 30 minut, dokud nejsou suroviny prohřáté a sýr na povrchu zlatavý"
+	],
+	"ingredients": [
+		{
+			"name": "hovězí maso",
+			"amount": "500",
+			"measurement": "gramů"
+		},
+		{
+			"name": "cibule",
+			"amount": "1",
+			"measurement": ""
+		},
+		{
+			"name": "česnek",
+			"amount": "2",
+			"measurement": "stroužky"
+		},
+		{
+			"name": "rajčatová omáčka",
+			"amount": "500",
+			"measurement": "mililitrů"
+		},
+		{
+			"name": "zeleninový vývar",
+			"amount": "500",
+			"measurement": "mililitrů"
+		},
+		{
+			"name": "lasagne",
+			"amount": "250",
+			"measurement": "gramů"
+		},
+		{
+			"name": "sýr",
+			"amount": "200",
+			"measurement": "gramů"
+		}
+	],
+	"img": [
+		"lasagna-bolognese.webp"
+	],
+	"prepLength": "45",
+	"finalAmount": "6",
+	"categories": "lasagne"
+}]

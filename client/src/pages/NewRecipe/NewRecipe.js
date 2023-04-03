@@ -4,7 +4,7 @@ import Form from "./Form";
 const NewRecipe = (props) => {
   return (
     <main>
-      <h1 className="max-width">Přidat recept</h1>
+      <h1 className="max-width m-2 text-primary">Přidat recept</h1>
       <Form ingredientsData={props.ingredients} />
     </main>
   );

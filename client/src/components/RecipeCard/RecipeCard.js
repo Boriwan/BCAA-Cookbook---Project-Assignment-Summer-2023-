@@ -26,14 +26,14 @@ const RecipeCard = (props) => {
                 src={`img/${recipe.img}`}
                 className="card-img-top"
                 style={{ height: "12rem", objectFit: "cover" }}
-                alt="..."
+                alt={recipe.name}
               />
               <div className="card-body d-flex flex-column justify-content-between">
                 <h5 className="card-title">{recipe.name}</h5>
                 <p className="card-text">{recipe.desc}</p>
                 <div className="d-flex justify-content-between">
-                  <div>
-                    <BsClock /> {recipe.prepLength} minut
+                  <div className="d-flex align-items-center">
+                    <BsClock className="mx-1" /> {recipe.prepLength} minut
                   </div>
                   <Link
                     className="btn btn-secondary text-white"

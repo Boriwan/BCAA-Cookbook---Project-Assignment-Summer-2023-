@@ -19,16 +19,18 @@ const Recipe = ({ data }) => {
   };
 
   const handleDecrement = () => {
-    setCount(count - 1);
-    const updatedIngredients = ing.map((ingredient) => {
-      const currentAmount = parseInt(ingredient.amount);
-      if (Number.isNaN(currentAmount)) {
-        return ingredient;
-      }
-      const newAmount = Math.ceil((currentAmount / count) * (count - 1));
-      return { ...ingredient, amount: newAmount.toString() };
-    });
-    setIng(updatedIngredients);
+    if (count > 1) {
+      setCount(count - 1);
+      const updatedIngredients = ing.map((ingredient) => {
+        const currentAmount = parseInt(ingredient.amount);
+        if (Number.isNaN(currentAmount)) {
+          return ingredient;
+        }
+        const newAmount = Math.ceil((currentAmount / count) * (count - 1));
+        return { ...ingredient, amount: newAmount.toString() };
+      });
+      setIng(updatedIngredients);
+    }
   };
   data.ingredients = ing;
   return (
@@ -37,7 +39,7 @@ const Recipe = ({ data }) => {
         src={`../img/${data.img}`}
         alt=""
         className="w-50 mx-auto rounded d-block "
-        style={{ height: "40vh", objectFit: "cover" }}
+        style={{ height: "40vh", objectFit: "cover", objectPosition: "bottom" }}
       />
       <div>
         <h1>{data.name}</h1>
@@ -68,7 +70,7 @@ const Recipe = ({ data }) => {
             {data.method.map((desc) => {
               return (
                 <li className="list-group-item d-flex" key={desc}>
-                  <label className="form-check-label px-2" for={desc}>
+                  <label className="form-check-label px-2" tmlFor={desc}>
                     <span style={{ fontSize: "18px" }}>{desc}</span>
                   </label>
                   <input
@@ -76,6 +78,7 @@ const Recipe = ({ data }) => {
                     type="checkbox"
                     value=""
                     id={desc}
+                    style={{ minWidth: "1em" }}
                   />
                 </li>
               );
@@ -91,7 +94,7 @@ const Recipe = ({ data }) => {
                   className="list-group-item d-flex justify-content-between"
                   key={data.name}
                 >
-                  <label className="form-check-label" for={data.name}>
+                  <label className="form-check-label" htmlFor={data.name}>
                     {data.name}
                     <span className="ps-2">
                       {data.amount} {data.measurement}
