@@ -44,6 +44,7 @@ class RecipeDao {
       fs.writeFileSync(this._getStoragePath(), JSON.stringify(recipeList));
     }
   }
+  PosImg(object) {}
 
   list() {
     return this._listAll();

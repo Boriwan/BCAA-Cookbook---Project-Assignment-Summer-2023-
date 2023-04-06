@@ -8,10 +8,10 @@ const HeroSection = ({ recipeList }) => {
       <Carousel>
         {topRecipes.map((recipe, index) => {
           return (
-            <Carousel.Item style={{ maxHeight: "60vh" }}>
+            <Carousel.Item style={{ maxHeight: "60vh" }} key={recipe.name}>
               <img
                 className="d-block w-100"
-                src={`img/${recipe.img}`}
+                src={`http://localhost:8000/recipe/image/${recipe.img}`}
                 alt={recipe.name}
               />
               <Carousel.Caption
