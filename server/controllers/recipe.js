@@ -6,6 +6,7 @@ const GetAbl = require("../abl/recipe-abl/get-abl");
 const DeleteAbl = require("../abl/recipe-abl/delete-abl");
 const UpdateAbl = require("../abl/recipe-abl/update-abl");
 const UploadImgAbl = require("../abl/recipe-abl/upload-img-abl");
+const GetImgAbl = require("../abl/recipe-abl/get-img-abl");
 
 router.get("/getRecipes", function (req, res) {
   GetAllAbl(req, res);
@@ -13,13 +14,17 @@ router.get("/getRecipes", function (req, res) {
 router.get("/getRecipe/:id", function (req, res) {
   GetAbl(req, res);
 });
+router.get("/image/:name", function (req, res) {
+  GetImgAbl(req, res);
+});
 
 router.post("/createRecipe", function (req, res) {
   CreateAbl(req, res);
+  UploadImgAbl(req, res);
 });
 
 
-router.post("/postImage/:id", function (req, res) {
+router.post("/postImage", function (req, res) {
   UploadImgAbl(req, res);
 });
 //Update by ID Method

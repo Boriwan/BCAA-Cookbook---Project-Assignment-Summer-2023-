@@ -4,31 +4,31 @@ import { Form, Button } from "react-bootstrap";
 const AddRecipeForm = ({ ingredientsData }) => {
   const titleRef = useRef();
   const descriptionRef = useRef();
+  const [image, setImage] = useState(null);
   const [method, setMethod] = useState([""]);
   const [ingredients, setIngredients] = useState([
     { name: "", amount: "", measurement: "" },
   ]);
+  const handleImageChange = (event) => {
+    setImage(event.target.files[0]);
+  };
   const [filteredIngredients, setFilteredIngredients] = useState([]);
 
-  let recipe = {};
   const handleSubmit = (event) => {
     event.preventDefault();
-    recipe = {
-      name: titleRef.current.value,
-      desc: descriptionRef.current.value,
-      method,
-      ingredients,
-      img: event.target.recipeImage.files[0].name,
-      prepLength: event.target.recipePrepTime.value,
-      finalAmount: event.target.portionCount.value,
-    };
+
+    const formData = new FormData();
+    formData.append("name", titleRef.current.value);
+    formData.append("desc", descriptionRef.current.value);
+    formData.append("method", JSON.stringify(method));
+    formData.append("ingredients", JSON.stringify(ingredients));
+    formData.append("img", image);
+    formData.append("prepLength", event.target.recipePrepTime.value);
+    formData.append("finalAmount", event.target.portionCount.value);
 
     fetch("/recipe/createRecipe", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(recipe),
+      body: formData,
     })
       .then((response) => response.json())
       .then((data) => console.log(data))
@@ -188,7 +188,7 @@ const AddRecipeForm = ({ ingredientsData }) => {
       </Form.Group>
       <Form.Group controlId="recipeImage">
         <Form.Label>Obrázek</Form.Label>
-        <Form.Control type="file" />
+        <Form.Control type="file" onChange={handleImageChange} />
       </Form.Group>
       <Form.Group controlId="recipePrepTime">
         <Form.Label>Doba přípravy</Form.Label>

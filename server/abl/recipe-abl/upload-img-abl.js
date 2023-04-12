@@ -5,18 +5,12 @@ let dao = new RecipeDao(
 );
 
 function UploadImgAbl(req, res) {
-  const recipe = dao.get(req.params.id);
-  const id = req.params.id;
-  console.log(recipe);
-  const newData = { img: req.files.image.name };
-  console.log(newData);
-
-  dao.update(id, newData);
-  console.log(newData);
-  const { image } = req.files;
+  const image = req.files.img;
+  // console.log(image);
   if (!image) return res.sendStatus(400);
+  const today = new Date();
+  const isoDate = today.toISOString().substr(0, 10);
   // // Move the uploaded image to our upload folder
-  image.mv("storage/img/" + image.name);
-  res.sendStatus(200);
+  image.mv("storage/img/" + isoDate + image.name);
 }
 module.exports = UploadImgAbl;

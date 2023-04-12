@@ -25,8 +25,10 @@ function App() {
       .then((ingredients) => setIngredients(ingredients))
       .catch((error) => console.error(error));
   }, []);
+
   const ingredientList = ingredients.map((ingredient) => ingredient);
   const recipeList = recipes.map((data) => data);
+
   return (
     <div className="App">
       <NavbarComponent />

@@ -36,8 +36,8 @@ const Recipe = ({ data }) => {
   return (
     <div className="recipe-container mt-5 max-width p-2" key={data.id}>
       <img
-        src={`../img/${data.img}`}
-        alt=""
+        src={`http://localhost:8000/recipe/image/${data.img}`}
+        alt={data.name}
         className="w-50 mx-auto rounded d-block "
         style={{ height: "40vh", objectFit: "cover", objectPosition: "bottom" }}
       />
