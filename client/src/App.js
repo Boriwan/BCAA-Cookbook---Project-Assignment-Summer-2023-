@@ -33,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home recipeList={recipeList} />} />
         <Route
-          path="/pridat-recept"
+          path="/createRecipe"
           element={<NewRecipe ingredients={ingredientList} />}
         />
 

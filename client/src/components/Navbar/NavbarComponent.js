@@ -25,7 +25,7 @@ function NavbarComponent() {
             navbarScroll
           >
             <Nav.Link href="/">Domů</Nav.Link>
-            <Nav.Link href="/pridat-recept">Přidat recept</Nav.Link>
+            <Nav.Link href="/createRecipe">Přidat recept</Nav.Link>
             <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
