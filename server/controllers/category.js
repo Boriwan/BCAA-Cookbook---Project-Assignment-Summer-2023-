@@ -7,7 +7,7 @@ const DeleteAbl = require("../abl/category-abl/delete-abl");
 const UpdateAbl = require("../abl/category-abl/update-abl");
 
 router.get("/getCategories", function (req, res) {
-  GetAllAbl(req, res);
+  ListAbl(req, res);
 });
 router.get("/getCategory/:id", function (req, res) {
   GetAbl(req, res);

@@ -27,21 +27,6 @@ const Footer = () => {
             Přidat recept
           </Link>
         </li>
-        <li className="nav-item">
-          <Link to="#" className="nav-link px-2 text-muted">
-            Pricing
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="#" className="nav-link px-2 text-muted">
-            FAQs
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="#" className="nav-link px-2 text-muted">
-            About
-          </Link>
-        </li>
       </ul>
     </footer>
   );

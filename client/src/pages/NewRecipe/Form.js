@@ -1,7 +1,19 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
+import { Typeahead } from "react-bootstrap-typeahead";
 
 const AddRecipeForm = ({ ingredientsData }) => {
+  const [ingr, setIngr] = useState([]);
+
+  useEffect(() => {
+    fetch("/ingredients")
+      .then((response) => response.json())
+      .then((ingredients) => setIngr(ingredients))
+      .catch((error) => console.error(error));
+  }, []);
+
+  const ingredientListing = ingr.map((ingredient) => ingredient);
+
   const titleRef = useRef();
   const descriptionRef = useRef();
   const [image, setImage] = useState(null);
@@ -12,7 +24,6 @@ const AddRecipeForm = ({ ingredientsData }) => {
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
   };
-  const [filteredIngredients, setFilteredIngredients] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,7 +36,6 @@ const AddRecipeForm = ({ ingredientsData }) => {
     formData.append("img", image);
     formData.append("prepLength", event.target.recipePrepTime.value);
     formData.append("finalAmount", event.target.portionCount.value);
-
     fetch("/recipe/createRecipe", {
       method: "POST",
       body: formData,
@@ -34,66 +44,43 @@ const AddRecipeForm = ({ ingredientsData }) => {
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
   };
-
   const handleMethodChange = (event, index) => {
     const newMethod = [...method];
     newMethod[index] = event.target.value;
     setMethod(newMethod);
   };
-
   const handleAddStep = () => {
     setMethod([...method, ""]);
   };
-
   const handleRemoveStep = (index) => {
     const newMethod = [...method];
     newMethod.splice(index, 1);
     setMethod(newMethod);
   };
+  const [mer, setMer] = useState([]);
 
-  const handleIngredientChange = (event, index) => {
-    const ingredientName = event.target.value.toLowerCase();
-    const filteredIngredients = ingredientsData.filter((ingredient) =>
-      ingredient.name.toLowerCase().startsWith(ingredientName)
-    );
-    setFilteredIngredients(filteredIngredients);
+  const handleIngredient = (event, index) => {
     const newIngredients = [...ingredients];
-    newIngredients[index].name = event.target.value;
+    const selectedIngredient = newIngredients[index];
+    const selectedMeasurement = event.map((e) => e.measurement)[0];
+    selectedIngredient.name = event.map((e) => e.name)[0];
+    selectedIngredient.measurement = selectedMeasurement;
+    const newMer = [...mer];
+    newMer[index] = selectedMeasurement;
     setIngredients(newIngredients);
+    setMer(newMer);
   };
-
   const handleAmountChange = (event, index) => {
     const newIngredients = [...ingredients];
     const selectedIngredient = newIngredients[index];
     selectedIngredient.amount = event.target.value;
-    const matchingIngredient = ingredientsData.find(
-      (ingredient) => ingredient.name === selectedIngredient.name
-    );
-    if (matchingIngredient) {
-      selectedIngredient.measurement = matchingIngredient.measurement;
-    }
     setIngredients(newIngredients);
   };
-
-  const handleSelectIngredient = (selectedIngredient, index) => {
-    const newIngredients = [...ingredients];
-    const matchingIngredient = ingredientsData.find(
-      (ingredient) => ingredient.name === selectedIngredient
-    );
-    if (matchingIngredient) {
-      newIngredients[index].name = matchingIngredient.name;
-      newIngredients[index].measurement = matchingIngredient.measurement;
-    }
-    setIngredients(newIngredients);
-    setFilteredIngredients([]);
-  };
-
   const handleRemoveIngredient = (index) => {
     const newIngredients = [...ingredients];
     newIngredients.splice(index, 1);
     setIngredients(newIngredients);
   };
-
   const handleAddIngredient = () => {
     setIngredients([...ingredients, { name: "", amount: "", measurement: "" }]);
   };
@@ -123,9 +110,11 @@ const AddRecipeForm = ({ ingredientsData }) => {
               value={step}
               onChange={(event) => handleMethodChange(event, index)}
             />
-            <Button variant="danger" onClick={() => handleRemoveStep(index)}>
-              X
-            </Button>
+            {index > 0 && (
+              <Button variant="danger" onClick={() => handleRemoveStep(index)}>
+                X
+              </Button>
+            )}
           </div>
         ))}
         <Button variant="success" onClick={handleAddStep}>
@@ -138,25 +127,14 @@ const AddRecipeForm = ({ ingredientsData }) => {
           <div key={index}>
             <div className="input-group mb-3">
               <span className="input-group-text">{index + 1}.</span>
-              <Form.Control
-                type="text"
-                value={ingredient.name}
-                onChange={(event) => handleIngredientChange(event, index)}
-                placeholder="Napište ingredienci"
+              <Typeahead
+                id="basic-typeahead-single"
+                labelKey="name"
+                onChange={(event) => handleIngredient(event, index)}
+                options={ingredientListing}
+                placeholder="Vyberte ingredienci..."
               />
-              {filteredIngredients.length > 0 && (
-                <select
-                  className="form-select"
-                  key={ingredient.id}
-                  onChange={(e) =>
-                    handleSelectIngredient(e.target.value, index)
-                  }
-                >
-                  {filteredIngredients.map((ingredient) => (
-                    <option key={ingredient.name}>{ingredient.name}</option>
-                  ))}
-                </select>
-              )}
+
               <Form.Control
                 type="number"
                 placeholder="mnoství ingredience"
@@ -166,18 +144,18 @@ const AddRecipeForm = ({ ingredientsData }) => {
               <Form.Control
                 type="text"
                 placeholder="jednotka"
-                value={ingredient.measurement}
+                value={mer[index] ? mer[index] : ""}
                 readOnly
               />
-
-              <Button
-                variant="danger"
-                onClick={() => handleRemoveIngredient(index)}
-              >
-                X
-              </Button>
+              {index > 0 && (
+                <Button
+                  variant="danger"
+                  onClick={() => handleRemoveIngredient(index)}
+                >
+                  X
+                </Button>
+              )}
             </div>
-
             {index === ingredients.length - 1 && (
               <Button variant="success" onClick={handleAddIngredient}>
                 Přidat ingredienci
@@ -195,6 +173,7 @@ const AddRecipeForm = ({ ingredientsData }) => {
         <Form.Control
           type="number"
           placeholder="Napište dobu přípravy receptu v minutách"
+          min="1"
         />
       </Form.Group>
       <Form.Group controlId="portionCount">
@@ -202,6 +181,7 @@ const AddRecipeForm = ({ ingredientsData }) => {
         <Form.Control
           type="number"
           placeholder="Napište čístlicí počet porcí"
+          min="1"
         />
       </Form.Group>
       <Button variant="primary" className="mt-2" type="submit">

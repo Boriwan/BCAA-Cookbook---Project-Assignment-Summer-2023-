@@ -9,7 +9,6 @@ let dao = new IngredientDao(
 function GetAllAbl(req, res) {
   const ingredient = dao.list();
 
-
   res.json(ingredient);
 }
 

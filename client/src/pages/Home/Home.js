@@ -1,14 +1,29 @@
-import React from "react";
-import HeroSection from "../../components/Hero/HeroSection";
-import RecipeList from "../../components/RecipeList/RecipeList";
-import AllRecipes from "../../components/RecipeList/AllRecipes";
+import React, { useEffect, useState } from "react";
+import DataStateResolver from "../../components/common/DataStateResolver";
+import HomeView from "./HomeView";
 
 const Home = (props) => {
+  const [callListRecipes, setCallListRecipes] = useState({ state: "pending" });
+
+  useEffect(() => {
+    console.log("fetch");
+    fetch(`/recipes`).then(async (response) => {
+      const responseJson = await response.json();
+      if (response.status >= 400) {
+        setCallListRecipes({ state: "error", error: responseJson });
+      } else {
+        setCallListRecipes({ state: "ready", data: responseJson });
+      }
+    });
+  }, []);
+
+  console.log("Render home");
+
   return (
     <>
-      <HeroSection recipeList={props.recipeList} />
-      <AllRecipes recipeList={props.recipeList} />
-      <RecipeList recipeList={props.recipeList} />
+      <DataStateResolver data={callListRecipes}>
+        <HomeView recipeList={callListRecipes.data} />
+      </DataStateResolver>
     </>
   );
 };

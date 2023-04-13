@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const CreateAbl = require("../abl/recipe-abl/create-abl");
-const GetAllAbl = require("../abl/recipe-abl/getAll-abl");
+const ListAbl = require("../abl/recipe-abl/listAbl");
 const GetAbl = require("../abl/recipe-abl/get-abl");
 const DeleteAbl = require("../abl/recipe-abl/delete-abl");
 const UpdateAbl = require("../abl/recipe-abl/update-abl");
@@ -9,9 +9,9 @@ const UploadImgAbl = require("../abl/recipe-abl/upload-img-abl");
 const GetImgAbl = require("../abl/recipe-abl/get-img-abl");
 
 router.get("/getRecipes", function (req, res) {
-  GetAllAbl(req, res);
+  ListAbl(req, res);
 });
-router.get("/getRecipe/:id", function (req, res) {
+router.get("/get/:id", function (req, res) {
   GetAbl(req, res);
 });
 router.get("/image/:name", function (req, res) {
