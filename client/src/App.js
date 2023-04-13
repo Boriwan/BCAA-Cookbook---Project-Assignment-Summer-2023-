@@ -9,7 +9,21 @@ function App() {
   return (
     <div className="App">
       <NavbarComponent />
-      <Outlet />
+      <Routes>
+        <Route path="/" element={<Home recipeList={recipeList} />} />
+        <Route
+          path="/pridat-recept"
+          element={<NewRecipe ingredients={ingredientList} />}
+        />
+
+        {recipeList.map((item) => (
+          <Route
+            path={`/recept/${item.id}`}
+            key={item.id}
+            element={<Recipe data={item} />}
+          />
+        ))}
+      </Routes>
       <Footer />
     </div>
   );

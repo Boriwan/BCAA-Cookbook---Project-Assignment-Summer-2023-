@@ -23,9 +23,6 @@ router.post("/createRecipe", function (req, res) {
   UploadImgAbl(req, res);
 });
 
-router.put("/putRecipe", (req, res) => {
-  res.send("Got a PUT request at /putRecipe");
-});
 
 router.post("/postImage", function (req, res) {
   UploadImgAbl(req, res);

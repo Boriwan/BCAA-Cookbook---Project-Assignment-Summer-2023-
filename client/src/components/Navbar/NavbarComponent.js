@@ -26,17 +26,8 @@ function NavbarComponent() {
           >
             <Nav.Link href="/">Domů</Nav.Link>
             <Nav.Link href="/pridat-recept">Přidat recept</Nav.Link>
-            <NavDropdown title="Provozovatel" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action4">
-                Upravit recept
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Vymazat recept
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action4">
-                Přidat kategorii
-              </NavDropdown.Item>
+            <NavDropdown title="Link" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
                 Vymazat kategorii
               </NavDropdown.Item>
