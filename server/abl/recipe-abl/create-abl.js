@@ -48,6 +48,7 @@ function CreateAbl(req, res) {
     prepLength: body.prepLength,
     ingredients: JSON.parse(body.ingredients),
     img: isoDate + image.name,
+    categories: JSON.parse(body.categories),
   };
   try {
     recipe = dao.create(recipe);

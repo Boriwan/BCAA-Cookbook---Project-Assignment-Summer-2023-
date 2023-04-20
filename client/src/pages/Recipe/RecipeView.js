@@ -1,9 +1,19 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import EditRecipe from "../EditRecipe/EditRecipe";
 
 const RecipeView = ({ data }) => {
   const [count, setCount] = useState(parseInt(data.finalAmount));
   const [ing, setIng] = useState(data.ingredients);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleDelete = () => {
+    fetch(`/recipe/deleteRecipe/${data.id}`, {
+      method: "delete",
+    });
+    window.location.href = "/";
+  };
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -33,8 +43,24 @@ const RecipeView = ({ data }) => {
     }
   };
   data.ingredients = ing;
+  const categoriList = data.categories;
+
   return (
-    <div className="recipe-container mt-5 max-width p-2" key={data.id}>
+    <div className="recipe-container mt-2 max-width p-2" key={data.id}>
+      <div className="m-2 d-flex justify-content-end">
+        <button
+          type="button"
+          className="btn btn-primary m-2"
+          onClick={() => setShowModal(true)}
+        >
+          Odebrat recept
+        </button>
+        <Link to={`/upravit-recept/${data.id}`}>
+          <button type="button" className="btn btn-secondary m-2">
+            Upravit recept
+          </button>
+        </Link>
+      </div>
       <img
         src={`http://localhost:8000/recipe/image/${data.img}`}
         alt={data.name}
@@ -43,7 +69,12 @@ const RecipeView = ({ data }) => {
       />
       <div>
         <h1>{data.name}</h1>
-        <p>{data.desc}</p>
+        <div className="d-flex align-items-center mb-2">
+          <p className="m-0">{data.desc}</p>{" "}
+          {categoriList && (
+            <div className="btn btn-outline-primary ms-2">{categoriList}</div>
+          )}
+        </div>
       </div>
       <div>
         <ul className="list-group">
@@ -56,6 +87,28 @@ const RecipeView = ({ data }) => {
           <Button onClick={handleDecrement} className="btn-primary m-2">
             Odebrat porci
           </Button>
+          <Modal show={showModal} onHide={() => setShowModal(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Authorization Required</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              <p>
+                To delete this recipe, please enter your authorization
+                information:
+              </p>
+              {/* form inputs to enter authorization info */}
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => setShowModal(false)}>
+                Cancel
+              </Button>
+              <Button variant="danger" onClick={handleDelete}>
+                Delete
+              </Button>
+            </Modal.Footer>
+          </Modal>
           <Button onClick={handleIncrement} className="btn-secondary m-2">
             Přidat porci
           </Button>

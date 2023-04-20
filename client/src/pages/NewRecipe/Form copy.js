@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
 
-const AddRecipeForm = () => {
+const AddRecipeForm = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
   const [ingr, setIngr] = useState([]);
   const [cat, setCat] = useState([]);
@@ -30,7 +30,6 @@ const AddRecipeForm = () => {
   const [ingredients, setIngredients] = useState([
     { name: "", amount: "", measurement: "" },
   ]);
-
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
   };
@@ -47,7 +46,6 @@ const AddRecipeForm = () => {
     formData.append("prepLength", event.target.recipePrepTime.value);
     formData.append("finalAmount", event.target.portionCount.value);
     formData.append("categories", JSON.stringify(filed));
-
     fetch("/recipe/createRecipe", {
       method: "POST",
       body: formData,
@@ -78,7 +76,6 @@ const AddRecipeForm = () => {
     const newIngredients = [...ingredients];
     const selectedIngredient = newIngredients[index];
     const selectedMeasurement = event.map((e) => e.measurement)[0];
-
     selectedIngredient.name = event.map((e) => e.name)[0];
     selectedIngredient.measurement = selectedMeasurement;
     const newMer = [...mer];
@@ -86,18 +83,6 @@ const AddRecipeForm = () => {
     setIngredients(newIngredients);
     setMer(newMer);
   };
-
-  const handleMeasurementChange = (event, index) => {
-    const newIngredients = [...ingredients];
-    const selectedIngredient = newIngredients[index];
-    selectedIngredient.measurement = event.target.value;
-    const newMer = [...mer];
-    newMer[index] = event.target.value;
-    setIngredients(newIngredients);
-    setMer(newMer);
-    console.log(newMer);
-  };
-
   const handleAmountChange = (event, index) => {
     const newIngredients = [...ingredients];
     const selectedIngredient = newIngredients[index];
@@ -185,7 +170,6 @@ const AddRecipeForm = () => {
                   type="text"
                   placeholder="jednotka"
                   defaultValue={mer[index] ? mer[index] : ""}
-                  onChange={(event) => handleMeasurementChange(event, index)}
                 />
                 {index > 0 && (
                   <Button
@@ -244,7 +228,7 @@ const AddRecipeForm = () => {
       </Form>
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Recep byl vytvořen</Modal.Title>
+          <Modal.Title>Recipe created successfully</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>Gratulujeme, recept byl úspěšně přidán!</p>

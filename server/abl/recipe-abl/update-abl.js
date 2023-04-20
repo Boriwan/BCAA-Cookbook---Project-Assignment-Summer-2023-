@@ -5,16 +5,27 @@ let dao = new RecipeDao(
 );
 
 function UpdateAbl(req, res) {
-  const recipe = dao.get(req.params.id);
+  let body = req.body;
+  const image = req.files.img;
   const id = req.params.id;
-  const newData = req.body;
+  const today = new Date();
+  const isoDate = today.toISOString().substr(0, 10);
+  let recipe = {
+    name: body.name,
+    desc: body.desc,
+    method: JSON.parse(body.method),
+    finalAmount: body.finalAmount,
+    prepLength: body.prepLength,
+    ingredients: JSON.parse(body.ingredients),
+    img: isoDate + image.name,
+    categories: JSON.parse(body.categories),
+  };
   if (recipe) {
-    dao.update(id, newData);
+    dao.update(id, recipe);
     res.json("Recipe has been updated");
   } else {
     res.status(400).json({ error: "Recipe does not exist" });
   }
-    res.json(updatedObject);
-
+  res.json(recipe);
 }
 module.exports = UpdateAbl;
