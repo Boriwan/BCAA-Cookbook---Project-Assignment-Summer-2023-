@@ -176,7 +176,7 @@ const AddRecipeForm = () => {
                 />
 
                 <Form.Control
-                  type="number"
+                  type="text"
                   placeholder="mnoství ingredience"
                   value={ingredient.amount}
                   onChange={(event) => handleAmountChange(event, index)}

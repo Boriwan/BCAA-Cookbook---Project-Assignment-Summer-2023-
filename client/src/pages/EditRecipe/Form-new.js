@@ -6,6 +6,7 @@ const AddRecipeForm = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
   const [ingr, setIngr] = useState([]);
   const [cat, setCat] = useState([]);
+
   useEffect(() => {
     fetch("/ingredients")
       .then((response) => response.json())
@@ -25,15 +26,28 @@ const AddRecipeForm = ({ data }) => {
 
   const titleRef = useRef();
   const descriptionRef = useRef();
+  const finalAmountRef = useRef();
+  const prepLengthRef = useRef();
   const [image, setImage] = useState(null);
-  const [method, setMethod] = useState([""]);
-  const [ingredients, setIngredients] = useState([
-    { name: "", amount: "", measurement: "" },
-  ]);
+  const [method, setMethod] = useState(data.method || [""]);
+  const [ingredients, setIngredients] = useState(
+    data.ingredients || [{ name: "", amount: "", measurement: "" }]
+  );
+  const [img, setImg] = useState(data.img || null);
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
   };
-
+  const correctCategory = cat.filter((category) => {
+    return category.name == data.categories;
+  });
+  useEffect(() => {
+    if (data) {
+      titleRef.current.value = data.name;
+      descriptionRef.current.value = data.desc;
+      finalAmountRef.current.value = data.finalAmount;
+      prepLengthRef.current.value = data.prepLength;
+    }
+  }, [data]);
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -42,10 +56,15 @@ const AddRecipeForm = ({ data }) => {
     formData.append("desc", descriptionRef.current.value);
     formData.append("method", JSON.stringify(method));
     formData.append("ingredients", JSON.stringify(ingredients));
-    formData.append("img", image);
+    if (img) {
+      formData.append("img", img);
+    } else {
+      formData.append("img", image);
+    }
     formData.append("prepLength", event.target.recipePrepTime.value);
     formData.append("finalAmount", event.target.portionCount.value);
-    formData.append("categories", JSON.stringify(filed));
+    formData.append("categories", JSON.stringify(data.categories));
+
     fetch("/recipe/createRecipe", {
       method: "POST",
       body: formData,
@@ -54,6 +73,7 @@ const AddRecipeForm = ({ data }) => {
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
     setShowModal(true);
+    console.log(formData);
   };
   const handleClose = () => setShowModal(false);
 
@@ -76,6 +96,7 @@ const AddRecipeForm = ({ data }) => {
     const newIngredients = [...ingredients];
     const selectedIngredient = newIngredients[index];
     const selectedMeasurement = event.map((e) => e.measurement)[0];
+
     selectedIngredient.name = event.map((e) => e.name)[0];
     selectedIngredient.measurement = selectedMeasurement;
     const newMer = [...mer];
@@ -83,6 +104,18 @@ const AddRecipeForm = ({ data }) => {
     setIngredients(newIngredients);
     setMer(newMer);
   };
+
+  const handleMeasurementChange = (event, index) => {
+    const newIngredients = [...ingredients];
+    const selectedIngredient = newIngredients[index];
+    selectedIngredient.measurement = event.target.value;
+    const newMer = [...mer];
+    newMer[index] = event.target.value;
+    setIngredients(newIngredients);
+    setMer(newMer);
+    console.log(newMer);
+  };
+
   const handleAmountChange = (event, index) => {
     const newIngredients = [...ingredients];
     const selectedIngredient = newIngredients[index];
@@ -156,12 +189,12 @@ const AddRecipeForm = ({ data }) => {
                   labelKey="name"
                   onChange={(event) => handleIngredient(event, index)}
                   options={ingredientListing}
-                  newSelectionPrefix="Add a new item: "
                   placeholder="Vyberte ingredienci..."
+                  defaultInputValue={ingredient.name}
                 />
 
                 <Form.Control
-                  type="number"
+                  type="text"
                   placeholder="mnoství ingredience"
                   value={ingredient.amount}
                   onChange={(event) => handleAmountChange(event, index)}
@@ -169,7 +202,8 @@ const AddRecipeForm = ({ data }) => {
                 <Form.Control
                   type="text"
                   placeholder="jednotka"
-                  defaultValue={mer[index] ? mer[index] : ""}
+                  defaultValue={ingredient.measurement}
+                  onChange={(event) => handleMeasurementChange(event, index)}
                 />
                 {index > 0 && (
                   <Button
@@ -190,7 +224,16 @@ const AddRecipeForm = ({ data }) => {
         </Form.Group>
         <Form.Group controlId="recipeImage">
           <Form.Label>Obrázek</Form.Label>
-          <Form.Control type="file" onChange={handleImageChange} required />
+          {img && (
+            <div className="input-group">
+              <Form.Control type="text" defaultValue={data.img} readOnly />
+              <Button variant="danger" onClick={() => setImg(null)}>
+                X
+              </Button>
+            </div>
+          )}
+
+          {!img && <Form.Control type="file" onChange={handleImageChange} />}
         </Form.Group>
         <Form.Group controlId="recipePrepTime">
           <Form.Label>Doba přípravy</Form.Label>
@@ -199,6 +242,7 @@ const AddRecipeForm = ({ data }) => {
             placeholder="Napište dobu přípravy receptu v minutách"
             min="1"
             required
+            ref={prepLengthRef}
           />
         </Form.Group>
         <Form.Group controlId="portionCount">
@@ -208,18 +252,19 @@ const AddRecipeForm = ({ data }) => {
             placeholder="Napište čístlicí počet porcí"
             min="1"
             required
+            ref={finalAmountRef}
           />
         </Form.Group>
         <Form.Group>
           <Form.Label>Kategorie</Form.Label>
           <Typeahead
+            selected={correctCategory}
             id="basic-typeahead-multiple"
             labelKey="name"
             multiple
             onChange={setMultiSelections}
             options={cat}
             placeholder="Vyberte ze seznamu categorie..."
-            selected={multiSelections}
           />
         </Form.Group>
         <Button variant="primary" className="mt-2" type="submit">
@@ -228,10 +273,10 @@ const AddRecipeForm = ({ data }) => {
       </Form>
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Recipe created successfully</Modal.Title>
+          <Modal.Title>Recep byl úspěšně upraven</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Gratulujeme, recept byl úspěšně přidán!</p>
+          <p>Gratulujeme, recept byl úspěšně upraven!</p>
         </Modal.Body>
         <Modal.Footer>
           <Button
@@ -240,6 +285,13 @@ const AddRecipeForm = ({ data }) => {
             }}
           >
             Domů
+          </Button>
+          <Button
+            onClick={() => {
+              window.location.href = `/recept/${data.id}`;
+            }}
+          >
+            Recept
           </Button>
         </Modal.Footer>
       </Modal>

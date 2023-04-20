@@ -6,7 +6,7 @@ let dao = new RecipeDao(
 
 function UpdateAbl(req, res) {
   let body = req.body;
-  const image = req.files.img;
+  // const image = req.files.img;
   const id = req.params.id;
   const today = new Date();
   const isoDate = today.toISOString().substr(0, 10);
@@ -17,7 +17,7 @@ function UpdateAbl(req, res) {
     finalAmount: body.finalAmount,
     prepLength: body.prepLength,
     ingredients: JSON.parse(body.ingredients),
-    img: isoDate + image.name,
+    img: body.img,
     categories: JSON.parse(body.categories),
   };
   if (recipe) {

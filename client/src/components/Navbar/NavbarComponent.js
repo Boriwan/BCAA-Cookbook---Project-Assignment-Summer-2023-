@@ -12,7 +12,7 @@ function NavbarComponent() {
       <Container fluid>
         <Navbar.Brand href="/">
           <img
-            src="img/logo.svg"
+            src="http://localhost:8000/recipe/image/logo.svg"
             alt="Logo Pasta Cookbook"
             style={{ width: "100px" }}
           />

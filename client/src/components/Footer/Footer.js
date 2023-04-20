@@ -13,7 +13,11 @@ const Footer = () => {
         to="/"
         className="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none p-2"
       >
-        <img src="img/logo.svg" style={{ width: "100px" }} alt="" />
+        <img
+          src="http://localhost:8000/recipe/image/logo.svg"
+          style={{ width: "100px" }}
+          alt=""
+        />
       </Link>
 
       <ul className="nav col-md-4 justify-content-end">
