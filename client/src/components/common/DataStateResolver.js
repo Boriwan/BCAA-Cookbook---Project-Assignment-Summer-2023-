@@ -1,3 +1,5 @@
+import LoadingPage from "../../pages/StatePages/LoadingPage";
+
 function DataStateResolver(props) {
   switch (props.data.state) {
     case "ready":
@@ -5,7 +7,7 @@ function DataStateResolver(props) {
     case "error":
       return <div>Error - {JSON.stringify(props.data.error, null, 2)}</div>;
     default:
-      return "Loading ...";
+      return <LoadingPage />;
   }
 }
 

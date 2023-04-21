@@ -7,7 +7,7 @@ const Footer = () => {
       className="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top mx-auto"
       style={{ maxWidth: "1200px" }}
     >
-      <p className="col-md-4 mb-0 text-muted ps-2">© 2022 Pasta Cookbook</p>
+      <p className="col-md-4 mb-0 text-muted ps-2">© 2023 Pasta Cookbook</p>
 
       <Link
         to="/"
