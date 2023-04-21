@@ -148,7 +148,7 @@ const RecipeView = ({ data }) => {
                   key={data.name}
                 >
                   <label className="form-check-label" htmlFor={data.name}>
-                    {data.name}
+                    <b>{data.name}:</b>
                     <span className="ps-2">
                       {data.amount} {data.measurement}
                     </span>
