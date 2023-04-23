@@ -49,7 +49,18 @@ function CreateAbl(req, res) {
     ingredients: JSON.parse(body.ingredients),
     img: isoDate + image.name,
     categories: JSON.parse(body.categories),
+    ratings: [],
+    avgRating: getAvgRating(),
   };
+
+  // calculates the average rating for the recipe
+  function getAvgRating() {
+    if (recipe.ratings.length > 0) {
+      const sum = recipe.ratings.reduce((acc, curr) => acc + curr, 0);
+      const avg = sum / recipe.ratings.length;
+      return avg;
+    }
+  }
 
   const recipeList = dao._listAll();
   const duplicate = recipeList.find(

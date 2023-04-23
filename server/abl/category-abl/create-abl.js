@@ -1,4 +1,3 @@
-// implement abl
 const categoryDao = require("../../dao/category-dao");
 const path = require("path");
 
