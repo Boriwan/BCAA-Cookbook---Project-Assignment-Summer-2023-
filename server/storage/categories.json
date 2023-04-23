@@ -1,1 +1,26 @@
-[{"name":"spagety","desc":"tato kategorie má v sobě špagety","id":"29e0bfc267b35177"},{"name":"pene","desc":"jídla s Pene","recipes":[],"id":"c9e341efb57fb30b"},{"name":"lasagne","desc":"jídla s Pene","recipes":[],"id":"c9e341efb53fb30b"},{"name":"testoviny","desc":"jídla s Těstovinami","recipes":[],"id":"c9e341eob53fb30b"}]
+[
+  {
+    "name": "spagety",
+    "desc": "tato kategorie má v sobě špagety",
+    "id": "29e0bfc267b35177"
+  },
+  {
+    "name": "pene",
+    "desc": "jídla s Pene",
+    "recipes": [],
+    "id": "c9e341efb57fb30b"
+  },
+  {
+    "name": "lasagne",
+    "desc": "jídla s Pene",
+    "recipes": [],
+    "id": "c9e341efb53fb30b"
+  },
+  {
+    "name": "testoviny",
+    "desc": "jídla s Těstovinami",
+    "recipes": [],
+    "id": "c9e341eob53fb30b"
+  },
+  { "name": "Pene", "desc": "jídla s Pene", "id": "003a7e1347751f44" }
+]

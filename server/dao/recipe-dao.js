@@ -1,4 +1,3 @@
-//implement dao
 "use-strict";
 const fs = require("fs");
 const path = require("path");
@@ -16,6 +15,7 @@ class RecipeDao {
     this.recipeStoragePath = storagePath ? storagePath : DEFAULT_STORAGE_PATH;
   }
 
+  // create function
   create(object) {
     let recipeList = this._listAll();
     object.id = crypto.randomBytes(8).toString("hex");
@@ -24,16 +24,20 @@ class RecipeDao {
     return object;
   }
 
+  //edit function
   edit(object) {
     return object;
   }
 
+  //delete function
   delete(object) {
     let recipeList = this._listAll().filter(
       (recipe) => recipe.id !== object.id
     );
     fs.writeFileSync(this._getStoragePath(), JSON.stringify(recipeList));
   }
+
+  // edit function
   update(id, newData) {
     let recipeList = this._listAll().filter(
       (recipe) => recipe.id !== newData.id
@@ -44,15 +48,21 @@ class RecipeDao {
       fs.writeFileSync(this._getStoragePath(), JSON.stringify(recipeList));
     }
   }
+
+  // post image function
   PosImg(object) {}
 
+  // list all function
   list() {
-    return this._listAll();
+    return this._listAll() || [];
   }
+
+  // get specific recipe 
   get(id) {
     return this._listAll().find((recipe) => recipe.id === id);
   }
 
+  //filters the storage and returns all recipes
   _listAll() {
     let listAll;
     try {
@@ -64,6 +74,7 @@ class RecipeDao {
     return listAll;
   }
 
+  // returns the storage path where the recipe list is stored
   _getStoragePath() {
     return this.recipeStoragePath;
   }

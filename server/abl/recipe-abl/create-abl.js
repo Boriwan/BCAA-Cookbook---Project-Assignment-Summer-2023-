@@ -50,21 +50,29 @@ function CreateAbl(req, res) {
     img: isoDate + image.name,
     categories: JSON.parse(body.categories),
   };
+
+  const recipeList = dao._listAll();
+  const duplicate = recipeList.find(
+    (existingRecipe) =>
+      existingRecipe.name === recipe.name &&
+      existingRecipe.desc === recipe.desc &&
+      existingRecipe.finalAmount === recipe.finalAmount &&
+      existingRecipe.prepLength === recipe.prepLength &&
+      JSON.stringify(existingRecipe.ingredients) ===
+        JSON.stringify(recipe.ingredients)
+  );
+
+  if (duplicate) {
+    res.status(400);
+    return res.json({ error: "Recipe already exists." });
+  }
+
   try {
     recipe = dao.create(recipe);
   } catch (e) {
-    // if (e.id === "DUPLICATE_CODE") {
-    //   res.status(400);
-    // } else {
-    //   res.status(500);
-    // }
     res.status(500);
     return res.json({ error: e.message });
   }
-  // const { image } = req.files;
-  // if (!image) return res.sendStatus(400);
-  // // // Move the uploaded image to our upload folder
-  // image.mv("storage/img/" + image.name);
 
   res.send(recipe);
 }

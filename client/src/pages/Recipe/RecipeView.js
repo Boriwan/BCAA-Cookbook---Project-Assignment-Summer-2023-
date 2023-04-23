@@ -53,7 +53,7 @@ const RecipeView = ({ data }) => {
           className="btn btn-primary m-2 text-white"
           onClick={() => setShowModal(true)}
         >
-          Odebrat recept
+          Odstranit recept
         </button>
         <Link to={`/upravit-recept/${data.id}`}>
           <button type="button" className="btn btn-secondary m-2 text-white">
@@ -111,7 +111,7 @@ const RecipeView = ({ data }) => {
                 Zpět
               </Button>
               <Button variant="danger" onClick={handleDelete}>
-                Vymazat recept
+                Odstranit recept
               </Button>
             </Modal.Footer>
           </Modal>
