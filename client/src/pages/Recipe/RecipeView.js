@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import EditRecipe from "../EditRecipe/EditRecipe";
+// import EditRecipe from "../EditRecipe/EditRecipe";
 
 const RecipeView = ({ data }) => {
   const [count, setCount] = useState(parseInt(data.finalAmount));
@@ -50,13 +50,13 @@ const RecipeView = ({ data }) => {
       <div className="m-2 d-flex justify-content-end">
         <button
           type="button"
-          className="btn btn-primary m-2"
+          className="btn btn-primary m-2 text-white"
           onClick={() => setShowModal(true)}
         >
           Odebrat recept
         </button>
         <Link to={`/upravit-recept/${data.id}`}>
-          <button type="button" className="btn btn-secondary m-2">
+          <button type="button" className="btn btn-secondary m-2 text-white">
             Upravit recept
           </button>
         </Link>
@@ -84,7 +84,10 @@ const RecipeView = ({ data }) => {
           <li className="list-group-item">Počet porcí: {count}</li>
         </ul>
         <div>
-          <Button onClick={handleDecrement} className="btn-primary m-2">
+          <Button
+            onClick={handleDecrement}
+            className="btn-primary m-2 text-white"
+          >
             Odebrat porci
           </Button>
           <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -101,15 +104,21 @@ const RecipeView = ({ data }) => {
             </Modal.Body>
 
             <Modal.Footer>
-              <Button variant="secondary" onClick={() => setShowModal(false)}>
-                Cancel
+              <Button
+                variant="secondary text-white"
+                onClick={() => setShowModal(false)}
+              >
+                Zpět
               </Button>
               <Button variant="danger" onClick={handleDelete}>
-                Delete
+                Vymazat recept
               </Button>
             </Modal.Footer>
           </Modal>
-          <Button onClick={handleIncrement} className="btn-secondary m-2">
+          <Button
+            onClick={handleIncrement}
+            className="btn-secondary m-2 text-white"
+          >
             Přidat porci
           </Button>
         </div>
