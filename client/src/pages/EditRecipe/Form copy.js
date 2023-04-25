@@ -3,10 +3,9 @@ import { Form, Button, Modal } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
 
 const AddRecipeForm = ({ data }) => {
-  const [showModal, setShowModal] = useState(false);
   const [ingr, setIngr] = useState([]);
   const [cat, setCat] = useState([]);
-
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     fetch("/ingredients")
       .then((response) => response.json())
@@ -20,6 +19,7 @@ const AddRecipeForm = ({ data }) => {
       .catch((error) => console.error(error));
   }, []);
   const [multiSelections, setMultiSelections] = useState([]);
+
   const filed = multiSelections.map((multiSelections) => multiSelections.name);
 
   const ingredientListing = ingr.map((ingredient) => ingredient);
@@ -29,17 +29,20 @@ const AddRecipeForm = ({ data }) => {
   const finalAmountRef = useRef();
   const prepLengthRef = useRef();
   const [image, setImage] = useState(null);
+  const [img, setImg] = useState(data.img || null);
+
   const [method, setMethod] = useState(data.method || [""]);
   const [ingredients, setIngredients] = useState(
     data.ingredients || [{ name: "", amount: "", measurement: "" }]
   );
-  const [img, setImg] = useState(data.img || null);
+
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
   };
   const correctCategory = cat.filter((category) => {
     return category.name == data.categories;
   });
+
   useEffect(() => {
     if (data) {
       titleRef.current.value = data.name;
@@ -48,40 +51,43 @@ const AddRecipeForm = ({ data }) => {
       prepLengthRef.current.value = data.prepLength;
     }
   }, [data]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const formData = new FormData();
+    if (img) {
+      console.log(img);
+      formData.append("img", img);
+    } else {
+      console.log(image);
+      formData.append("img", image);
+    }
+
     formData.append("name", titleRef.current.value);
     formData.append("desc", descriptionRef.current.value);
     formData.append("method", JSON.stringify(method));
     formData.append("ingredients", JSON.stringify(ingredients));
-    if (img) {
-      formData.append("img", img);
-    } else {
-      formData.append("img", image);
-    }
-    formData.append("prepLength", event.target.recipePrepTime.value);
-    formData.append("finalAmount", event.target.portionCount.value);
+    formData.append("prepLength", prepLengthRef.current.value);
+    formData.append("finalAmount", finalAmountRef.current.value);
     formData.append("categories", JSON.stringify(data.categories));
 
-    fetch("/recipe/createRecipe", {
-      method: "POST",
+    fetch(`/recipe/updateRecipe/${data.id}`, {
+      method: "PUT",
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
     setShowModal(true);
-    console.log(formData);
   };
   const handleClose = () => setShowModal(false);
-
   const handleMethodChange = (event, index) => {
     const newMethod = [...method];
     newMethod[index] = event.target.value;
     setMethod(newMethod);
   };
+
   const handleAddStep = () => {
     setMethod([...method, ""]);
   };
@@ -104,7 +110,6 @@ const AddRecipeForm = ({ data }) => {
     setIngredients(newIngredients);
     setMer(newMer);
   };
-
   const handleMeasurementChange = (event, index) => {
     const newIngredients = [...ingredients];
     const selectedIngredient = newIngredients[index];
@@ -115,7 +120,6 @@ const AddRecipeForm = ({ data }) => {
     setMer(newMer);
     console.log(newMer);
   };
-
   const handleAmountChange = (event, index) => {
     const newIngredients = [...ingredients];
     const selectedIngredient = newIngredients[index];
@@ -191,6 +195,7 @@ const AddRecipeForm = ({ data }) => {
                   options={ingredientListing}
                   placeholder="Vyberte ingredienci..."
                   defaultInputValue={ingredient.name}
+                  required
                 />
 
                 <Form.Control
@@ -198,12 +203,14 @@ const AddRecipeForm = ({ data }) => {
                   placeholder="mnoství ingredience"
                   value={ingredient.amount}
                   onChange={(event) => handleAmountChange(event, index)}
+                  required
                 />
                 <Form.Control
                   type="text"
                   placeholder="jednotka"
                   defaultValue={ingredient.measurement}
                   onChange={(event) => handleMeasurementChange(event, index)}
+                  required
                 />
                 {index > 0 && (
                   <Button
@@ -241,7 +248,6 @@ const AddRecipeForm = ({ data }) => {
             type="number"
             placeholder="Napište dobu přípravy receptu v minutách"
             min="1"
-            required
             ref={prepLengthRef}
           />
         </Form.Group>
@@ -251,8 +257,8 @@ const AddRecipeForm = ({ data }) => {
             type="number"
             placeholder="Napište čístlicí počet porcí"
             min="1"
-            required
             ref={finalAmountRef}
+            required
           />
         </Form.Group>
         <Form.Group>

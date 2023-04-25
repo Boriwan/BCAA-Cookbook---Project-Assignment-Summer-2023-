@@ -11,8 +11,8 @@ const AllCategories = ({ categoryList }) => {
             <Card
               name={category.name}
               desc={category.desc}
-              id={recipe.id}
-              key={recipe.id}
+              id={category.id}
+              key={category.id}
             />
           );
         })}

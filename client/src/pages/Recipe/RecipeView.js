@@ -125,6 +125,7 @@ const RecipeView = ({ data }) => {
       </div>
       <div className="d-flex justify-content-between display-block mt-5">
         <section className="postup">
+          <h2>Postup přípravy:</h2>
           <ol
             style={{ fontSize: "30px" }}
             className="list-group list-group-numbered"
@@ -148,7 +149,7 @@ const RecipeView = ({ data }) => {
           </ol>
         </section>
         <section className="ingredients ms-2">
-          <h2>Suroviny</h2>
+          <h2>Suroviny:</h2>
           <ul className="list-group">
             {data.ingredients.map((data) => {
               return (

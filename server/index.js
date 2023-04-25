@@ -17,7 +17,9 @@ const port = 8000;
 
 // returns a list of all recipes
 app.get("/recipes", function (req, res) {
-  res.json(GetAllRecipesAbl(req, res));
+  if (!res.headersSent) {
+    res.json(GetAllRecipesAbl(req, res));
+  }
 });
 
 // returns a list of all categories
