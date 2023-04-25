@@ -18,9 +18,14 @@ const AddRecipeForm = ({ data }) => {
       .then((categories) => setCat(categories))
       .catch((error) => console.error(error));
   }, []);
-  const [multiSelections, setMultiSelections] = useState([]);
 
-  const filed = multiSelections.map((multiSelections) => multiSelections.name);
+  const [multiSelections, setMultiSelections] = useState();
+  let selectedCategory;
+  if (multiSelections) {
+    selectedCategory = JSON.stringify(multiSelections.map((key) => key.name));
+  } else {
+    selectedCategory = JSON.stringify(data.categories);
+  }
 
   const ingredientListing = ingr.map((ingredient) => ingredient);
 
@@ -39,9 +44,8 @@ const AddRecipeForm = ({ data }) => {
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
   };
-  const correctCategory = cat.filter((category) => {
-    return category.name == data.categories;
-  });
+
+  ////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     if (data) {
@@ -61,14 +65,15 @@ const AddRecipeForm = ({ data }) => {
     } else {
       formData.append("img", image);
     }
+
     formData.append("name", titleRef.current.value);
     formData.append("desc", descriptionRef.current.value);
     formData.append("method", JSON.stringify(method));
     formData.append("ingredients", JSON.stringify(ingredients));
-
     formData.append("prepLength", prepLengthRef.current.value);
     formData.append("finalAmount", finalAmountRef.current.value);
-    formData.append("categories", JSON.stringify(data.categories));
+    formData.append("categories", selectedCategory);
+
     fetch(`/recipe/updateRecipe/${data.id}`, {
       method: "PUT",
       body: formData,
@@ -141,11 +146,16 @@ const AddRecipeForm = ({ data }) => {
       >
         <Form.Group controlId="recipeTitle">
           <Form.Label>Název receptu</Form.Label>
-          <Form.Control type="text" ref={titleRef} />
+          <Form.Control type="text" ref={titleRef} required />
         </Form.Group>
         <Form.Group controlId="recipeDescription">
           <Form.Label>Popis receptu</Form.Label>
-          <Form.Control type="text" maxLength="120" ref={descriptionRef} />
+          <Form.Control
+            type="text"
+            maxLength="120"
+            ref={descriptionRef}
+            required
+          />
         </Form.Group>
         <Form.Group controlId="recipeMethod">
           <Form.Label>Postup přípravy receptu</Form.Label>
@@ -157,6 +167,7 @@ const AddRecipeForm = ({ data }) => {
                 type="text"
                 value={step}
                 onChange={(event) => handleMethodChange(event, index)}
+                required
               />
               {index > 0 && (
                 <Button
@@ -186,6 +197,7 @@ const AddRecipeForm = ({ data }) => {
                   options={ingredientListing}
                   placeholder="Vyberte ingredienci..."
                   defaultInputValue={ingredient.name}
+                  required
                 />
 
                 <Form.Control
@@ -193,12 +205,14 @@ const AddRecipeForm = ({ data }) => {
                   placeholder="mnoství ingredience"
                   value={ingredient.amount}
                   onChange={(event) => handleAmountChange(event, index)}
+                  required
                 />
                 <Form.Control
                   type="text"
                   placeholder="jednotka"
                   defaultValue={ingredient.measurement}
                   onChange={(event) => handleMeasurementChange(event, index)}
+                  required
                 />
                 {index > 0 && (
                   <Button
@@ -246,12 +260,13 @@ const AddRecipeForm = ({ data }) => {
             placeholder="Napište čístlicí počet porcí"
             min="1"
             ref={finalAmountRef}
+            required
           />
         </Form.Group>
         <Form.Group>
           <Form.Label>Kategorie</Form.Label>
           <Typeahead
-            selected={correctCategory}
+            defaultSelected={data.categories}
             id="basic-typeahead-multiple"
             labelKey="name"
             multiple

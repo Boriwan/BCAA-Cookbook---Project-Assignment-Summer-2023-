@@ -26,6 +26,7 @@ const AddRecipeForm = () => {
   const titleRef = useRef();
   const descriptionRef = useRef();
   const [image, setImage] = useState(null);
+
   const [method, setMethod] = useState([""]);
   const [ingredients, setIngredients] = useState([
     { name: "", amount: "", measurement: "" },
@@ -47,7 +48,10 @@ const AddRecipeForm = () => {
     formData.append("prepLength", event.target.recipePrepTime.value);
     formData.append("finalAmount", event.target.portionCount.value);
     formData.append("categories", JSON.stringify(filed));
-
+    if (!handleIngredient) {
+      alert("Please select an option");
+      return;
+    }
     fetch("/recipe/createRecipe", {
       method: "POST",
       body: formData,
@@ -173,6 +177,8 @@ const AddRecipeForm = () => {
                   options={ingredientListing}
                   newSelectionPrefix="Add a new item: "
                   placeholder="Vyberte ingredienci..."
+                  isInvalid={!handleIngredient}
+                  required
                 />
 
                 <Form.Control
@@ -180,12 +186,14 @@ const AddRecipeForm = () => {
                   placeholder="mnoství ingredience"
                   value={ingredient.amount}
                   onChange={(event) => handleAmountChange(event, index)}
+                  required
                 />
                 <Form.Control
                   type="text"
                   placeholder="jednotka"
                   defaultValue={mer[index] ? mer[index] : ""}
                   onChange={(event) => handleMeasurementChange(event, index)}
+                  required
                 />
                 {index > 0 && (
                   <Button
