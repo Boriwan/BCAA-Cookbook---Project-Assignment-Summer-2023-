@@ -7,8 +7,8 @@ const HomeView = (props) => {
   return (
     <>
       <HeroSection recipeList={props.recipeList} />
-      <AllRecipes recipeList={props.recipeList} />
       <RecipeList recipeList={props.recipeList} />
+      <AllRecipes recipeList={props.recipeList} />
     </>
   );
 };

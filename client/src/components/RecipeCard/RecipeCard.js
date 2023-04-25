@@ -9,7 +9,7 @@ const RecipeCard = (props) => {
   return (
     <section className="m-2" key={props.title}>
       <div className="title-box">
-        <h2 className="text-secondary">{props.title}</h2>
+        <h2 className="text-primary">{props.title}</h2>
         <p>{props.description}</p>
       </div>
       <div className="d-flex flex-shrink-0" style={{ overflowX: "auto" }}>

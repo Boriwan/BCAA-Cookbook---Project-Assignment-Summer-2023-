@@ -3,17 +3,11 @@ import RecipeCard from "../RecipeCard/RecipeCard";
 
 const RecipeList = (props) => {
   return (
-    <section className="max-width">
-      <RecipeCard
+    <section className="max-width" style={{paddingTop: "20px"}}>
+      <RecipeCard 
         category="spagety"
         title="Špagety"
-        description="Toto jsou ty nejlepší recepty, co mají špagety"
-        data={props.recipeList}
-      />
-      <RecipeCard
-        category="pasta"
-        title="Těstoviny"
-        description="Toto jsou ty nejlepší recepty, co obsahují těstoviny"
+        description="Toto jsou ty nejlepší recepty, co obsahují špagety"
         data={props.recipeList}
       />
       <RecipeCard
@@ -22,6 +16,13 @@ const RecipeList = (props) => {
         description="Toto jsou ty nejlepší recepty, co jsou lasagne"
         data={props.recipeList}
       />
+      <RecipeCard
+        category="pasta"
+        title="Jiné"
+        description="Toto jsou ty nejlepší recepty, co obsahují těstoviny"
+        data={props.recipeList}
+      />
+      
     </section>
   );
 };

@@ -4,7 +4,7 @@ import Card from "../RecipeCard/Card";
 const AllRecipes = ({ recipeList }) => {
   return (
     <main>
-      <h2 className="max-width text-primary h1">Všechny recepty</h2>
+      <h2 style={{paddingTop: "15px"}} className="max-width text-primary h1">Všechny recepty</h2>
       <div className="d-flex flex-wrap max-width">
         {recipeList.map((recipe) => {
           return (

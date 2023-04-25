@@ -1,37 +1,26 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Form, Button, Modal } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
 
-const AddRecipeForm = () => {
-  const [showModal, setShowModal] = useState(false);
+const AddRecipeForm = ({ ingredientsData }) => {
   const [ingr, setIngr] = useState([]);
-  const [cat, setCat] = useState([]);
+
   useEffect(() => {
     fetch("/ingredients")
       .then((response) => response.json())
       .then((ingredients) => setIngr(ingredients))
       .catch((error) => console.error(error));
   }, []);
-  useEffect(() => {
-    fetch("/categories")
-      .then((response) => response.json())
-      .then((categories) => setCat(categories))
-      .catch((error) => console.error(error));
-  }, []);
-  const [multiSelections, setMultiSelections] = useState([]);
-  const filed = multiSelections.map((multiSelections) => multiSelections.name);
 
   const ingredientListing = ingr.map((ingredient) => ingredient);
 
   const titleRef = useRef();
   const descriptionRef = useRef();
   const [image, setImage] = useState(null);
-
   const [method, setMethod] = useState([""]);
   const [ingredients, setIngredients] = useState([
     { name: "", amount: "", measurement: "" },
   ]);
-
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
   };
@@ -47,11 +36,6 @@ const AddRecipeForm = () => {
     formData.append("img", image);
     formData.append("prepLength", event.target.recipePrepTime.value);
     formData.append("finalAmount", event.target.portionCount.value);
-    formData.append("categories", JSON.stringify(filed));
-    if (!handleIngredient) {
-      alert("Please select an option");
-      return;
-    }
     fetch("/recipe/createRecipe", {
       method: "POST",
       body: formData,
@@ -59,10 +43,7 @@ const AddRecipeForm = () => {
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
-    setShowModal(true);
   };
-  const handleClose = () => setShowModal(false);
-
   const handleMethodChange = (event, index) => {
     const newMethod = [...method];
     newMethod[index] = event.target.value;
@@ -82,7 +63,6 @@ const AddRecipeForm = () => {
     const newIngredients = [...ingredients];
     const selectedIngredient = newIngredients[index];
     const selectedMeasurement = event.map((e) => e.measurement)[0];
-
     selectedIngredient.name = event.map((e) => e.name)[0];
     selectedIngredient.measurement = selectedMeasurement;
     const newMer = [...mer];
@@ -90,18 +70,6 @@ const AddRecipeForm = () => {
     setIngredients(newIngredients);
     setMer(newMer);
   };
-
-  const handleMeasurementChange = (event, index) => {
-    const newIngredients = [...ingredients];
-    const selectedIngredient = newIngredients[index];
-    selectedIngredient.measurement = event.target.value;
-    const newMer = [...mer];
-    newMer[index] = event.target.value;
-    setIngredients(newIngredients);
-    setMer(newMer);
-    console.log(newMer);
-  };
-
   const handleAmountChange = (event, index) => {
     const newIngredients = [...ingredients];
     const selectedIngredient = newIngredients[index];
@@ -118,156 +86,113 @@ const AddRecipeForm = () => {
   };
 
   return (
-    <>
-      <Form
-        onSubmit={handleSubmit}
-        style={{ maxWidth: "600px" }}
-        className="mx-auto"
-      >
-        <Form.Group controlId="recipeTitle">
-          <Form.Label>Název receptu</Form.Label>
-          <Form.Control type="text" ref={titleRef} required />
-        </Form.Group>
-        <Form.Group controlId="recipeDescription">
-          <Form.Label>Popis receptu</Form.Label>
-          <Form.Control
-            type="text"
-            maxLength="120"
-            ref={descriptionRef}
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="recipeMethod">
-          <Form.Label>Postup přípravy receptu</Form.Label>
-          {method.map((step, index) => (
-            <div key={index} className="input-group mb-3">
+    <div style={{borderRadius: "5px", padding: "20px", margin: "20px" }}>
+    <Form
+
+      onSubmit={handleSubmit}
+      style={{ maxWidth: "600px"}}
+      className="mx-auto"
+    >
+      <Form.Group controlId="recipeTitle">
+        <Form.Label style={{paddingTop: "15px"}}>Název receptu</Form.Label>
+        <Form.Control type="text" ref={titleRef} />
+      </Form.Group>
+      <Form.Group controlId="recipeDescription">
+        <Form.Label>Popis receptu</Form.Label>
+        <Form.Control type="text" maxLength="120" ref={descriptionRef} />
+      </Form.Group>
+      <Form.Group controlId="recipeMethod">
+        <Form.Label>Postup přípravy receptu</Form.Label>
+        {method.map((step, index) => (
+          <div key={index} className="input-group mb-3">
+            <span className="input-group-text">{index + 1}.</span>
+            <Form.Control
+              placeholder="popište postup přípravy receptu"
+              type="text"
+              value={step}
+              onChange={(event) => handleMethodChange(event, index)}
+            />
+            {index > 0 && (
+              <Button variant="danger" onClick={() => handleRemoveStep(index)}>
+                X
+              </Button>
+            )}
+          </div>
+        ))}
+        <Button variant="success" onClick={handleAddStep}>
+          Přidat krok
+        </Button>
+      </Form.Group>
+      <Form.Group controlId="recipeIngredients">
+        <Form.Label>Ingredience</Form.Label>
+        {ingredients.map((ingredient, index) => (
+          <div key={index}>
+            <div className="input-group mb-3">
               <span className="input-group-text">{index + 1}.</span>
+              <Typeahead
+                id="basic-typeahead-single"
+                labelKey="name"
+                onChange={(event) => handleIngredient(event, index)}
+                options={ingredientListing}
+                placeholder="Vyberte ingredienci..."
+              />
+
               <Form.Control
-                placeholder="popište postup přípravy receptu"
+                type="number"
+                placeholder="mnoství ingredience"
+                value={ingredient.amount}
+                onChange={(event) => handleAmountChange(event, index)}
+              />
+              <Form.Control
                 type="text"
-                value={step}
-                onChange={(event) => handleMethodChange(event, index)}
-                required
+                placeholder="jednotka"
+                value={mer[index] ? mer[index] : ""}
+                readOnly
               />
               {index > 0 && (
                 <Button
                   variant="danger"
-                  onClick={() => handleRemoveStep(index)}
+                  onClick={() => handleRemoveIngredient(index)}
                 >
                   X
                 </Button>
               )}
             </div>
-          ))}
-          <Button variant="success" onClick={handleAddStep}>
-            Přidat krok
-          </Button>
-        </Form.Group>
-        <Form.Group controlId="recipeIngredients">
-          <Form.Label>Ingredience</Form.Label>
-          {ingredients.map((ingredient, index) => (
-            <div key={index}>
-              <div className="input-group mb-3">
-                <span className="input-group-text">{index + 1}.</span>
-                <Typeahead
-                  allowNew
-                  id="basic-typeahead-single"
-                  labelKey="name"
-                  onChange={(event) => handleIngredient(event, index)}
-                  options={ingredientListing}
-                  newSelectionPrefix="Add a new item: "
-                  placeholder="Vyberte ingredienci..."
-                  isInvalid={!handleIngredient}
-                  required
-                />
-
-                <Form.Control
-                  type="text"
-                  placeholder="mnoství ingredience"
-                  value={ingredient.amount}
-                  onChange={(event) => handleAmountChange(event, index)}
-                  required
-                />
-                <Form.Control
-                  type="text"
-                  placeholder="jednotka"
-                  defaultValue={mer[index] ? mer[index] : ""}
-                  onChange={(event) => handleMeasurementChange(event, index)}
-                  required
-                />
-                {index > 0 && (
-                  <Button
-                    variant="danger"
-                    onClick={() => handleRemoveIngredient(index)}
-                  >
-                    X
-                  </Button>
-                )}
-              </div>
-              {index === ingredients.length - 1 && (
-                <Button variant="success" onClick={handleAddIngredient}>
-                  Přidat ingredienci
-                </Button>
-              )}
-            </div>
-          ))}
-        </Form.Group>
-        <Form.Group controlId="recipeImage">
-          <Form.Label>Obrázek</Form.Label>
-          <Form.Control type="file" onChange={handleImageChange} required />
-        </Form.Group>
-        <Form.Group controlId="recipePrepTime">
-          <Form.Label>Doba přípravy</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Napište dobu přípravy receptu v minutách"
-            min="1"
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="portionCount">
-          <Form.Label>Počet porcí</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Napište čístlicí počet porcí"
-            min="1"
-            required
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Kategorie</Form.Label>
-          <Typeahead
-            id="basic-typeahead-multiple"
-            labelKey="name"
-            multiple
-            onChange={setMultiSelections}
-            options={cat}
-            placeholder="Vyberte ze seznamu categorie..."
-            selected={multiSelections}
-          />
-        </Form.Group>
-        <Button variant="primary" className="mt-2" type="submit">
-          Odeslat recept
-        </Button>
-      </Form>
-      <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Recep byl vytvořen</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Gratulujeme, recept byl úspěšně přidán!</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button
-            onClick={() => {
-              window.location.href = "/";
-            }}
-          >
-            Domů
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+            {index === ingredients.length - 1 && (
+              <Button variant="success" onClick={handleAddIngredient}>
+                Přidat ingredienci
+              </Button>
+            )}
+          </div>
+        ))}
+      </Form.Group>
+      <Form.Group controlId="recipeImage">
+        <Form.Label>Obrázek</Form.Label>
+        <Form.Control type="file" onChange={handleImageChange} />
+      </Form.Group>
+      <Form.Group controlId="recipePrepTime">
+        <Form.Label>Doba přípravy</Form.Label>
+        <Form.Control
+          type="number"
+          placeholder="Napište dobu přípravy receptu v minutách"
+          min="1"
+        />
+      </Form.Group>
+      <Form.Group controlId="portionCount">
+        <Form.Label>Počet porcí</Form.Label>
+        <Form.Control
+          type="number"
+          placeholder="Napište čístlicí počet porcí"
+          min="1"
+        />
+      </Form.Group>
+      <Button variant="primary" className="mt-2" type="submit">
+        Odeslat recept
+        
+      </Button>
+      <p style={{paddingTop: "15px"}}/>
+    </Form>
+    </div>
   );
 };
 
