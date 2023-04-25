@@ -16,17 +16,22 @@ function CreateAbl(req, res) {
 
   let ingredient = {
     name: body.name,
-    mesurement: body.mesurement,
+    measurement: body.measurement,
   };
+
+  const ingredientList = dao._listAll();
+  const duplicate = ingredientList.find(
+    (existingIngredient) => existingIngredient.name === ingredient.name
+  );
+
+  if (duplicate) {
+    res.status(400);
+    return res.json({ error: "Ingredient already exists." });
+  }
 
   try {
     ingredient = dao.create(ingredient);
   } catch (e) {
-    // if (e.id === "DUPLICATE_CODE") {
-    //   res.status(400);
-    // } else {
-    //   res.status(500);
-    // }
     res.status(500);
     return res.json({ error: e.message });
   }

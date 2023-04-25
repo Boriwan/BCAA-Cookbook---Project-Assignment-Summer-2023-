@@ -1,9 +1,19 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
+// import EditRecipe from "../EditRecipe/EditRecipe";
 
 const RecipeView = ({ data }) => {
   const [count, setCount] = useState(parseInt(data.finalAmount));
   const [ing, setIng] = useState(data.ingredients);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleDelete = () => {
+    fetch(`/recipe/deleteRecipe/${data.id}`, {
+      method: "delete",
+    });
+    window.location.href = "/";
+  };
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -33,8 +43,24 @@ const RecipeView = ({ data }) => {
     }
   };
   data.ingredients = ing;
+  const categoriList = data.categories;
+
   return (
-    <div className="recipe-container mt-5 max-width p-2" key={data.id}>
+    <div className="recipe-container mt-2 max-width p-2" key={data.id}>
+      <div className="m-2 d-flex justify-content-end">
+        <button
+          type="button"
+          className="btn btn-primary m-2 text-white"
+          onClick={() => setShowModal(true)}
+        >
+          Odstranit recept
+        </button>
+        <Link to={`/upravit-recept/${data.id}`}>
+          <button type="button" className="btn btn-secondary m-2 text-white">
+            Upravit recept
+          </button>
+        </Link>
+      </div>
       <img
         src={`http://localhost:8000/recipe/image/${data.img}`}
         alt={data.name}
@@ -43,7 +69,12 @@ const RecipeView = ({ data }) => {
       />
       <div>
         <h1>{data.name}</h1>
-        <p>{data.desc}</p>
+        <div className="d-flex align-items-center mb-2">
+          <p className="m-0">{data.desc}</p>{" "}
+          {categoriList && (
+            <div className="btn btn-outline-primary ms-2">{categoriList}</div>
+          )}
+        </div>
       </div>
       <div>
         <ul className="list-group">
@@ -53,16 +84,48 @@ const RecipeView = ({ data }) => {
           <li className="list-group-item">Počet porcí: {count}</li>
         </ul>
         <div>
-          <Button onClick={handleDecrement} className="btn-primary m-2">
+          <Button
+            onClick={handleDecrement}
+            className="btn-primary m-2 text-white"
+          >
             Odebrat porci
           </Button>
-          <Button onClick={handleIncrement} className="btn-secondary m-2">
+          <Modal show={showModal} onHide={() => setShowModal(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Authorization Required</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              <p>
+                To delete this recipe, please enter your authorization
+                information:
+              </p>
+              {/* form inputs to enter authorization info */}
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button
+                variant="secondary text-white"
+                onClick={() => setShowModal(false)}
+              >
+                Zpět
+              </Button>
+              <Button variant="danger" onClick={handleDelete}>
+                Odstranit recept
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <Button
+            onClick={handleIncrement}
+            className="btn-secondary m-2 text-white"
+          >
             Přidat porci
           </Button>
         </div>
       </div>
       <div className="d-flex justify-content-between display-block mt-5">
         <section className="postup">
+          <h2>Postup přípravy:</h2>
           <ol
             style={{ fontSize: "30px" }}
             className="list-group list-group-numbered"
@@ -86,7 +149,7 @@ const RecipeView = ({ data }) => {
           </ol>
         </section>
         <section className="ingredients ms-2">
-          <h2>Suroviny</h2>
+          <h2>Suroviny:</h2>
           <ul className="list-group">
             {data.ingredients.map((data) => {
               return (
@@ -95,7 +158,7 @@ const RecipeView = ({ data }) => {
                   key={data.name}
                 >
                   <label className="form-check-label" htmlFor={data.name}>
-                    {data.name}
+                    <b>{data.name}:</b>
                     <span className="ps-2">
                       {data.amount} {data.measurement}
                     </span>

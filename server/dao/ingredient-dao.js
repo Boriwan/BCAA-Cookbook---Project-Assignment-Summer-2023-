@@ -1,4 +1,3 @@
-//implement dao
 "use-strict";
 const fs = require("fs");
 const path = require("path");
@@ -51,7 +50,7 @@ class IngredientDao {
   }
 
   list() {
-    return this._listAll();
+    return this._listAll() || [];
   }
   get(id) {
     return this._listAll().find((ingredient) => ingredient.id === id);

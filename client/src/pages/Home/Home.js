@@ -6,7 +6,6 @@ const Home = (props) => {
   const [callListRecipes, setCallListRecipes] = useState({ state: "pending" });
 
   useEffect(() => {
-    console.log("fetch");
     fetch(`/recipes`).then(async (response) => {
       const responseJson = await response.json();
       if (response.status >= 400) {
@@ -16,8 +15,6 @@ const Home = (props) => {
       }
     });
   }, []);
-
-  console.log("Render home");
 
   return (
     <>

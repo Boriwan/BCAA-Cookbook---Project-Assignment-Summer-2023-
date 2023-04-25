@@ -7,7 +7,7 @@ const Card = ({ desc, img, name, id, prepLength }) => {
     <div
       className="card m-2 "
       style={{ minWidth: "14rem", maxWidth: "14rem" }}
-      key={desc}
+      key={id}
     >
       <img
         src={`http://localhost:8000/recipe/image/${img}`}
