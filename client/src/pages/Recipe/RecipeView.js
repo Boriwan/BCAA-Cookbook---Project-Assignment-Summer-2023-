@@ -91,16 +91,14 @@ const RecipeView = ({ data }) => {
           >
             Odebrat porci
           </Button>
+
           <Modal show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
               <Modal.Title>Authorization Required</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-              <p>
-                To delete this recipe, please enter your authorization
-                information:
-              </p>
+              <p>Opravdu chcete odstranit recept?</p>
               {/* form inputs to enter authorization info */}
             </Modal.Body>
 
@@ -124,7 +122,15 @@ const RecipeView = ({ data }) => {
           </Button>
         </div>
       </div>
-      <div className="d-flex justify-content-between display-block mt-5">
+      <div className="mt-2">
+        <h2>Ohodnoťte recpet:</h2>
+        <StarRating
+          id={data.id}
+          ratingValue={data.ratingValue}
+          ratingCount={data.ratingCount}
+        />
+      </div>
+      <div className="d-flex justify-content-between display-block mt-2">
         <section className="postup">
           <h2>Postup přípravy:</h2>
           <ol
@@ -151,7 +157,7 @@ const RecipeView = ({ data }) => {
         </section>
         <section className="ingredients ms-2">
           <h2>Suroviny:</h2>
-          <ul className="list-group">
+          <ul className="list-group" style={{ width: "250px" }}>
             {data.ingredients.map((data) => {
               return (
                 <li
@@ -174,10 +180,6 @@ const RecipeView = ({ data }) => {
               );
             })}
           </ul>
-          <div className="mt-2">
-            <h2>Ohodnoťte recpet:</h2>
-            <StarRating id={data.id} />
-          </div>
         </section>
       </div>
     </div>

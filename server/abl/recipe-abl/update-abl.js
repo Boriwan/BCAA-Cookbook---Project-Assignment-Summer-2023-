@@ -47,7 +47,7 @@ function UpdateAbl(req, res) {
   //   // check if req.file exists
   //   recipe.img = req.file.filename;
   // }
-
+  console.log(recipe);
   if (recipe) {
     dao.update(id, recipe);
     res.json(recipe);

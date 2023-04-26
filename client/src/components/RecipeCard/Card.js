@@ -22,6 +22,7 @@ const Card = ({ desc, img, name, id, prepLength }) => {
           <div className="d-flex align-items-center">
             <BsClock className="mx-1" /> {prepLength} minut
           </div>
+
           <Link className="btn btn-secondary text-white" to={`/recept/${id}`}>
             Otevřít
           </Link>

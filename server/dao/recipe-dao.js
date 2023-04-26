@@ -39,13 +39,14 @@ class RecipeDao {
 
   // edit function
   update(id, newData) {
-    let recipeList = this._listAll().filter(
-      (recipe) => recipe.id !== newData.id
-    );
+    let recipeList = this._listAll();
+
     const index = recipeList.findIndex((recipe) => recipe.id === id);
+    console.log(id, index);
     if (index !== -1) {
       recipeList[index] = { ...recipeList[index], ...newData };
       fs.writeFileSync(this._getStoragePath(), JSON.stringify(recipeList));
+      console.log(recipeList);
     }
   }
 
@@ -57,7 +58,7 @@ class RecipeDao {
     return this._listAll() || [];
   }
 
-  // get specific recipe 
+  // get specific recipe
   get(id) {
     return this._listAll().find((recipe) => recipe.id === id);
   }

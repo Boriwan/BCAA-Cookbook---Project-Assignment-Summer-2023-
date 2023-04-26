@@ -49,8 +49,8 @@ function CreateAbl(req, res) {
     ingredients: JSON.parse(body.ingredients),
     img: isoDate + image.name,
     categories: JSON.parse(body.categories),
-    // ratings: [],
-    // avgRating: getAvgRating(),
+    ratingValue: [],
+    ratingCount: 0,
   };
 
   // calculates the average rating for the recipe
