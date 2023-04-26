@@ -1,4 +1,4 @@
-.navbar-flex{
+/* .navbar-flex{
   display: flex !important; 
   justify-content: space-between !important; 
   align-items: center !important; 
@@ -7,4 +7,15 @@
   padding: 0 20px !important;
   justify-content: space-evenly !important;
   width: 100% !important;
+} */
+
+@media (max-width: 992px){
+.display-large{
+  display: none;
 }
+}
+@media (min-width: 992px){
+  .display-small{
+    display: none;
+  }
+  }

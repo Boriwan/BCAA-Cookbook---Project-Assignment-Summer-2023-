@@ -15,7 +15,7 @@ const HeroSection = ({ recipeList }) => {
                 alt={recipe.name}
               />
               <Carousel.Caption
-                style={{ backgroundColor: "rgb(255 255 255 / 100%)" }}
+                style={{ backgroundColor: "rgb(255 255 255 / 83%)" }}
                 className="p-2"
               >
                 <h3 className="text-dark fw-bold" style={{ fontSize: "3rem" }}>

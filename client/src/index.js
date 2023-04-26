@@ -6,6 +6,7 @@ import Recipe from "./pages/Recipe/Recipe";
 import App from "./App";
 import NewRecipe from "./pages/NewRecipe/NewRecipe";
 import EditRecipe from "./pages/EditRecipe/EditRecipe";
+import Category from "./pages/Catergory/Category.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,6 +14,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route path="/pridat-recept" element={<NewRecipe />} />
+          <Route path="/kategorie" element={<Category />} />
           <Route path="/pridat-recept" element={<NewRecipe />} />
           <Route path="" element={<Home />} />
           <Route path="recept/:id" element={<Recipe />} />
