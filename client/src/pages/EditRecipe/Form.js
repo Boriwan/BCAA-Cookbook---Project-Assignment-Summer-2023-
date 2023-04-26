@@ -74,7 +74,7 @@ const AddRecipeForm = ({ data }) => {
     formData.append("finalAmount", finalAmountRef.current.value);
     formData.append("categories", selectedCategory);
 
-    fetch(`/recipe/updateRecipe/${data.id}`, {
+    fetch(`/recipe/update/${data.id}`, {
       method: "PUT",
       body: formData,
     })

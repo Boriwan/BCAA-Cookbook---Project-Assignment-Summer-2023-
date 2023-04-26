@@ -6,22 +6,22 @@ const DeleteAbl = require("../abl/category-abl/delete-abl");
 const UpdateAbl = require("../abl/category-abl/update-abl");
 
 // get category by its ID
-router.get("/getCategory/:id", function (req, res) {
+router.get("/get/:id", function (req, res) {
   GetAbl(req, res);
 });
 
 //create a new category
-router.post("/createCategory", function (req, res) {
+router.post("/create", function (req, res) {
   CreateAbl(req, res);
 });
 
 //update a certain category by its ID
-router.put("/updateCategory/:id", (req, res) => {
+router.put("/update/:id", (req, res) => {
   UpdateAbl(req, res);
 });
 
 //delete a certain category by its ID
-router.delete("/deleteCategory/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   DeleteAbl(req, res);
 });
 

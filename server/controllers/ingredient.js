@@ -6,22 +6,22 @@ const DeleteAbl = require("../abl/ingredient-abl/delete-abl");
 const UpdateAbl = require("../abl/ingredient-abl/update-abl");
 
 // get ingredient by its ID
-router.get("/getIngredient/:id", function (req, res) {
+router.get("/get/:id", function (req, res) {
   GetAbl(req, res);
 });
 
 //create a new ingredient
-router.post("/createIngredient", function (req, res) {
+router.post("/create", function (req, res) {
   CreateAbl(req, res);
 });
 
 //update a certain ingredient by its ID
-router.put("/updateIngredient/:id", (req, res) => {
+router.put("/update/:id", (req, res) => {
   UpdateAbl(req, res);
 });
 
 //delete a certain ingredient by its ID
-router.delete("/deleteIngredient/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   DeleteAbl(req, res);
 });
 

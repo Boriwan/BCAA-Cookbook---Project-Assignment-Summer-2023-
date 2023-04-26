@@ -10,7 +10,7 @@ const RecipeView = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleDelete = () => {
-    fetch(`/recipe/deleteRecipe/${data.id}`, {
+    fetch(`/recipe/delete/${data.id}`, {
       method: "delete",
     });
     window.location.href = "/";
