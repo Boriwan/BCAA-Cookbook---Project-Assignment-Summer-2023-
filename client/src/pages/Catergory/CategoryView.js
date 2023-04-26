@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
+import AllCategories from "../../components/CategoryList/AllCategories";
 
 export default function CategoryView() {
-  return (
-    <div>CategoryView</div>
-  )
+  return <AllCategories />;
 }

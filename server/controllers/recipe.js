@@ -6,6 +6,7 @@ const DeleteAbl = require("../abl/recipe-abl/delete-abl");
 const UpdateAbl = require("../abl/recipe-abl/update-abl");
 const UploadImgAbl = require("../abl/recipe-abl/upload-img-abl");
 const GetImgAbl = require("../abl/recipe-abl/get-img-abl");
+const RatingAbl = require("../abl/recipe-abl/rating-abl.js");
 
 // get recipe by its ID
 router.get("/get/:id", function (req, res) {
@@ -31,6 +32,9 @@ router.post("/postImage", function (req, res) {
 //update a certain recipe by its ID
 router.put("/updateRecipe/:id", (req, res) => {
   UpdateAbl(req, res);
+});
+router.put("/addRating/:id", (req, res) => {
+  RatingAbl(req, res);
 });
 
 //delete a certain recipe by its ID

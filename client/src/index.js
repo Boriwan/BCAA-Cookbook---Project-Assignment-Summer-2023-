@@ -6,7 +6,7 @@ import Recipe from "./pages/Recipe/Recipe";
 import App from "./App";
 import NewRecipe from "./pages/NewRecipe/NewRecipe";
 import EditRecipe from "./pages/EditRecipe/EditRecipe";
-import Category from "./pages/Catergory/Category.js";
+import Category from "./pages/Catergory/Category";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

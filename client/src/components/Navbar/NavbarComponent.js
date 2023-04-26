@@ -37,7 +37,7 @@ function NavbarComponent() {
 
           <Navbar.Brand href="/" className="display-large">
             <img
-              src="img/logo.svg"
+              src={Logo}
               alt="Logo Pasta Cookbook"
               style={{ width: "100px" }}
             />

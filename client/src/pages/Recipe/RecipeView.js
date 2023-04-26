@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import StarRating from "../../components/Rating/Rating";
 // import EditRecipe from "../EditRecipe/EditRecipe";
 
 const RecipeView = ({ data }) => {
@@ -173,6 +174,10 @@ const RecipeView = ({ data }) => {
               );
             })}
           </ul>
+          <div className="mt-2">
+            <h2>Ohodnoťte recpet:</h2>
+            <StarRating id={data.id} />
+          </div>
         </section>
       </div>
     </div>
