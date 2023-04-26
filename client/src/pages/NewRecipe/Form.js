@@ -52,7 +52,7 @@ const AddRecipeForm = () => {
       alert("Please select an option");
       return;
     }
-    fetch("/recipe/createRecipe", {
+    fetch("/recipe/create", {
       method: "POST",
       body: formData,
     })

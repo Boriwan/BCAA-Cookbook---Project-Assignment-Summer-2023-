@@ -19,7 +19,7 @@ router.get("/image/:name", function (req, res) {
 });
 
 //create a new recipe
-router.post("/createRecipe", function (req, res) {
+router.post("/create", function (req, res) {
   CreateAbl(req, res);
   UploadImgAbl(req, res);
 });
@@ -30,7 +30,7 @@ router.post("/postImage", function (req, res) {
 });
 
 //update a certain recipe by its ID
-router.put("/updateRecipe/:id", (req, res) => {
+router.put("/update/:id", (req, res) => {
   UpdateAbl(req, res);
 });
 router.put("/addRating/:id", (req, res) => {
@@ -38,7 +38,7 @@ router.put("/addRating/:id", (req, res) => {
 });
 
 //delete a certain recipe by its ID
-router.delete("/deleteRecipe/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   DeleteAbl(req, res);
 });
 
