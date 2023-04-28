@@ -1,5 +1,5 @@
 import React from "react";
-import RecipeCategory from "../RecipeCard/RecipeCategory";
+import RecipeCategory from "./RecipeCategory";
 
 const RecipeList = (props) => {
   return (

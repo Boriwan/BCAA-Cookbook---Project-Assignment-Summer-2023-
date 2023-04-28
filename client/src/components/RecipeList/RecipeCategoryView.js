@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import Card from "../RecipeCard/Card";
 
 const RecipeCategoryView = ({ recipeList, description, title }) => {
   return (

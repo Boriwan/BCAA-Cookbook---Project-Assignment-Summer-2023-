@@ -1,8 +1,11 @@
 import LoadingPage from "../../pages/StatePages/LoadingPage";
 import { Link } from "react-router-dom";
 
-
 function DataStateResolver(props) {
+  if (!props.data || !props.data.state) {
+    return <LoadingPage />; // or render a null component
+  }
+
   switch (props.data.state) {
     case "ready":
       return props.children;

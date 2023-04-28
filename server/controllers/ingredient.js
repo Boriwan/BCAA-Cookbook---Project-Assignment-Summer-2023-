@@ -21,7 +21,7 @@ router.put("/update/:id", (req, res) => {
 });
 
 //delete a certain ingredient by its ID
-router.delete("/delete/:id", (req, res) => {
+router.get("/delete/:id", (req, res) => {
   DeleteAbl(req, res);
 });
 

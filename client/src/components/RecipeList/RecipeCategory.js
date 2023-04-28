@@ -1,6 +1,5 @@
-import Card from "./Card";
 import React, { useState, useEffect } from "react";
-import DataStateResolver from "../../components/common/DataStateResolver";
+import DataStateResolver from "../common/DataStateResolver";
 import RecipeCategoryView from "./RecipeCategoryView";
 
 const RecipeCard = ({ category, title, description }) => {

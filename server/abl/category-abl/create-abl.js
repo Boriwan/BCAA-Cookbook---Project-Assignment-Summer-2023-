@@ -7,10 +7,7 @@ let dao = new categoryDao(
 
 function CreateAbl(req, res) {
   let body = req.body;
-  if (
-    !body.name ||
-    !body.desc 
-  ) {
+  if (!body.name || !body.desc) {
     return res
       .status(400)
       .json({ error: "Invalid input: code parameter is missing." });
@@ -18,28 +15,27 @@ function CreateAbl(req, res) {
 
   let category = {
     name: body.name,
-    desc: body.desc
+    desc: body.desc,
   };
 
+  const categoryList = dao._listAll();
+  const duplicate = categoryList.find(
+    (existingCategory) =>
+      existingCategory.name === category.name &&
+      existingCategory.desc === category.desc
+  );
 
-const categoryList = dao._listAll();
-const duplicate = categoryList.find(
-  (existingCategory) =>
-    existingCategory.name === category.name &&
-    existingCategory.desc === category.desc
-);
+  if (duplicate) {
+    res.status(400);
+    return res.json({ error: "Category already exists." });
+  }
 
-if (duplicate) {
-  res.status(400);
-  return res.json({ error: "Category already exists." });
-}
-
-try {
-  category = dao.create(category);
-} catch (e) {
-  res.status(500);
-  return res.json({ error: e.message });
-}
+  try {
+    category = dao.create(category);
+  } catch (e) {
+    res.status(500);
+    return res.json({ error: e.message });
+  }
 
   res.send(category);
 }

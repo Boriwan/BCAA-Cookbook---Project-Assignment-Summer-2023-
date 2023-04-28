@@ -11,6 +11,7 @@ const Card = ({
   prepLength,
   ratingValue,
   ratingCount,
+  starDisabled,
 }) => {
   return (
     <div
@@ -27,12 +28,14 @@ const Card = ({
       <div className="card-body d-flex flex-column justify-content-between">
         <h5 className="card-title">{name}</h5>
         <p className="card-text">{desc}</p>
-        <StarRating
-          id={id}
-          ratingValue={ratingValue}
-          ratingCount={ratingCount}
-          ratingDisabled={true}
-        />
+        {!starDisabled && (
+          <StarRating
+            id={id}
+            ratingValue={ratingValue}
+            ratingCount={ratingCount}
+            ratingDisabled={true}
+          />
+        )}
         <div className="d-flex justify-content-between">
           <div className="d-flex align-items-center">
             <BsClock className="mx-1" /> {prepLength} minut

@@ -1,4 +1,4 @@
-import Card from "../RecipeCard/Card";
+import Card from "../../components/RecipeCard/Card";
 import React, { useState } from "react";
 import { Dropdown } from "react-bootstrap";
 

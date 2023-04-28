@@ -1,5 +1,5 @@
 import React from "react";
-import HeroSection from "../../components/Hero/HeroSection";
+import HeroSection from "./HeroSection";
 import RecipeList from "../../components/RecipeList/RecipesByCategory";
 import BestRecipes from "../../components/RecipeList/BestRecipes";
 

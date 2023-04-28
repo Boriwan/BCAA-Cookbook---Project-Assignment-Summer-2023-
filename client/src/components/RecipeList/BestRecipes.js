@@ -6,7 +6,7 @@ const AllRecipes = ({ topRecipes }) => {
   return (
     <main className="max-width">
       <h2 style={{ paddingTop: "15px" }} className="max-width text-primary h1">
-        List nejlépe hodnocených receptů
+        Top 10 nejlépe ohodnocených receptů
       </h2>
       <div className="d-flex flex-wrap max-width">
         {topRecipes.map((recipe) => {
