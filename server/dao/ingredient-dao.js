@@ -37,15 +37,16 @@ class IngredientDao {
   }
 
   update(id, newData) {
-    let ingredientList = this._listAll().filter(
-      (ingredient) => ingredient.id !== newData.id
-    );
+    let ingredientList = this._listAll();
+
     const index = ingredientList.findIndex(
       (ingredient) => ingredient.id === id
     );
+    console.log(id, index);
     if (index !== -1) {
       ingredientList[index] = { ...ingredientList[index], ...newData };
       fs.writeFileSync(this._getStoragePath(), JSON.stringify(ingredientList));
+      console.log(ingredientList);
     }
   }
 

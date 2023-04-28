@@ -35,16 +35,16 @@ class CategoryDao {
   }
 
   update(id, newData) {
-    let categoryList = this._listAll().filter(
-      (category) => category.id !== newData.id
-    );
+    let categoryList = this._listAll();
+
     const index = categoryList.findIndex((category) => category.id === id);
+    console.log(id, index);
     if (index !== -1) {
       categoryList[index] = { ...categoryList[index], ...newData };
       fs.writeFileSync(this._getStoragePath(), JSON.stringify(categoryList));
+      console.log(categoryList);
     }
   }
-
   list() {
     return this._listAll() || [];
   }

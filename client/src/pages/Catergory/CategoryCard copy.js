@@ -20,6 +20,7 @@ const CategoryCard = ({ name, desc, id }) => {
     setShow(false);
     window.location.reload();
   };
+
   const handleEdit = () => {
     const editedCategory = {
       name: newName,
@@ -49,15 +50,17 @@ const CategoryCard = ({ name, desc, id }) => {
         </button>
         <Modal show={showDelete} onHide={handleCloseDelete}>
           <Modal.Header closeButton>
-            <Modal.Title>Potvrzení vymazání</Modal.Title>
+            <Modal.Title>Confirm Deletion</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Opravdu chcete tuto kategorii odstranit?</Modal.Body>
+          <Modal.Body>
+            Are you sure you want to delete this ingredient?
+          </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleCloseDelete}>
-              Zrušit
+              Cancel
             </Button>
             <Button variant="danger" onClick={handleDelete}>
-              Vymazat
+              Delete
             </Button>
           </Modal.Footer>
         </Modal>

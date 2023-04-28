@@ -8,7 +8,7 @@ let dao = new IngredientDao(
 
 function CreateAbl(req, res) {
   let body = req.body;
-  if (!body.name || !body.finalAmount) {
+  if (!body.name || !body.measurement) {
     return res
       .status(400)
       .json({ error: "Invalid input: code parameter is missing." });

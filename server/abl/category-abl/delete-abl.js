@@ -43,7 +43,9 @@ function DeleteAbl(req, res) {
 
   // Delete the category
   categoryDao.delete(category);
-  res.json(`Category with id ${categoryId} has been deleted and moved to the "uncategorized" category`);
+  res.json(
+    `Category with id ${categoryId} has been deleted and moved to the "uncategorized" category`
+  );
 }
 
 module.exports = DeleteAbl;

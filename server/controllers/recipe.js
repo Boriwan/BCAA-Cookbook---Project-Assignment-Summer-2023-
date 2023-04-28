@@ -11,43 +11,52 @@ const GetTopAbl = require("../abl/recipe-abl/get-top-abl.js");
 const FilterRecipesAbl = require("../abl/recipe-abl/filter-recipes-abl.js");
 // get recipe by its ID
 router.get("/get/:id", function (req, res) {
+  res.setHeader("Content-Type", "application/json");
   GetAbl(req, res);
 });
 
 // get recipe Image
 router.get("/image/:name", function (req, res) {
+  res.setHeader("Content-Type", "application/json");
   GetImgAbl(req, res);
 });
 
 //get list of recipes
 router.get("/getTopRecipes", function (req, res) {
+  res.setHeader("Content-Type", "application/json");
   GetTopAbl(req, res);
 });
 router.get("/filterRecipes/:category", function (req, res) {
+  res.setHeader("Content-Type", "application/json");
   FilterRecipesAbl(req, res);
 });
 
 //create a new recipe
 router.post("/create", function (req, res) {
+  res.setHeader("Content-Type", "application/json");
   CreateAbl(req, res);
   UploadImgAbl(req, res);
 });
 
 // post an image to the recipe
 router.post("/postImage", function (req, res) {
+  res.setHeader("Content-Type", "application/json");
   UploadImgAbl(req, res);
 });
 
 //update a certain recipe by its ID
 router.put("/update/:id", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
   UpdateAbl(req, res);
 });
 router.put("/addRating/:id", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
   RatingAbl(req, res);
 });
 
 //delete a certain recipe by its ID
 router.delete("/delete/:id", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
   DeleteAbl(req, res);
 });
 

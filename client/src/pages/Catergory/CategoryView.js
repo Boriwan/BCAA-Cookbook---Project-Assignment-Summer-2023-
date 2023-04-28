@@ -62,7 +62,7 @@ const CategoryView = ({ data }) => {
                 onChange={(event) => setDescription(event.target.value)}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="mt-1">
               Uložit
             </Button>
           </Form>

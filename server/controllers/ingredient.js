@@ -7,21 +7,25 @@ const UpdateAbl = require("../abl/ingredient-abl/update-abl");
 
 // get ingredient by its ID
 router.get("/get/:id", function (req, res) {
+  res.setHeader("Content-Type", "application/json");
   GetAbl(req, res);
 });
 
 //create a new ingredient
 router.post("/create", function (req, res) {
+  res.setHeader("Content-Type", "application/json");
   CreateAbl(req, res);
 });
 
 //update a certain ingredient by its ID
 router.put("/update/:id", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
   UpdateAbl(req, res);
 });
 
 //delete a certain ingredient by its ID
-router.get("/delete/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
   DeleteAbl(req, res);
 });
 
