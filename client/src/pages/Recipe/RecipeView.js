@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import StarRating from "../../components/Rating/Rating";
-// import EditRecipe from "../EditRecipe/EditRecipe";
 
 const RecipeView = ({ data }) => {
   const [count, setCount] = useState(parseInt(data.finalAmount));
@@ -13,7 +12,6 @@ const RecipeView = ({ data }) => {
     fetch(`/recipe/delete/${data.id}`, {
       method: "delete",
     });
-    window.location.href = "/";
   };
 
   const handleIncrement = () => {
@@ -109,9 +107,11 @@ const RecipeView = ({ data }) => {
               >
                 Zpět
               </Button>
-              <Button variant="danger" onClick={handleDelete}>
-                Odstranit recept
-              </Button>
+              <Link to="/">
+                <Button variant="danger" onClick={handleDelete}>
+                  Odstranit recept
+                </Button>
+              </Link>
             </Modal.Footer>
           </Modal>
           <Button

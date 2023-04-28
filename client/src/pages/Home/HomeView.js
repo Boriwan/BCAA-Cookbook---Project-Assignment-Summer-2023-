@@ -1,14 +1,16 @@
 import React from "react";
 import HeroSection from "../../components/Hero/HeroSection";
-import RecipeList from "../../components/RecipeList/RecipeList";
-import AllRecipes from "../../components/RecipeList/AllRecipes";
+import RecipeList from "../../components/RecipeList/RecipesByCategory";
+import BestRecipes from "../../components/RecipeList/BestRecipes";
 
 const HomeView = (props) => {
   return (
     <>
-      <HeroSection recipeList={props.recipeList} />
+      <HeroSection topRecipes={props.topRecipes} />
+      <BestRecipes topRecipes={props.topRecipes} />
       <RecipeList recipeList={props.recipeList} />
-      <AllRecipes recipeList={props.recipeList} />
+
+      {/* <AllRecipes recipeList={props.recipeList} /> */}
     </>
   );
 };

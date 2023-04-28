@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
+import { Link } from "react-router-dom";
 
 const AddRecipeForm = ({ data }) => {
   const [ingr, setIngr] = useState([]);
@@ -205,7 +206,6 @@ const AddRecipeForm = ({ data }) => {
                   placeholder="mnoství ingredience"
                   value={ingredient.amount}
                   onChange={(event) => handleAmountChange(event, index)}
-                  required
                 />
                 <Form.Control
                   type="text"
@@ -287,20 +287,12 @@ const AddRecipeForm = ({ data }) => {
           <p>Gratulujeme, recept byl úspěšně upraven!</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            onClick={() => {
-              window.location.href = "/";
-            }}
-          >
-            Domů
-          </Button>
-          <Button
-            onClick={() => {
-              window.location.href = `/recept/${data.id}`;
-            }}
-          >
-            Recept
-          </Button>
+          <Link to="/">
+            <Button>Domů</Button>
+          </Link>
+          <Link to={`/recept/${data.id}`}>
+            <Button>Recept</Button>
+          </Link>
         </Modal.Footer>
       </Modal>
     </>

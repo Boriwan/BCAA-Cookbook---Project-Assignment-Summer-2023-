@@ -7,7 +7,8 @@ const UpdateAbl = require("../abl/recipe-abl/update-abl");
 const UploadImgAbl = require("../abl/recipe-abl/upload-img-abl");
 const GetImgAbl = require("../abl/recipe-abl/get-img-abl");
 const RatingAbl = require("../abl/recipe-abl/rating-abl.js");
-
+const GetTopAbl = require("../abl/recipe-abl/get-top-abl.js");
+const FilterRecipesAbl = require("../abl/recipe-abl/filter-recipes-abl.js");
 // get recipe by its ID
 router.get("/get/:id", function (req, res) {
   GetAbl(req, res);
@@ -16,6 +17,14 @@ router.get("/get/:id", function (req, res) {
 // get recipe Image
 router.get("/image/:name", function (req, res) {
   GetImgAbl(req, res);
+});
+
+//get list of recipes
+router.get("/getTopRecipes", function (req, res) {
+  GetTopAbl(req, res);
+});
+router.get("/filterRecipes/:category", function (req, res) {
+  FilterRecipesAbl(req, res);
 });
 
 //create a new recipe

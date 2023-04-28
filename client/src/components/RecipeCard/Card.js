@@ -1,8 +1,17 @@
 import { React } from "react";
 import { BsClock } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import StarRating from "../Rating/Rating";
 
-const Card = ({ desc, img, name, id, prepLength }) => {
+const Card = ({
+  desc,
+  img,
+  name,
+  id,
+  prepLength,
+  ratingValue,
+  ratingCount,
+}) => {
   return (
     <div
       className="card m-2 "
@@ -18,6 +27,12 @@ const Card = ({ desc, img, name, id, prepLength }) => {
       <div className="card-body d-flex flex-column justify-content-between">
         <h5 className="card-title">{name}</h5>
         <p className="card-text">{desc}</p>
+        <StarRating
+          id={id}
+          ratingValue={ratingValue}
+          ratingCount={ratingCount}
+          ratingDisabled={true}
+        />
         <div className="d-flex justify-content-between">
           <div className="d-flex align-items-center">
             <BsClock className="mx-1" /> {prepLength} minut

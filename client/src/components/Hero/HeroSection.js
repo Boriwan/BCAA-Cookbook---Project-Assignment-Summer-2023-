@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
-import topRecipes from "./topRecipes.json";
 
-const HeroSection = ({ recipeList }) => {
+const HeroSection = ({ topRecipes }) => {
+  const topFour = topRecipes.slice(0, 4);
   return (
     <div className="hero-section">
       <Carousel>
-        {topRecipes.map((recipe, index) => {
+        {topFour.map((recipe, index) => {
           return (
-            <Carousel.Item style={{ maxHeight: "60vh" }} key={recipe.name}>
+            <Carousel.Item style={{ maxHeight: "60vh" }} key={recipe.id}>
               <img
                 className="d-block w-100"
                 src={`http://localhost:8000/recipe/image/${recipe.img}`}

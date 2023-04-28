@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 
-const StarRating = ({ id, ratingValue, ratingCount }) => {
+const StarRating = ({ id, ratingValue, ratingCount, ratingDisabled }) => {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   let ratingAmount = 0;
   ratingValue.map((rating) => (ratingAmount += rating));
   const avgRating = ratingAmount / ratingCount;
-  console.log(avgRating);
+
   const handleClick = async (value) => {
     // Send rating value to backend
     const response = await fetch(`/recipe/addRating/${id}`, {
@@ -41,6 +41,7 @@ const StarRating = ({ id, ratingValue, ratingCount }) => {
                 handleClick(starValue);
               }}
               style={{ display: "none" }}
+              disabled={ratingDisabled} // disable radio input when ratingDisabled is true
             />
             <FaStar
               size={24}
@@ -56,19 +57,22 @@ const StarRating = ({ id, ratingValue, ratingCount }) => {
                 border:
                   hover && starValue <= hover ? "1px solid #ffc102" : "none",
               }}
-              onMouseEnter={() => setHover(starValue)}
-              onMouseLeave={() => setHover(null)}
+              onMouseEnter={() => !ratingDisabled && setHover(starValue)} // only set hover if rating is not disabled
+              onMouseLeave={() => !ratingDisabled && setHover(null)} // only clear hover if rating is not disabled
             />
           </label>
         );
       })}
-
-      {avgRating && (
+      {!ratingDisabled && (
         <div>
-          Průměrné: {avgRating.toFixed(1)} ze {ratingCount} lidí
+          {avgRating && (
+            <div>
+              Průměrné: {avgRating.toFixed(1)} ze {ratingCount} lidí
+            </div>
+          )}
+          {!avgRating && <div>Buď první, kdo ohodnotí recept!</div>}
         </div>
       )}
-      {!avgRating && <div>Buď první, kdo ohodnotí recept!</div>}
     </div>
   );
 };

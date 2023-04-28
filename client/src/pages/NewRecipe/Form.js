@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
+import { Link } from "react-router-dom";
 
 const AddRecipeForm = () => {
   const [showModal, setShowModal] = useState(false);
   const [ingr, setIngr] = useState([]);
+  let [newData, setNewData] = useState(null);
   const [cat, setCat] = useState([]);
+
   useEffect(() => {
     fetch("/ingredients")
       .then((response) => response.json())
@@ -52,12 +55,13 @@ const AddRecipeForm = () => {
       alert("Please select an option");
       return;
     }
+
     fetch("/recipe/create", {
       method: "POST",
       body: formData,
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => setNewData(data))
       .catch((error) => console.error(error));
     setShowModal(true);
   };
@@ -258,13 +262,14 @@ const AddRecipeForm = () => {
           <p>Gratulujeme, recept byl úspěšně přidán!</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            onClick={() => {
-              window.location.href = "/";
-            }}
-          >
-            Domů
-          </Button>
+          <Link to="/">
+            <Button>Domů</Button>
+          </Link>
+          {newData && (
+            <Link to={`/recept/${newData.id}`}>
+              <Button>Recept</Button>
+            </Link>
+          )}
         </Modal.Footer>
       </Modal>
     </>

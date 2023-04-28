@@ -1,32 +1,32 @@
 import Card from "./Card";
+import React, { useState, useEffect } from "react";
+import DataStateResolver from "../../components/common/DataStateResolver";
+import RecipeCategoryView from "./RecipeCategoryView";
 
-const RecipeCard = (props) => {
-  const recipeList = props.data.map((data) => data);
-  const sortedByCategory = recipeList.filter((item) => {
-    return item.categories === props.category;
-  });
+const RecipeCard = ({ category, title, description }) => {
+  const [callGetRecipe, setCallGetRecipe] = useState({ state: "pending" });
+
+  useEffect(() => {
+    fetch(`recipe/filterRecipes/${category}`).then(async (response) => {
+      const responseJson = await response.json();
+      if (response.status >= 400) {
+        setCallGetRecipe({ state: "error", error: responseJson });
+      } else {
+        setCallGetRecipe({ state: "ready", data: responseJson });
+      }
+    });
+  }, [category]);
 
   return (
-    <section className="m-2" key={props.title}>
-      <div className="title-box">
-        <h2 className="text-primary">{props.title}</h2>
-        <p>{props.description}</p>
-      </div>
-      <div className="d-flex flex-shrink-0" style={{ overflowX: "auto" }}>
-        {sortedByCategory.map((recipe) => {
-          return (
-            <Card
-              desc={recipe.desc}
-              img={recipe.img}
-              name={recipe.name}
-              id={recipe.id}
-              prepLength={recipe.prepLength}
-              key={recipe.id}
-            />
-          );
-        })}
-      </div>
-    </section>
+    <>
+      <DataStateResolver data={callGetRecipe}>
+        <RecipeCategoryView
+          recipeList={callGetRecipe}
+          title={title}
+          description={description}
+        />
+      </DataStateResolver>
+    </>
   );
 };
 

@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Logo from "../../img/logo.svg";
 import "./NavbarComponent.css";
 
@@ -29,7 +28,7 @@ function NavbarComponent() {
               className="me-auto my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
             >
-              <Nav.Link href="/">Všechny recepty</Nav.Link>
+              <Nav.Link href="/vsechny-recepty">Všechny recepty</Nav.Link>
               <Nav.Link href="/kategorie">Kategorie</Nav.Link>
               <Nav.Link href="/ingredience">Ingredience</Nav.Link>
             </Nav>

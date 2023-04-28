@@ -1,28 +1,44 @@
-import React from "react";
-import Card from "../RecipeCard/Card";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import AllRecipeView from "./AllRecipeView";
+import DataStateResolver from "../../components/common/DataStateResolver";
 
-const AllRecipes = ({ recipeList }) => {
+const Recipe = () => {
+  let { id } = useParams();
+  const [callGetRecipe, setCallGetRecipe] = useState({ state: "pending" });
+  const [callGetCategories, setCallGetCategories] = useState({
+    state: "pending",
+  });
+
+  useEffect(() => {
+    fetch(`recipes`).then(async (response) => {
+      const responseJson = await response.json();
+      if (response.status >= 400) {
+        setCallGetRecipe({ state: "error", error: responseJson });
+      } else {
+        setCallGetRecipe({ state: "ready", data: responseJson });
+      }
+    });
+  }, [id]);
+  useEffect(() => {
+    fetch(`categories`).then(async (response) => {
+      const responseJson = await response.json();
+      if (response.status >= 400) {
+        setCallGetCategories({ state: "error", error: responseJson });
+      } else {
+        setCallGetCategories({ state: "ready", data: responseJson });
+      }
+    });
+  }, [id]);
+
   return (
-    <main>
-      <h2 style={{ paddingTop: "15px" }} className="max-width text-primary h1">
-        Všechny recepty
-      </h2>
-      <div className="d-flex flex-wrap max-width">
-        {recipeList.map((recipe) => {
-          return (
-            <Card
-              desc={recipe.desc}
-              img={recipe.img}
-              name={recipe.name}
-              id={recipe.id}
-              prepLength={recipe.prepLength}
-              key={recipe.id}
-            />
-          );
-        })}
-      </div>
-    </main>
+    <DataStateResolver data={callGetRecipe} categories={callGetCategories.data}>
+      <AllRecipeView
+        data={callGetRecipe.data}
+        categories={callGetCategories.data}
+      />
+    </DataStateResolver>
   );
 };
 
-export default AllRecipes;
+export default Recipe;

@@ -7,6 +7,7 @@ import App from "./App";
 import NewRecipe from "./pages/NewRecipe/NewRecipe";
 import EditRecipe from "./pages/EditRecipe/EditRecipe";
 import Category from "./pages/Catergory/Category";
+import AllRecipes from "./components/RecipeList/AllRecipes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,6 +18,7 @@ root.render(
           <Route path="/pridat-recept" element={<NewRecipe />} />
           <Route path="/kategorie" element={<Category />} />
           <Route path="/pridat-recept" element={<NewRecipe />} />
+          <Route path="/vsechny-recepty" element={<AllRecipes />} />
           <Route path="" element={<Home />} />
           <Route path="recept/:id" element={<Recipe />} />
           <Route path="upravit-recept/:id" element={<EditRecipe />} />
