@@ -1,12 +1,45 @@
+import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { Typeahead } from "react-bootstrap-typeahead";
 import Logo from "../../img/logo.svg";
 import "./NavbarComponent.css";
 
 function NavbarComponent() {
+  const [searchValue, setSearchValue] = useState([]);
+  const [recipes, setRecipes] = useState([]);
+  const [searchStarted, setSearchStarted] = useState(false);
+
+  useEffect(() => {
+    if (searchStarted) {
+      fetch("http://localhost:3000/recipes").then(async (response) => {
+        const responseJson = await response.json();
+        if (response.status >= 400) {
+          console.error(responseJson);
+        } else {
+          setRecipes(responseJson);
+        }
+      });
+    }
+  }, [searchStarted]);
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    if (searchValue) {
+      window.location.href = `/recept/${searchValue[0].id}`;
+    } else {
+      console.error(`Recipe with name "${searchValue}" not found`);
+    }
+  };
+
+  const handleSearchInputChange = (input) => {
+    setSearchStarted(true);
+    setSearchValue(input);
+  };
+
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid className="navbar-flex">
@@ -42,25 +75,26 @@ function NavbarComponent() {
             />
           </Navbar.Brand>
           <div className="d-lg-flex ">
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
+            <Form className="d-flex" onSubmit={handleSearchSubmit}>
+              <Typeahead
+                id="recipe-search"
+                labelKey="name"
+                options={recipes}
+                placeholder="Hledejte recepty"
+                onChange={setSearchValue}
+                searchText={searchValue}
+                onInputChange={handleSearchInputChange}
               />
-              <Button variant="outline-success">Search</Button>
+              <Button
+                type="submit"
+                variant="outline-success"
+                className="ms-lg-1"
+              >
+                Hledat
+              </Button>
             </Form>
 
-            <Button
-              href="/pridat-recept"
-              // style={{
-              //   float: "right",
-              //   right: 0,
-              //   marginRight: "50px",
-              // }}
-              className="btn btn-success ms-lg-2"
-            >
+            <Button href="/pridat-recept" className="btn btn-success ms-lg-2">
               Přidat recept
             </Button>
           </div>

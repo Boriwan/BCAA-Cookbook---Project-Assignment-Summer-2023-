@@ -33,10 +33,12 @@ const Recipe = () => {
 
   return (
     <DataStateResolver data={callGetRecipe} categories={callGetCategories.data}>
-      <AllRecipeView
-        data={callGetRecipe.data}
-        categories={callGetCategories.data}
-      />
+      {callGetCategories.data && callGetRecipe.data && (
+        <AllRecipeView
+          data={callGetRecipe.data}
+          categories={callGetCategories.data}
+        />
+      )}
     </DataStateResolver>
   );
 };

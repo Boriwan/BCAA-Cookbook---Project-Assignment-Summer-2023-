@@ -14,11 +14,11 @@ const RecipeList = (props) => {
         title="Lasagne"
         description="Toto jsou ty nejlepší recepty, co jsou lasagne"
       />
-      <RecipeCategory
+      {/* <RecipeCategory
         category="pasta"
         title="Jiné"
         description="Toto jsou ty nejlepší recepty, co obsahují těstoviny"
-      />
+      /> */}
     </section>
   );
 };

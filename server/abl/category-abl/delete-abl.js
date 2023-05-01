@@ -12,40 +12,69 @@ let recipeDao = new RecipeDao(
 
 function DeleteAbl(req, res) {
   const categoryId = req.params.id;
+
   const category = categoryDao.get(categoryId);
-
-  if (!category) {
-    res.status(400).json({ error: "Category does not exist" });
-    return;
-  }
-
-  // Check if there are any recipes in the category being deleted
-  const recipesInCategory = recipeDao
+  const categoryName = categoryDao
     .list()
-    .filter((recipe) => recipe.category === categoryId);
+    .find((category) => category.id === categoryId)?.name;
 
-  if (recipesInCategory.length > 0) {
-    // Move the recipes to the "uncategorized" category
-    const uncategorizedCategory = categoryDao
-      .list()
-      .find((cat) => cat.name.toLowerCase() === "uncategorized");
-    if (!uncategorizedCategory) {
-      // Create an "uncategorized" category if it doesn't exist
-      const newCategoryId = categoryDao.add({ name: "Uncategorized" });
-      uncategorizedCategory = categoryDao.get(newCategoryId);
-    }
+  const hasRecipesInCategory = recipeDao.list().some((recipe) => {
+    return recipe.categories && recipe.categories.includes(categoryName);
+  });
 
-    recipesInCategory.forEach((recipe) => {
-      recipe.category = uncategorizedCategory.id;
-      recipeDao.update(recipe);
-    });
+  if (hasRecipesInCategory) {
+    throw new Error("Cannot delete category with associated recipes.");
+    res.json(`recipe canot be deleted`);
+  } else {
+    categoryDao.delete(category);
+    res.json(
+      `Category with id ${categoryId} has been deleted and moved to the "uncategorized" category`
+    );
   }
 
-  // Delete the category
-  categoryDao.delete(category);
-  res.json(
-    `Category with id ${categoryId} has been deleted and moved to the "uncategorized" category`
-  );
+  // if (hasRecipesInCategory) {
+  //   res.json(`Category wasn't deleted`);
+  //   // categoryDao.delete(category);
+  //   // res.json(
+  //   //   `Category with id ${categoryId} has been deleted and moved to the "uncategorized" category`
+  //   // );
+  // } else {
+  //   res.json(`ahoj`);
+  //   //
+  // }
+
+  // if (!category) {
+  //   res.status(400).json({ error: "Category does not exist" });
+  //   return;
+  // }
+
+  // // Check if there are any recipes in the category being deleted
+  // const recipesInCategory = recipeDao
+  //   .list()
+  //   .filter((recipe) => recipe.category === categoryId);
+
+  // if (recipesInCategory.length > 0) {
+  //   // Move the recipes to the "uncategorized" category
+  //   const uncategorizedCategory = categoryDao
+  //     .list()
+  //     .find((cat) => cat.name.toLowerCase() === "uncategorized");
+  //   if (!uncategorizedCategory) {
+  //     // Create an "uncategorized" category if it doesn't exist
+  //     const newCategoryId = categoryDao.add({ name: "Uncategorized" });
+  //     uncategorizedCategory = categoryDao.get(newCategoryId);
+  //   }
+
+  //   recipesInCategory.forEach((recipe) => {
+  //     recipe.category = uncategorizedCategory.id;
+  //     recipeDao.update(recipe);
+  //   });
+  // }
+
+  // // Delete the category
+  // categoryDao.delete(category);
+  // res.json(
+  //   `Category with id ${categoryId} has been deleted and moved to the "uncategorized" category`
+  // );
 }
 
 module.exports = DeleteAbl;

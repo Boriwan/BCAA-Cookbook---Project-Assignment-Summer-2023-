@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import CategoryCard from "./IngredientCard";
+import IngredientCard from "./IngredientCard";
+
 const IngredientsView = ({ ingredientsList }) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const [measurement, setMeasurement] = useState("");
+  const [filteredIngredients, setFilteredIngredients] =
+    useState(ingredientsList);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -26,16 +29,34 @@ const IngredientsView = ({ ingredientsList }) => {
     handleClose();
     window.location.reload();
   };
+
+  const handleFilter = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+    const filtered = ingredientsList.filter((ingredient) =>
+      ingredient.name.toLowerCase().includes(searchTerm)
+    );
+    setFilteredIngredients(filtered);
+  };
+
   return (
     <main className="max-width">
       <h1 className=" text-primary h1">Všechny Ingredience</h1>
-      <button
-        type="button"
-        className="btn btn-primary ms-3"
-        onClick={handleShow}
-      >
-        Přidat ingredienci
-      </button>
+      <div className=" mx-5 mb-2">
+        <button
+          type="button"
+          className="btn btn-primary mb-2"
+          onClick={handleShow}
+        >
+          Přidat ingredienci
+        </button>
+        <input
+          type="text"
+          className="form-control me-2"
+          placeholder="Filtrovat podle názvu"
+          onChange={handleFilter}
+          style={{ maxWidth: "400px" }}
+        />
+      </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Přidat novou ingredienci</Modal.Title>
@@ -67,15 +88,15 @@ const IngredientsView = ({ ingredientsList }) => {
         </Modal.Body>
       </Modal>
       <div className="max-width">
-        <div className="card m-5">
+        <div className="card mx-5">
           <ul className="list-group list-group-flush">
-            {ingredientsList.map((category) => {
+            {filteredIngredients.map((ingredient) => {
               return (
-                <CategoryCard
-                  name={category.name}
-                  measurement={category.measurement}
-                  id={category.id}
-                  key={category.id}
+                <IngredientCard
+                  name={ingredient.name}
+                  measurement={ingredient.measurement}
+                  id={ingredient.id}
+                  key={ingredient.id}
                 />
               );
             })}

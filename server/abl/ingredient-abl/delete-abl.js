@@ -7,13 +7,33 @@ let ingredientDao = new IngredientDao(
 );
 
 let recipeDao = new RecipeDao(
-  path.join(__dirname, "..", "..", "storage", "ingredients.json")
+  path.join(__dirname, "..", "..", "storage", "recipes.json")
 );
 
 function DeleteAbl(req, res) {
   const ingredientId = req.params.id;
   const ingredient = ingredientDao.get(ingredientId);
-  console.log(ingredientId);
+
+  const ingredientName = ingredientDao
+    .list()
+    .find((ingredient) => ingredient.id === ingredientId)?.name;
+
+  const hasRecipesInIngredient = recipeDao.list().some((recipe) => {
+    return recipe.ingredients.some((ingredient) => {
+      return ingredient.name === ingredientName;
+    });
+  });
+
+  // console.log(hasRecipesInIngredient);
+
+  if (hasRecipesInIngredient) {
+    throw new Error("Cannot delete category with associated recipes.");
+  } else {
+    ingredientDao.delete(ingredient);
+    res.json(
+      `Category with id ${ingredientId} has been deleted and moved to the "uncategorized" category`
+    );
+  }
   // if (!category) {
   //   res.status(400).json({ error: "Category does not exist" });
   //   return;
@@ -37,9 +57,9 @@ function DeleteAbl(req, res) {
   //     recipeDao.update(recipe);
   //   });
   // }
-  ingredientDao.delete(ingredient);
-  res.json(
-    `Ingredient with id ${ingredientId} has been deleted and moved to the "uncategorized" category`
-  );
+  // ingredientDao.delete(ingredient);
+  // res.json(
+  //   `Ingredient with id ${ingredientId} has been deleted and moved to the "uncategorized" category`
+  // );
 }
 module.exports = DeleteAbl;

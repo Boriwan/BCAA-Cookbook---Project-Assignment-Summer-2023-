@@ -70,7 +70,7 @@ const RecipeView = ({ data }) => {
         <h1>{data.name}</h1>
         <div className="d-flex align-items-center mb-2">
           <p className="m-0">{data.desc}</p>{" "}
-          {categoriList && (
+          {categoriList && categoriList.length > 0 && (
             <div className="btn btn-outline-primary ms-2">{categoriList}</div>
           )}
         </div>

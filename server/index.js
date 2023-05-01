@@ -18,18 +18,21 @@ const port = 8000;
 // returns a list of all recipes
 app.get("/recipes", function (req, res) {
   if (!res.headersSent) {
-    res.json(GetAllRecipesAbl(req, res));
+    const recipes = GetAllRecipesAbl(req, res);
+    res.json(recipes);
   }
 });
 
 // returns a list of all categories
 app.get("/categories", function (req, res) {
-  res.json(GetAllCategoriesAbl(req, res));
+  const categories = GetAllCategoriesAbl(req, res);
+  res.json(categories);
 });
 
 // returns a list of all ingredients
 app.get("/ingredients", function (req, res) {
-  res.json(GetAllIngredientsAbl(req, res));
+  const ingredients = GetAllIngredientsAbl(req, res);
+  res.json(ingredients);
 });
 
 // controllers
