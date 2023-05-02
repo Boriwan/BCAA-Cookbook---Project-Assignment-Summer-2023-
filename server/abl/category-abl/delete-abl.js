@@ -24,7 +24,7 @@ function DeleteAbl(req, res) {
 
   if (hasRecipesInCategory) {
     throw new Error("Cannot delete category with associated recipes.");
-    res.json(`recipe canot be deleted`);
+    res.json(`recipe cannot be deleted`);
   } else {
     categoryDao.delete(category);
     res.json(
