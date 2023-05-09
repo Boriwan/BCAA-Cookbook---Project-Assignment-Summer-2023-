@@ -15,7 +15,7 @@ function NavbarComponent() {
 
   useEffect(() => {
     if (searchStarted) {
-      fetch("http://localhost:3000/recipes").then(async (response) => {
+      fetch("http://localhost:3000/recipe/list").then(async (response) => {
         const responseJson = await response.json();
         if (response.status >= 400) {
           console.error(responseJson);

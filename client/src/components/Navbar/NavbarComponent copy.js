@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 function NavbarComponent() {
   const [CallGetRecipe, setCallGetRecipe] = useState();
   useEffect(() => {
-    fetch(`recipes`).then(async (response) => {
+    fetch(`recipe/list`).then(async (response) => {
       const responseJson = await response.json();
       if (response.status >= 400) {
         setCallGetRecipe({ state: "error", error: responseJson });
