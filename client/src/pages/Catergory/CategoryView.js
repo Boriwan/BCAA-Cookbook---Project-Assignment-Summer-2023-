@@ -33,7 +33,7 @@ const CategoryView = ({ data }) => {
       <h1 className=" text-primary h1">Všechny kategorie</h1>
       <button
         type="button"
-        className="btn btn-primary ms-3"
+        className="btn btn-secondary ms-3"
         style={{ color: "#FFFFFF" }}
         onClick={handleShow}
       >

@@ -44,7 +44,7 @@ const IngredientsView = ({ ingredientsList }) => {
       <div className=" mx-5 mb-2">
         <button
           type="button"
-          className="btn btn-primary mb-2"
+          className="btn btn-secondary mb-2"
           onClick={handleShow}
           style={{ color: "#FFFFFF" }}
         >
