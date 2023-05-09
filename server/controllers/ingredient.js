@@ -2,12 +2,19 @@ var express = require("express");
 var router = express.Router();
 const CreateAbl = require("../abl/ingredient-abl/create-abl");
 const GetAbl = require("../abl/ingredient-abl/get-abl");
+const ListAll = require("../abl/ingredient-abl/list-all-abl");
 const DeleteAbl = require("../abl/ingredient-abl/delete-abl");
 const UpdateAbl = require("../abl/ingredient-abl/update-abl");
 
 // get ingredient by its ID
 router.get("/get/:id", function (req, res) {
   GetAbl(req, res);
+});
+
+// returns a list of all recipes
+router.get("/list", function (req, res) {
+  res.setHeader("Content-Type", "application/json");
+  ListAll(req, res);
 });
 
 //create a new ingredient

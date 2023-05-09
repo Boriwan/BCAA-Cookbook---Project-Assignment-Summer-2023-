@@ -6,10 +6,10 @@ let dao = new IngredientDao(
   path.join(__dirname, "..", "..", "storage", "ingredients.json")
 );
 
-function GetAllAbl(req, res) {
+function ListAllAbl(req, res) {
   const ingredient = dao.list();
 
   res.json(ingredient);
 }
 
-module.exports = GetAllAbl;
+module.exports = ListAllAbl;

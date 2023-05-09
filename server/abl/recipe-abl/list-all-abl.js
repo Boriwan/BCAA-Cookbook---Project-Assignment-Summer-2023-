@@ -6,11 +6,11 @@ let dao = new RecipeDao(
   path.join(__dirname, "..", "..", "storage", "recipes.json")
 );
 
-function GetAllAbl(req, res) {
+function ListAllAbl(req, res) {
   const recipe = dao.list();
 
 
   res.json(recipe);
 }
 
-module.exports = GetAllAbl;
+module.exports = ListAllAbl;

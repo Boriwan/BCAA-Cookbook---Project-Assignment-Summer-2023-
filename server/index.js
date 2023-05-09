@@ -1,9 +1,9 @@
 const RecipeController = require("./controllers/recipe");
 const CategoryController = require("./controllers/category");
 const IngredientController = require("./controllers/ingredient");
-const GetAllRecipesAbl = require("./abl/recipe-abl/getAll-abl");
-const GetAllCategoriesAbl = require("./abl/category-abl/getAll-abl");
-const GetAllIngredientsAbl = require("./abl/ingredient-abl/getAll-abl");
+const GetAllRecipesAbl = require("./abl/recipe-abl/list-all-abl");
+const GetAllCategoriesAbl = require("./abl/category-abl/list-all-abl");
+const GetAllIngredientsAbl = require("./abl/ingredient-abl/list-all-abl");
 var express = require("express");
 var app = express();
 const fileUpload = require("express-fileupload");
@@ -14,26 +14,6 @@ app.use(fileUpload());
 
 //default port
 const port = 8000;
-
-// returns a list of all recipes
-app.get("/recipes", function (req, res) {
-  if (!res.headersSent) {
-    const recipes = GetAllRecipesAbl(req, res);
-    res.json(recipes);
-  }
-});
-
-// returns a list of all categories
-app.get("/categories", function (req, res) {
-  const categories = GetAllCategoriesAbl(req, res);
-  res.json(categories);
-});
-
-// returns a list of all ingredients
-app.get("/ingredients", function (req, res) {
-  const ingredients = GetAllIngredientsAbl(req, res);
-  res.json(ingredients);
-});
 
 // controllers
 app.use("/recipe", RecipeController);

@@ -6,11 +6,11 @@ let dao = new CategoryDao(
   path.join(__dirname, "..", "..", "storage", "categories.json")
 );
 
-function GetAllAbl(req, res) {
+function ListAllAbl(req, res) {
   const category = dao.list();
 
 
   res.json(category);
 }
 
-module.exports = GetAllAbl;
+module.exports = ListAllAbl;
