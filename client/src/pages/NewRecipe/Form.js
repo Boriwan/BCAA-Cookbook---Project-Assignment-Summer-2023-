@@ -10,13 +10,13 @@ const AddRecipeForm = () => {
   const [cat, setCat] = useState([]);
 
   useEffect(() => {
-    fetch("/ingredients")
+    fetch("/ingredient/list")
       .then((response) => response.json())
       .then((ingredients) => setIngr(ingredients))
       .catch((error) => console.error(error));
   }, []);
   useEffect(() => {
-    fetch("/categories")
+    fetch("/category/list")
       .then((response) => response.json())
       .then((categories) => setCat(categories))
       .catch((error) => console.error(error));
@@ -147,7 +147,7 @@ const AddRecipeForm = () => {
             <div key={index} className="input-group mb-3">
               <span className="input-group-text">{index + 1}.</span>
               <Form.Control
-                placeholder="popište postup přípravy receptu"
+                placeholder="Popište postup přípravy receptu"
                 type="text"
                 value={step}
                 onChange={(event) => handleMethodChange(event, index)}
@@ -187,7 +187,7 @@ const AddRecipeForm = () => {
 
                 <Form.Control
                   type="text"
-                  placeholder="mnoství ingredience"
+                  placeholder="množství ingredience"
                   value={ingredient.amount}
                   onChange={(event) => handleAmountChange(event, index)}
                   required
@@ -233,7 +233,7 @@ const AddRecipeForm = () => {
           <Form.Label>Počet porcí</Form.Label>
           <Form.Control
             type="number"
-            placeholder="Napište čístlicí počet porcí"
+            placeholder="Napište čísticí počet porcí"
             min="1"
             required
           />
@@ -246,20 +246,20 @@ const AddRecipeForm = () => {
             multiple
             onChange={setMultiSelections}
             options={cat}
-            placeholder="Vyberte ze seznamu categorie..."
+            placeholder="Vyberte ze seznamu kategorie..."
             selected={multiSelections}
           />
         </Form.Group>
         <Button variant="primary" className="mt-2" type="submit">
-          Odeslat recept
+          Vytvořit recept
         </Button>
       </Form>
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Recep byl vytvořen</Modal.Title>
+          <Modal.Title>Recept byl vytvořen</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Gratulujeme, recept byl úspěšně přidán!</p>
+          <p>Gratulujeme, recept byl úspěšně vytvořen!</p>
         </Modal.Body>
         <Modal.Footer>
           <Link to="/">

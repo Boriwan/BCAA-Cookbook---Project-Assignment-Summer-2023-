@@ -156,7 +156,7 @@ const RecipeView = ({ data }) => {
           </ol>
         </section>
         <section className="ingredients ms-2">
-          <h2>Suroviny:</h2>
+          <h2>Ingredience:</h2>
           <ul className="list-group" style={{ width: "250px" }}>
             {data.ingredients.map((data) => {
               return (

@@ -6,7 +6,7 @@ const Category = () => {
   const [callGetCategory, setCallGetCategory] = useState({ state: "pending" });
 
   useEffect(() => {
-    fetch(`/categories`).then(async (response) => {
+    fetch(`/category/list`).then(async (response) => {
       const responseJson = await response.json();
       if (response.status >= 400) {
         setCallGetCategory({ state: "error", error: responseJson });

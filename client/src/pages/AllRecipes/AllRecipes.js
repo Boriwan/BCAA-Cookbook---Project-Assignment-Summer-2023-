@@ -11,7 +11,7 @@ const Recipe = () => {
   });
 
   useEffect(() => {
-    fetch(`recipes`).then(async (response) => {
+    fetch(`recipe/list`).then(async (response) => {
       const responseJson = await response.json();
       if (response.status >= 400) {
         setCallGetRecipe({ state: "error", error: responseJson });
@@ -21,7 +21,7 @@ const Recipe = () => {
     });
   }, [id]);
   useEffect(() => {
-    fetch(`categories`).then(async (response) => {
+    fetch(`category/list`).then(async (response) => {
       const responseJson = await response.json();
       if (response.status >= 400) {
         setCallGetCategories({ state: "error", error: responseJson });

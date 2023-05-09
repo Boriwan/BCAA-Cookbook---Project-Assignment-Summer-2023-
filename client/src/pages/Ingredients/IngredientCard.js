@@ -52,11 +52,11 @@ const IngredientCard = ({ name, measurement, id }) => {
       </div>
       <div>
         <button className="btn btn-primary me-2" onClick={handleShowDelete}>
-          Vymazat ingredienci
+          Odstranit ingredienci
         </button>
         <Modal show={showDelete} onHide={handleCloseDelete}>
           <Modal.Header closeButton>
-            <Modal.Title>Potvrzení vymazání</Modal.Title>
+            <Modal.Title>Potvrzení odstranění</Modal.Title>
           </Modal.Header>
           <Modal.Body>Opravdu chcete tuto ingredienci odstranit?</Modal.Body>
           <Modal.Footer>
@@ -64,16 +64,16 @@ const IngredientCard = ({ name, measurement, id }) => {
               Zrušit
             </Button>
             <Button variant="danger" onClick={handleDelete}>
-              Vymazat
+              Odstranit
             </Button>
           </Modal.Footer>
         </Modal>
         <button className="btn btn-secondary" onClick={handleShow}>
-          Spravovat ingredienci
+          Upravit ingredienci
         </button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Upravit kategorii</Modal.Title>
+            <Modal.Title>Upravit ingredienci</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>

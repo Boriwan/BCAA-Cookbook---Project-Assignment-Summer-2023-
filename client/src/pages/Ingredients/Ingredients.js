@@ -8,7 +8,7 @@ const Ingredients = () => {
   });
 
   useEffect(() => {
-    fetch(`/ingredients`).then(async (response) => {
+    fetch(`/ingredient/list`).then(async (response) => {
       const responseJson = await response.json();
       if (response.status >= 400) {
         setCallListIngredients({ state: "error", error: responseJson });

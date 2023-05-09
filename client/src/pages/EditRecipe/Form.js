@@ -8,13 +8,13 @@ const AddRecipeForm = ({ data }) => {
   const [cat, setCat] = useState([]);
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
-    fetch("/ingredients")
+    fetch("/ingredient/list")
       .then((response) => response.json())
       .then((ingredients) => setIngr(ingredients))
       .catch((error) => console.error(error));
   }, []);
   useEffect(() => {
-    fetch("/categories")
+    fetch("/category/list")
       .then((response) => response.json())
       .then((categories) => setCat(categories))
       .catch((error) => console.error(error));
@@ -203,7 +203,7 @@ const AddRecipeForm = ({ data }) => {
 
                 <Form.Control
                   type="text"
-                  placeholder="mnoství ingredience"
+                  placeholder="množství ingredience"
                   value={ingredient.amount}
                   onChange={(event) => handleAmountChange(event, index)}
                 />
@@ -257,7 +257,7 @@ const AddRecipeForm = ({ data }) => {
           <Form.Label>Počet porcí</Form.Label>
           <Form.Control
             type="number"
-            placeholder="Napište čístlicí počet porcí"
+            placeholder="Napište číslicí počet porcí"
             min="1"
             ref={finalAmountRef}
             required
@@ -272,7 +272,7 @@ const AddRecipeForm = ({ data }) => {
             multiple
             onChange={setMultiSelections}
             options={cat}
-            placeholder="Vyberte ze seznamu categorie..."
+            placeholder="Vyberte ze seznamu kategorie..."
           />
         </Form.Group>
         <Button variant="primary" className="mt-2" type="submit">
@@ -281,7 +281,7 @@ const AddRecipeForm = ({ data }) => {
       </Form>
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Recep byl úspěšně upraven</Modal.Title>
+          <Modal.Title>Recept byl úspěšně upraven</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>Gratulujeme, recept byl úspěšně upraven!</p>
