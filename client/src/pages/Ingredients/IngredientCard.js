@@ -51,7 +51,11 @@ const IngredientCard = ({ name, measurement, id }) => {
         </span>
       </div>
       <div>
-        <button className="btn btn-primary me-2" onClick={handleShowDelete}>
+        <button
+          className="btn btn-primary me-2"
+          style={{ color: "#FFFFFF" }}
+          onClick={handleShowDelete}
+        >
           Odstranit ingredienci
         </button>
         <Modal show={showDelete} onHide={handleCloseDelete}>
@@ -60,15 +64,27 @@ const IngredientCard = ({ name, measurement, id }) => {
           </Modal.Header>
           <Modal.Body>Opravdu chcete tuto ingredienci odstranit?</Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseDelete}>
+            <Button
+              variant="secondary"
+              style={{ color: "#FFFFFF" }}
+              onClick={handleCloseDelete}
+            >
               Zrušit
             </Button>
-            <Button variant="danger" onClick={handleDelete}>
+            <Button
+              variant="danger"
+              style={{ color: "#FFFFFF" }}
+              onClick={handleDelete}
+            >
               Odstranit
             </Button>
           </Modal.Footer>
         </Modal>
-        <button className="btn btn-secondary" onClick={handleShow}>
+        <button
+          className="btn btn-secondary"
+          style={{ color: "#FFFFFF" }}
+          onClick={handleShow}
+        >
           Upravit ingredienci
         </button>
         <Modal show={show} onHide={handleClose}>
@@ -96,10 +112,18 @@ const IngredientCard = ({ name, measurement, id }) => {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button
+              variant="primary"
+              style={{ color: "#FFFFFF" }}
+              onClick={handleClose}
+            >
               Zavřít
             </Button>
-            <Button variant="primary" onClick={handleEdit}>
+            <Button
+              variant="secondary"
+              style={{ color: "#FFFFFF" }}
+              onClick={handleEdit}
+            >
               Uložit změny
             </Button>
           </Modal.Footer>

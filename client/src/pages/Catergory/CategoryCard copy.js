@@ -93,10 +93,18 @@ const CategoryCard = ({ name, desc, id }) => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button
+            variant="secondary"
+            style={{ color: "#FFFFFF" }}
+            onClick={handleClose}
+          >
             Zavřít
           </Button>
-          <Button variant="primary" onClick={handleEdit}>
+          <Button
+            variant="primary"
+            style={{ color: "#FFFFFF" }}
+            onClick={handleEdit}
+          >
             Uložit změny
           </Button>
         </Modal.Footer>

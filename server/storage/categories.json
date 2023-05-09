@@ -1,1 +1,27 @@
-[{"name":"Všechny recepty","desc":"Zde se ukáží všechny recepty","recipes":[],"id":"29e0bfc267bg5177"},{"name":"spagety","desc":"tato kategorie má v sobě špagety","recipes":[],"id":"29e0bfc267b35177"},{"name":"lasagne","desc":"jídla co jsou lasagne","recipes":[],"id":"c9e341efb53fb30b"},{"name":"testoviny","desc":"jídla s Těstovinami","recipes":[],"id":"c9e341eob53fb30b"},{"name":"Pene","desc":"jídla s Pene","id":"003a7e1347751f44"}]
+[
+  {
+    "name": "Všechny recepty",
+    "desc": "Zde se ukáží všechny recepty",
+    "recipes": [],
+    "id": "29e0bfc267bg5177"
+  },
+  {
+    "name": "Špagety",
+    "desc": "Tato kategorie má v sobě špagety",
+    "recipes": ["79203306065af45a"],
+    "id": "29e0bfc267b35177"
+  },
+  {
+    "name": "Lasagne",
+    "desc": "Jídla, co jsou lasagne",
+    "recipes": [],
+    "id": "c9e341efb53fb30b"
+  },
+  {
+    "name": "Těstoviny",
+    "desc": "jídla s těstovinami",
+    "recipes": [],
+    "id": "c9e341eob53fb30b"
+  },
+  { "name": "Pene", "desc": "jídla s Pene", "id": "003a7e1347751f44" }
+]

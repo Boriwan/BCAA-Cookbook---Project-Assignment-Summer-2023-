@@ -34,6 +34,7 @@ const CategoryView = ({ data }) => {
       <button
         type="button"
         className="btn btn-primary ms-3"
+        style={{ color: "#FFFFFF" }}
         onClick={handleShow}
       >
         Přidat kategorii
@@ -62,7 +63,12 @@ const CategoryView = ({ data }) => {
                 onChange={(event) => setDescription(event.target.value)}
               />
             </Form.Group>
-            <Button variant="primary" type="submit" className="mt-1">
+            <Button
+              variant="primary"
+              style={{ color: "#FFFFFF" }}
+              type="submit"
+              className="mt-1"
+            >
               Uložit
             </Button>
           </Form>

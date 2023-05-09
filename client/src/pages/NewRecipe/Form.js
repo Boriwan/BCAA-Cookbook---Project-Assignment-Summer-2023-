@@ -250,7 +250,12 @@ const AddRecipeForm = () => {
             selected={multiSelections}
           />
         </Form.Group>
-        <Button variant="primary" className="mt-2" type="submit">
+        <Button
+          variant="primary"
+          className="mt-2"
+          type="submit"
+          style={{ color: "#FFFFFF" }}
+        >
           Vytvořit recept
         </Button>
       </Form>
@@ -263,11 +268,13 @@ const AddRecipeForm = () => {
         </Modal.Body>
         <Modal.Footer>
           <Link to="/">
-            <Button>Domů</Button>
+            <Button style={{ color: "#FFFFFF" }}>Domů</Button>
           </Link>
           {newData && (
             <Link to={`/recept/${newData.id}`}>
-              <Button>Recept</Button>
+              <Button variant="secondary" style={{ color: "#FFFFFF" }}>
+                Recept
+              </Button>
             </Link>
           )}
         </Modal.Footer>

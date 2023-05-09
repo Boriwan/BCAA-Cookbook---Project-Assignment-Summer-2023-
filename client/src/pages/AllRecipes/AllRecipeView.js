@@ -43,7 +43,11 @@ const AllRecipes = (props) => {
       </h2>
       <div className=" max-width">
         <Dropdown>
-          <Dropdown.Toggle variant="primary" id="dropdown-basic">
+          <Dropdown.Toggle
+            variant="primary"
+            id="dropdown-basic"
+            style={{ color: "#FFFFFF" }}
+          >
             {selectedCategory ? selectedCategory : "Vyberte kategorii"}
           </Dropdown.Toggle>
 

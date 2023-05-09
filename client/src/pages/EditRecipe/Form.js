@@ -212,7 +212,6 @@ const AddRecipeForm = ({ data }) => {
                   placeholder="jednotka"
                   defaultValue={ingredient.measurement}
                   onChange={(event) => handleMeasurementChange(event, index)}
-                  required
                 />
                 {index > 0 && (
                   <Button
@@ -275,8 +274,13 @@ const AddRecipeForm = ({ data }) => {
             placeholder="Vyberte ze seznamu kategorie..."
           />
         </Form.Group>
-        <Button variant="primary" className="mt-2" type="submit">
-          Odeslat recept
+        <Button
+          variant="primary"
+          className="mt-2"
+          type="submit"
+          style={{ color: "#FFFFFF" }}
+        >
+          Uložit změny
         </Button>
       </Form>
       <Modal show={showModal} onHide={handleClose}>
@@ -288,10 +292,12 @@ const AddRecipeForm = ({ data }) => {
         </Modal.Body>
         <Modal.Footer>
           <Link to="/">
-            <Button>Domů</Button>
+            <Button style={{ color: "#FFFFFF" }}>Domů</Button>
           </Link>
           <Link to={`/recept/${data.id}`}>
-            <Button>Recept</Button>
+            <Button variant="secondary" style={{ color: "#FFFFFF" }}>
+              Recept
+            </Button>
           </Link>
         </Modal.Footer>
       </Modal>

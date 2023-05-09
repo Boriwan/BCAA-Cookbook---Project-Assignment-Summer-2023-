@@ -46,6 +46,7 @@ const IngredientsView = ({ ingredientsList }) => {
           type="button"
           className="btn btn-primary mb-2"
           onClick={handleShow}
+          style={{ color: "#FFFFFF" }}
         >
           Přidat ingredienci
         </button>
@@ -81,7 +82,12 @@ const IngredientsView = ({ ingredientsList }) => {
                 onChange={(event) => setMeasurement(event.target.value)}
               />
             </Form.Group>
-            <Button variant="primary" type="submit" className="mt-1">
+            <Button
+              variant="primary"
+              type="submit"
+              className="mt-1"
+              style={{ color: "#FFFFFF" }}
+            >
               Uložit
             </Button>
           </Form>

@@ -5,12 +5,12 @@ const RecipeList = (props) => {
   return (
     <section className="max-width" style={{ paddingTop: "20px" }}>
       <RecipeCategory
-        category="spagety"
+        category="Špagety"
         title="Špagety"
         description="Toto jsou ty nejlepší recepty, co obsahují špagety"
       />
       <RecipeCategory
-        category="lasagne"
+        category="Lasagne"
         title="Lasagne"
         description="Toto jsou ty nejlepší recepty, co jsou lasagne"
       />
