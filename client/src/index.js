@@ -19,7 +19,6 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path="/pridat-recept" element={<NewRecipe />} />
           <Route path="/kategorie" element={<Category />} />
-          <Route path="/pridat-recept" element={<NewRecipe />} />
           <Route path="/vsechny-recepty" element={<AllRecipes />} />
           <Route path="" element={<Home />} />
           <Route path="/ingredience" element={<Ingredients />} />
