@@ -9,7 +9,6 @@ const StarRating = ({ id, ratingValue, ratingCount, ratingDisabled }) => {
   const avgRating = ratingAmount / ratingCount;
 
   const handleClick = async (value) => {
-    // Send rating value to backend
     const response = await fetch(`/recipe/addRating/${id}`, {
       method: "PUT",
       body: JSON.stringify({ value }),
@@ -18,11 +17,10 @@ const StarRating = ({ id, ratingValue, ratingCount, ratingDisabled }) => {
       },
     });
 
-    // Handle response from backend
     if (response.ok) {
-      // Rating successfully saved
+      console.log("Rating added successfully");
     } else {
-      // Error occurred while saving rating
+      console.error("Error adding rating");
     }
   };
 
@@ -41,7 +39,7 @@ const StarRating = ({ id, ratingValue, ratingCount, ratingDisabled }) => {
                 handleClick(starValue);
               }}
               style={{ display: "none" }}
-              disabled={ratingDisabled} // disable radio input when ratingDisabled is true
+              disabled={ratingDisabled}
             />
             <FaStar
               size={24}
@@ -57,8 +55,8 @@ const StarRating = ({ id, ratingValue, ratingCount, ratingDisabled }) => {
                 border:
                   hover && starValue <= hover ? "1px solid #ffc102" : "none",
               }}
-              onMouseEnter={() => !ratingDisabled && setHover(starValue)} // only set hover if rating is not disabled
-              onMouseLeave={() => !ratingDisabled && setHover(null)} // only clear hover if rating is not disabled
+              onMouseEnter={() => !ratingDisabled && setHover(starValue)}
+              onMouseLeave={() => !ratingDisabled && setHover(null)}
             />
           </label>
         );

@@ -59,7 +59,7 @@ function NavbarComponent() {
           <div className="ps-2 mb-2">
             <Nav
               className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
+              style={{ maxHeight: "100px", width: "408px" }}
             >
               <Nav.Link href="/vsechny-recepty">Všechny recepty</Nav.Link>
               <Nav.Link href="/kategorie">Kategorie</Nav.Link>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function DataStateResolver(props) {
   if (!props.data || !props.data.state) {
-    return <LoadingPage />; // or render a null component
+    return <LoadingPage />;
   }
 
   switch (props.data.state) {

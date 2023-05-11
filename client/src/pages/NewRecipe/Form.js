@@ -27,6 +27,7 @@ const AddRecipeForm = () => {
   const ingredientListing = ingr.map((ingredient) => ingredient);
 
   const titleRef = useRef();
+
   const descriptionRef = useRef();
   const [image, setImage] = useState(null);
 
@@ -34,6 +35,25 @@ const AddRecipeForm = () => {
   const [ingredients, setIngredients] = useState([
     { name: "", amount: "", measurement: "" },
   ]);
+
+  const [isTitleValid, setIsTitleValid] = useState(false);
+  const [isDescValid, setIsDescValid] = useState(false);
+  const [isMethodValid, setIsMethodValid] = useState(false);
+  const [isPortionsValid, setIsPortionsValid] = useState(false);
+  const [isPrepLengthValid, setIsPrepLengthValid] = useState(false);
+
+  const setPortionChange = (e) => {
+    setIsPortionsValid(e.target.value !== "");
+  };
+  const handleTitleChange = (e) => {
+    setIsTitleValid(e.target.value !== "");
+  };
+  const handleDescChange = (e) => {
+    setIsDescValid(e.target.value !== "");
+  };
+  const setPrepLengthChange = (e) => {
+    setIsPrepLengthValid(e.target.value !== "");
+  };
 
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
@@ -71,6 +91,7 @@ const AddRecipeForm = () => {
     const newMethod = [...method];
     newMethod[index] = event.target.value;
     setMethod(newMethod);
+    setIsMethodValid(event.target.value !== "");
   };
   const handleAddStep = () => {
     setMethod([...method, ""]);
@@ -103,7 +124,7 @@ const AddRecipeForm = () => {
     newMer[index] = event.target.value;
     setIngredients(newIngredients);
     setMer(newMer);
-    console.log(newMer);
+    console.log(ingredients);
   };
 
   const handleAmountChange = (event, index) => {
@@ -129,20 +150,41 @@ const AddRecipeForm = () => {
         className="mx-auto"
       >
         <Form.Group controlId="recipeTitle">
-          <Form.Label>*Název receptu</Form.Label>
-          <Form.Control type="text" ref={titleRef} required />
+          <Form.Label>
+            <span className={isTitleValid ? "text-success" : "text-danger"}>
+              *
+            </span>
+            Název receptu
+          </Form.Label>
+          <Form.Control
+            type="text"
+            ref={titleRef}
+            required
+            onChange={handleTitleChange}
+          />
         </Form.Group>
         <Form.Group controlId="recipeDescription">
-          <Form.Label>*Popis receptu</Form.Label>
+          <Form.Label>
+            <span className={isDescValid ? "text-success" : "text-danger"}>
+              *
+            </span>
+            Popis receptu
+          </Form.Label>
           <Form.Control
             type="text"
             maxLength="120"
             ref={descriptionRef}
+            onChange={handleDescChange}
             required
           />
         </Form.Group>
         <Form.Group controlId="recipeMethod">
-          <Form.Label>*Postup přípravy receptu</Form.Label>
+          <Form.Label>
+            <span className={isMethodValid ? "text-success" : "text-danger"}>
+              *
+            </span>
+            Postup přípravy receptu
+          </Form.Label>
           {method.map((step, index) => (
             <div key={index} className="input-group mb-3">
               <span className="input-group-text">{index + 1}.</span>
@@ -164,11 +206,20 @@ const AddRecipeForm = () => {
             </div>
           ))}
           <Button variant="success" onClick={handleAddStep}>
-            *Přidat krok
+            Přidat krok
           </Button>
         </Form.Group>
         <Form.Group controlId="recipeIngredients">
-          <Form.Label>*Ingredience</Form.Label>
+          <Form.Label>
+            <span
+              className={
+                ingredients.length > 1 ? "text-success" : "text-danger"
+              }
+            >
+              *
+            </span>
+            Ingredience
+          </Form.Label>
           {ingredients.map((ingredient, index) => (
             <div key={index}>
               <div className="input-group mb-3">
@@ -217,29 +268,55 @@ const AddRecipeForm = () => {
           ))}
         </Form.Group>
         <Form.Group controlId="recipeImage">
-          <Form.Label>*Obrázek</Form.Label>
+          <Form.Label>
+            <span className={image ? "text-success" : "text-danger"}>*</span>
+            Obrázek
+          </Form.Label>
           <Form.Control type="file" onChange={handleImageChange} required />
         </Form.Group>
         <Form.Group controlId="recipePrepTime">
-          <Form.Label>*Doba přípravy</Form.Label>
+          <Form.Label>
+            <span
+              className={isPrepLengthValid ? "text-success" : "text-danger"}
+            >
+              *
+            </span>
+            Doba přípravy
+          </Form.Label>
           <Form.Control
             type="number"
             placeholder="Napište dobu přípravy receptu v minutách"
             min="1"
+            onChange={setPrepLengthChange}
             required
           />
         </Form.Group>
         <Form.Group controlId="portionCount">
-          <Form.Label>*Počet porcí</Form.Label>
+          <Form.Label>
+            <span className={isPortionsValid ? "text-success" : "text-danger"}>
+              *
+            </span>
+            Počet porcí
+          </Form.Label>
           <Form.Control
             type="number"
             placeholder="Napište čísticí počet porcí"
             min="1"
+            onChange={setPortionChange}
             required
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label>Kategorie</Form.Label>
+          <Form.Label>
+            <span
+              className={
+                multiSelections.length > 0 ? "text-success" : "text-danger"
+              }
+            >
+              *
+            </span>
+            Kategorie
+          </Form.Label>
           <Typeahead
             id="basic-typeahead-multiple"
             labelKey="name"

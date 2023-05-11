@@ -5,8 +5,6 @@ let dao = new IngredientDao(
   path.join(__dirname, "..", "..", "storage", "ingredients.json")
 );
 
-// console.log(ingredientList);
-
 function GetAbl(req, res) {
   const ingredient = dao.get(req.params.id);
   if (ingredient) {

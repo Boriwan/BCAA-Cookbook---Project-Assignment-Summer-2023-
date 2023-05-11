@@ -8,7 +8,10 @@ const AllRecipes = ({ topRecipes }) => {
       <h2 style={{ paddingTop: "15px" }} className="max-width text-primary h1">
         Top 10 nejlépe ohodnocených receptů
       </h2>
-      <div className="d-flex flex-wrap max-width">
+      <div
+        className="d-flex  max-width flex-shrink-0"
+        style={{ overflowX: "auto" }}
+      >
         {topRecipes.map((recipe) => {
           return (
             <Card
