@@ -129,11 +129,11 @@ const AddRecipeForm = () => {
         className="mx-auto"
       >
         <Form.Group controlId="recipeTitle">
-          <Form.Label>Název receptu</Form.Label>
+          <Form.Label>*Název receptu</Form.Label>
           <Form.Control type="text" ref={titleRef} required />
         </Form.Group>
         <Form.Group controlId="recipeDescription">
-          <Form.Label>Popis receptu</Form.Label>
+          <Form.Label>*Popis receptu</Form.Label>
           <Form.Control
             type="text"
             maxLength="120"
@@ -142,7 +142,7 @@ const AddRecipeForm = () => {
           />
         </Form.Group>
         <Form.Group controlId="recipeMethod">
-          <Form.Label>Postup přípravy receptu</Form.Label>
+          <Form.Label>*Postup přípravy receptu</Form.Label>
           {method.map((step, index) => (
             <div key={index} className="input-group mb-3">
               <span className="input-group-text">{index + 1}.</span>
@@ -164,11 +164,11 @@ const AddRecipeForm = () => {
             </div>
           ))}
           <Button variant="success" onClick={handleAddStep}>
-            Přidat krok
+            *Přidat krok
           </Button>
         </Form.Group>
         <Form.Group controlId="recipeIngredients">
-          <Form.Label>Ingredience</Form.Label>
+          <Form.Label>*Ingredience</Form.Label>
           {ingredients.map((ingredient, index) => (
             <div key={index}>
               <div className="input-group mb-3">
@@ -217,11 +217,11 @@ const AddRecipeForm = () => {
           ))}
         </Form.Group>
         <Form.Group controlId="recipeImage">
-          <Form.Label>Obrázek</Form.Label>
+          <Form.Label>*Obrázek</Form.Label>
           <Form.Control type="file" onChange={handleImageChange} required />
         </Form.Group>
         <Form.Group controlId="recipePrepTime">
-          <Form.Label>Doba přípravy</Form.Label>
+          <Form.Label>*Doba přípravy</Form.Label>
           <Form.Control
             type="number"
             placeholder="Napište dobu přípravy receptu v minutách"
@@ -230,7 +230,7 @@ const AddRecipeForm = () => {
           />
         </Form.Group>
         <Form.Group controlId="portionCount">
-          <Form.Label>Počet porcí</Form.Label>
+          <Form.Label>*Počet porcí</Form.Label>
           <Form.Control
             type="number"
             placeholder="Napište čísticí počet porcí"
