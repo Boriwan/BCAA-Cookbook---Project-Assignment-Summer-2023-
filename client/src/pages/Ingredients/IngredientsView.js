@@ -40,7 +40,7 @@ const IngredientsView = ({ ingredientsList }) => {
 
   return (
     <main className="max-width">
-      <h1 className=" text-primary h1">Všechny Ingredience</h1>
+      <h1 className=" text-primary h1 mx-5">Všechny Ingredience</h1>
       <div className=" mx-5 mb-2">
         <button
           type="button"

@@ -63,11 +63,7 @@ const StarRating = ({ id, ratingValue, ratingCount, ratingDisabled }) => {
       })}
       {!ratingDisabled && (
         <div>
-          {avgRating && (
-            <div>
-              Průměrné: {avgRating.toFixed(1)} ze {ratingCount} lidí
-            </div>
-          )}
+          {avgRating && <div>Počet hodnocení: {ratingCount}</div>}
           {!avgRating && <div>Buď první, kdo ohodnotí recept!</div>}
         </div>
       )}

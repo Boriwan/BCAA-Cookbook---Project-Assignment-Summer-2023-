@@ -6,6 +6,7 @@ const CategoryCard = ({ name, desc, id }) => {
   const [newName, setNewName] = useState(name);
   const [newDesc, setNewDesc] = useState(desc);
   const [showDelete, setShowDelete] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const handleCloseDelete = () => setShowDelete(false);
   const handleShowDelete = () => setShowDelete(true);
@@ -16,9 +17,22 @@ const CategoryCard = ({ name, desc, id }) => {
   const handleDelete = () => {
     fetch(`/category/delete/${id}`, {
       method: "delete",
-    });
-    setShow(false);
-    window.location.reload();
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        } else {
+          setShowDelete(false);
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        setShowDelete(false);
+        setShowError(true);
+      });
   };
   const handleEdit = () => {
     const editedCategory = {
@@ -119,6 +133,19 @@ const CategoryCard = ({ name, desc, id }) => {
             onClick={handleEdit}
           >
             Uložit změny
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={showError} onHide={() => setShowError(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Error</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Ingredience nemůže být vymazána, protože se používá v receptu
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={() => setShowError(false)}>
+            Zavřít
           </Button>
         </Modal.Footer>
       </Modal>

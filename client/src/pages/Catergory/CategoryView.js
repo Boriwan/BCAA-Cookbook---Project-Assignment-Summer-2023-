@@ -30,7 +30,7 @@ const CategoryView = ({ data }) => {
 
   return (
     <main className="max-width">
-      <h1 className=" text-primary h1">Všechny kategorie</h1>
+      <h1 className=" text-primary h1 mx-3">Všechny kategorie</h1>
       <button
         type="button"
         className="btn btn-secondary ms-3"

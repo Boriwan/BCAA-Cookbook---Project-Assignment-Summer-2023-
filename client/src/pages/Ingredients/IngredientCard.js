@@ -6,6 +6,7 @@ const IngredientCard = ({ name, measurement, id }) => {
   const [newName, setNewName] = useState(name);
   const [newDesc, setNewDesc] = useState(measurement);
   const [showDelete, setShowDelete] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const handleCloseDelete = () => setShowDelete(false);
   const handleShowDelete = () => setShowDelete(true);
@@ -14,11 +15,24 @@ const IngredientCard = ({ name, measurement, id }) => {
   const handleShow = () => setShow(true);
 
   const handleDelete = () => {
-    fetch(`/ingredient/delete/${id}`, {
+    return fetch(`/ingredient/delete/${id}`, {
       method: "delete",
-    });
-    setShow(false);
-    window.location.reload();
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        } else {
+          setShowDelete(false);
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        setShowDelete(false);
+        setShowError(true);
+      });
   };
 
   const handleEdit = () => {
@@ -125,6 +139,19 @@ const IngredientCard = ({ name, measurement, id }) => {
               onClick={handleEdit}
             >
               Uložit změny
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <Modal show={showError} onHide={() => setShowError(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Error</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Kategorie nemůže být vymazána, protože v ní je zařazený recept
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={() => setShowError(false)}>
+              Zavřít
             </Button>
           </Modal.Footer>
         </Modal>

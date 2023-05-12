@@ -25,10 +25,12 @@ function DeleteAbl(req, res) {
   });
 
   if (hasRecipesInIngredient) {
-    throw new Error("Cannot delete ingredint with associated recipes.");
+    const message = "Cannot delete ingredient with associated recipes.";
+    res.status(400).json({ error: message });
   } else {
     ingredientDao.delete(ingredient);
     res.json(`Ingredient with id ${ingredientId} has been deleted.`);
   }
 }
+
 module.exports = DeleteAbl;

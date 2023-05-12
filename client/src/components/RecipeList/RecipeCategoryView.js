@@ -4,7 +4,7 @@ import Card from "../RecipeCard/Card";
 const RecipeCategoryView = ({ recipeList, description, title }) => {
   return (
     <section className="m-2" key={title}>
-      <div className="title-box">
+      <div className="title-box ">
         <h2 className="text-primary">{title}</h2>
         <p>{description}</p>
       </div>

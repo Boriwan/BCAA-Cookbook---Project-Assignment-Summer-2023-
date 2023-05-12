@@ -9,7 +9,7 @@ const AllRecipes = ({ topRecipes }) => {
         Top 10 nejlépe ohodnocených receptů
       </h2>
       <div
-        className="d-flex  max-width flex-shrink-0"
+        className="d-flex  max-width flex-shrink-0 flex-xl-wrap"
         style={{ overflowX: "auto" }}
       >
         {topRecipes.map((recipe) => {
@@ -27,7 +27,9 @@ const AllRecipes = ({ topRecipes }) => {
           );
         })}
       </div>
-      <Link to="/vsechny-recepty">Zobrazit všechny recepty</Link>
+      <Link to="/vsechny-recepty" className=" m-2">
+        Zobrazit všechny recepty
+      </Link>
     </main>
   );
 };

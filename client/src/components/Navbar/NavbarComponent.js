@@ -89,6 +89,7 @@ function NavbarComponent() {
                 type="submit"
                 variant="outline-success"
                 className="ms-lg-1"
+                disabled={!searchValue || searchValue.length === 0}
               >
                 Hledat
               </Button>

@@ -37,12 +37,12 @@ const AllRecipes = (props) => {
   };
 
   return (
-    <main>
-      <h2 style={{ paddingTop: "15px" }} className="max-width text-primary h1">
+    <main className="max-width">
+      <h2 style={{ paddingTop: "15px" }} className=" text-primary h1 mx-2">
         Všechny recepty
       </h2>
-      <div className=" max-width">
-        <Dropdown>
+      <div className="">
+        <Dropdown className="mx-2">
           <Dropdown.Toggle
             variant="primary"
             id="dropdown-basic"

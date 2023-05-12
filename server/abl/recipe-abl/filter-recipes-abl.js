@@ -20,7 +20,7 @@ function FilterRecipesAbl(req, res) {
         b.ratingValue.reduce((acc, val) => acc + val, 0) / b.ratingCount;
       return bRating - aRating;
     })
-    .slice(0, 4);
+    .slice(0, 5);
 
   res.json(topRecipes);
 }
